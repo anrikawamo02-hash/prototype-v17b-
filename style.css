@@ -101,7 +101,6 @@ h1.title{
 /* ============================
    LINGER (is-pressed) 追加部分
    ============================ */
-
 html[data-page="index"] .btn.roomBtn.is-pressed{
   transform: translateY(1px);
   box-shadow:
