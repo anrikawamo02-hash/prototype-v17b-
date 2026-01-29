@@ -18,31 +18,6 @@
 
   const page = document.documentElement.getAttribute('data-page');
 
-
-
-// Tap “linger” for iPhone: keep pressed feel for a moment before navigation (Index page only)
-const PRESS_MS = 140; // 120〜180で好み調整OK
-
-if(page === 'index'){
-  document.querySelectorAll('a.btn.roomBtn').forEach(a=>{
-    const href = a.getAttribute('href');
-    if(!href) return;
-
-    const setPressed = (on)=>a.classList.toggle('is-pressed', on);
-
-    // Press feedback
-    a.addEventListener('pointerdown', ()=>setPressed(true), {passive:true});
-    a.addEventListener('pointercancel', ()=>setPressed(false));
-
-    // Delay navigation slightly so the pressed state is visible
-    a.addEventListener('click', (e)=>{
-      if(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      e.preventDefault();
-      setPressed(true);
-      setTimeout(()=>{ location.href = href; }, PRESS_MS);
-    });
-  });
-}
   if(page === 'category'){
     const info = ROOM_LABELS[room] || ROOM_LABELS.rg12;
     setText('cat_title', `${info.jp}｜カテゴリ`);
