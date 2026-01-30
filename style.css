@@ -177,31 +177,3 @@ html[data-page="index"] .btn.roomBtn:active{
 html[data-page="index"] .btn.roomBtn{
   box-shadow: 0 10px 22px rgba(0,0,0,.06);
 }
-
-
-/* =========================================
-   Fixed background icon (Anri original)
-   - Slightly larger than FAB
-   - Stays at bottom-right of viewport
-   ========================================= */
-
-.app{
-  position: relative;
-  z-index: 1;
-}
-
-body::before{
-  content: "";
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  width: 120px;
-  height: 120px;
-  background-image: url("icon.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: bottom right;
-  opacity: 0.95;
-  pointer-events: none;
-  z-index: 0;
-}
