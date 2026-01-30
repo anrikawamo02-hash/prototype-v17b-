@@ -206,3 +206,26 @@ html[data-page="index"] .btn.roomBtn.is-pressed{
 @media (prefers-reduced-motion: reduce){
   html[data-page="index"] .btn.roomBtn{ transition: none; }
 }
+
+/* ================================
+   Floating island icon
+=================================== */
+.islandFab{
+  position:fixed;
+  right:20px;
+  bottom:24px;
+  width:72px;
+  height:72px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
+  display:grid;
+  place-items:center;
+  z-index:50;
+}
+.islandFab img{
+  width:80%;
+  height:auto;
+  display:block;
+}
