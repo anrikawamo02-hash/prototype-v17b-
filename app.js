@@ -18,30 +18,7 @@
 
   const page = document.documentElement.getAttribute('data-page');
 
-  
-
-  // Tap linger (Index): keep pressed feel briefly before navigation
-  const PRESS_MS = 240;
-
-  if(page === 'index'){
-    document.querySelectorAll('a.btn.roomBtn').forEach(a=>{
-      const href = a.getAttribute('href');
-      if(!href) return;
-
-      const setPressed = (on)=>a.classList.toggle('is-pressed', on);
-
-      a.addEventListener('pointerdown', ()=>setPressed(true), {passive:true});
-      a.addEventListener('pointercancel', ()=>setPressed(false));
-
-      a.addEventListener('click', (e)=>{
-        if(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-        e.preventDefault();
-        setPressed(true);
-        setTimeout(()=>{ location.href = href; }, PRESS_MS);
-      });
-    });
-  }
-if(page === 'category'){
+  if(page === 'category'){
     const info = ROOM_LABELS[room] || ROOM_LABELS.rg12;
     setText('cat_title', `${info.jp}｜カテゴリ`);
     setText('cat_sub', 'Categories');
