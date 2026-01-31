@@ -177,3 +177,15 @@ html[data-page="index"] .btn.roomBtn:active{
 html[data-page="index"] .btn.roomBtn{
   box-shadow: 0 10px 22px rgba(0,0,0,.06);
 }
+
+/* Floating crab mascot on pages 1 and 2 */
+.floating-crab {
+  position: fixed;
+  bottom: 120px;          /* slightly above the bottom */
+  right: 32px;            /* a bit inside from the right edge */
+  width: 200px;           /* crab image width */
+  height: auto;
+  pointer-events: none;   /* taps go through to the UI */
+  z-index: 10;
+}
+
