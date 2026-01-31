@@ -172,23 +172,6 @@ html[data-page="index"] .btn.roomBtn:active{
 }
 
 
-
-/* Floating island icon (crab) */
-.islandFab{
-  position: fixed;
-  bottom: 200px;
-  right: 24px;
-  width: 150px;
-  pointer-events: none;
-  z-index: 10;
-}
-.islandFab img{
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-
 /* ===== Custom (User) : P1 shadow polish ===== */
 /* Slightly cleaner shadow on P1 only (keeps same vibe, a bit more premium) */
 html[data-page="index"] .btn.roomBtn{
