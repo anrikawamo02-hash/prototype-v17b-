@@ -112,3 +112,25 @@
     }
   }
 })();
+
+
+// === Added: enable all category cards ===
+document.querySelectorAll('.btn[data-cat]').forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    e.preventDefault();
+    const p=new URLSearchParams(location.search);
+    const room=p.get("room")||"default";
+    const cat=btn.getAttribute("data-cat");
+    location.href=`swipe.html?room=${room}&cat=${cat}`;
+  });
+});
+
+// === Added: crab only on index ===
+document.addEventListener("DOMContentLoaded", ()=>{
+  const page=document.documentElement.getAttribute("data-page");
+  const crab=document.querySelector(".floating-crab");
+  if(crab){
+    if(page==="index") crab.style.display="block";
+    else crab.style.display="none";
+  }
+});

@@ -1,79 +1,66 @@
 <!doctype html>
 <html lang="ja" data-page="category">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>カテゴリ</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="app">
-    <div class="topbar">
-      <a class="back" id="back_to_index" href="#">←</a>
-      <div class="titles">
-        <div class="t" id="cat_title">カテゴリ</div>
-        <div class="s" id="cat_sub">Categories</div>
-      </div>
-    </div>
-
-    <div class="screen">
-      <div class="list">
-
-        <div id="main_dynamic"></div>
-
-        <div class="btn" style="opacity:.7;">
-          <div class="cat">
-            <div class="icon">🍳</div>
-            <div><div class="jp">キッチン</div><div class="en">Kitchen</div></div>
-          </div>
-          <span class="badge">準備中</span>
-        </div>
-
-        <div class="btn" style="opacity:.7;">
-          <div class="cat">
-            <div class="icon">🪥</div>
-            <div><div class="jp">洗面</div><div class="en">Vanity</div></div>
-          </div>
-          <span class="badge">準備中</span>
-        </div>
-
-        <a class="btn" id="bath_link" href="#">
-          <div class="cat">
-            <div class="icon">🛁</div>
-            <div><div class="jp">バスルーム</div><div class="en">Bath</div></div>
-          </div>
-          <div class="chev">›</div>
-        </a>
-
-        <div class="btn" style="opacity:.7;">
-          <div class="cat">
-            <div class="icon">🚽</div>
-            <div><div class="jp">トイレ</div><div class="en">Toilet</div></div>
-          </div>
-          <span class="badge">準備中</span>
-        </div>
-
-        <div class="btn" style="opacity:.7;">
-          <div class="cat">
-            <div class="icon">👕</div>
-            <div><div class="jp">クローゼット</div><div class="en">Closet</div></div>
-          </div>
-          <span class="badge">準備中</span>
-        </div>
-
-        <div class="btn" style="opacity:.7;">
-          <div class="cat">
-            <div class="icon">🚪</div>
-            <div><div class="jp">玄関</div><div class="en">Entrance</div></div>
-          </div>
-          <span class="badge">準備中</span>
-        </div>
-
-      </div>
+<div class="app">
+  <div class="topbar">
+    <a class="back" id="back_to_index" href="#">←</a>
+    <div class="titles">
+      <div class="t">カテゴリ</div>
+      <div class="s">Categories</div>
     </div>
   </div>
 
-  <script src="app.js"></script>
-  
+  <div class="screen">
+    <div class="list">
+
+      <div id="main_dynamic"></div>
+
+      <a class="btn" data-cat="kitchen">
+        <div class="cat"><div class="icon">🍳</div>
+        <div><div class="jp">キッチン</div><div class="en">Kitchen</div></div></div>
+        <span class="badge">開く</span>
+      </a>
+
+      <a class="btn" data-cat="vanity">
+        <div class="cat"><div class="icon">🪥</div>
+        <div><div class="jp">洗面</div><div class="en">Vanity</div></div></div>
+        <span class="badge">開く</span>
+      </a>
+
+      <a class="btn" data-cat="bath">
+        <div class="cat"><div class="icon">🛁</div>
+        <div><div class="jp">バスルーム</div><div class="en">Bath</div></div></div>
+        <div class="chev">›</div>
+      </a>
+
+      <a class="btn" data-cat="toilet">
+        <div class="cat"><div class="icon">🚽</div>
+        <div><div class="jp">トイレ</div><div class="en">Toilet</div></div></div>
+        <span class="badge">開く</span>
+      </a>
+
+      <a class="btn" data-cat="closet">
+        <div class="cat"><div class="icon">👕</div>
+        <div><div class="jp">クローゼット</div><div class="en">Closet</div></div></div>
+        <span class="badge">開く</span>
+      </a>
+
+      <a class="btn" data-cat="entrance">
+        <div class="cat"><div class="icon">🚪</div>
+        <div><div class="jp">玄関</div><div class="en">Entrance</div></div></div>
+        <span class="badge">開く</span>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
