@@ -181,15 +181,11 @@ html[data-page="index"] .btn.roomBtn{
 /* Floating crab mascot on pages 1 and 2 */
 .floating-crab {
   position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 20px;
-  width: min(44vw, 260px);
-  max-width: 260px;
-  pointer-events: none;
-  z-index: 5;
-  opacity: 0;
-  animation: crab-fade-in 0.9s ease-out 0.3s forwards;
-  mix-blend-mode: screen;
+  bottom: 40px;           /* slightly above the bottom */
+  right: 32px;            /* a bit inside from the right edge */
+  width: 200px;           /* crab image width */
+  height: auto;
+  pointer-events: none;   /* taps go through to the UI */
+  z-index: 10;
 }
 
