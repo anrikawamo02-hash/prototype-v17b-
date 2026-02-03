@@ -166,7 +166,6 @@ html[data-page="index"] .btn.roomBtn{
   transition: transform 220ms ease-out, box-shadow 220ms ease-out, filter 220ms ease-out;
 }
 html[data-page="index"] .btn.roomBtn:active{
-  transition: transform 0ms, box-shadow 0ms, filter 0ms;
   transform: translateY(1px);
   box-shadow: 0 6px 12px rgba(0,0,0,.045);
   filter: brightness(0.985);
@@ -194,19 +193,3 @@ html[data-page="index"] .btn.roomBtn{
   
 }
 
-
-
-/* ===== Custom (User) : P2 category buttons powder-pink ===== */
-html[data-page="category"] .btn{
-  background:#F5ECF4;
-  border:1px solid var(--border);
-  box-shadow:0 10px 22px rgba(0,0,0,.06);
-}
-
-/* instant press feeling */
-html[data-page="category"] .btn:active{
-  transition: transform 0ms, box-shadow 0ms, filter 0ms;
-  transform: translateY(1px);
-  box-shadow: 0 6px 12px rgba(0,0,0,.045);
-  filter: brightness(0.985);
-}
