@@ -18,17 +18,6 @@
 
   const page = document.documentElement.getAttribute('data-page');
 
-  // show crab only on index page
-  document.addEventListener('DOMContentLoaded', ()=>{
-    const crab = document.querySelector('.floating-crab');
-    if(!crab) return;
-    if(page === 'index'){
-      crab.style.display = 'block';
-    }else{
-      crab.style.display = 'none';
-    }
-  });
-
   if(page === 'category'){
     const info = ROOM_LABELS[room] || ROOM_LABELS.rg12;
     setText('cat_title', `${info.jp}｜カテゴリ`);
@@ -48,14 +37,8 @@
         html += makeLink('メインルーム（9）','Main room (9)','main9');
         html += makeLink('メインルーム（10）','Main room (10)','main10');
         html += makeLink('メインルーム（11）','Main room (11)','main11');
-      }else if(room === 'rg12'){
-        html += makeLink('メインルーム（1・2）','Main room (1–2)','main12');
-      }else if(room === 'rg3'){
-        html += makeLink('メインルーム（3）','Main room (3)','main3');
-      }else if(room === 'rg4'){
-        html += makeLink('メインルーム（4）','Main room (4)','main4');
-      }else if(room === 'rg56'){
-        html += makeLink('メインルーム（5・6）','Main room (5–6)','main56');
+      }else{
+        html += makeDisabled('メインルーム','Main room');
       }
       mainWrap.innerHTML = html;
     }
@@ -66,20 +49,9 @@
       bathA.href = `swipe.html?room=${encodeURIComponent(room)}&cat=bath`;
     }
 
-    // common handler for all category buttons
-    const catButtons = document.querySelectorAll('.btn[data-cat]');
-    catButtons.forEach(btn=>{
-      btn.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const catName = btn.getAttribute('data-cat');
-        if(!catName) return;
-        location.href = `swipe.html?room=${encodeURIComponent(room)}&cat=${encodeURIComponent(catName)}`;
-      });
-    });
-
     function makeLink(jp,en,catName){
       return `
-      <a class="btn" data-cat="${catName}" href="swipe.html?room=${encodeURIComponent(room)}&cat=${encodeURIComponent(catName)}">
+      <a class="btn" href="swipe.html?room=${encodeURIComponent(room)}&cat=${encodeURIComponent(catName)}">
         <div class="cat"><div class="icon">🛏️</div>
           <div><div class="jp">${jp}</div><div class="en">${en}</div></div>
         </div>
@@ -104,15 +76,6 @@
     // Title
     const titleMap = {
       bath: {jp:'バスルーム', en:'Swipe', prefix:'Bath'},
-      kitchen:{jp:'キッチン', en:'Swipe', prefix:'Kitchen'},
-      vanity:{jp:'洗面', en:'Swipe', prefix:'Vanity'},
-      toilet:{jp:'トイレ', en:'Swipe', prefix:'Toilet'},
-      closet:{jp:'クローゼット', en:'Swipe', prefix:'Closet'},
-      entrance:{jp:'玄関', en:'Swipe', prefix:'Entrance'},
-      main12:{jp:'メインルーム（1・2）', en:'Swipe', prefix:'Main'},
-      main3:{jp:'メインルーム（3）', en:'Swipe', prefix:'Main'},
-      main4:{jp:'メインルーム（4）', en:'Swipe', prefix:'Main'},
-      main56:{jp:'メインルーム（5・6）', en:'Swipe', prefix:'Main'},
       main7:{jp:'メインルーム（7）', en:'Swipe', prefix:'Main'},
       main8:{jp:'メインルーム（8）', en:'Swipe', prefix:'Main'},
       main9:{jp:'メインルーム（9）', en:'Swipe', prefix:'Main'},

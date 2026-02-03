@@ -193,3 +193,17 @@ html[data-page="index"] .btn.roomBtn{
   
 }
 
+
+/* Crab background */
+body::after {
+  content:"";
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:20px;
+  width:300px;
+  height:300px;
+  background:url('crab.png') no-repeat center/contain;
+  pointer-events:none;
+  z-index:-1;
+}
