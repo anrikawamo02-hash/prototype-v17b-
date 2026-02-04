@@ -186,6 +186,6 @@ html[data-page="index"] .btn.roomBtn{
   width: 200px;           /* crab image width */
   height: auto;
   pointer-events: none;   /* taps go through to the UI */
-  z-index: 9999;
+  z-index: 10;
 }
 
