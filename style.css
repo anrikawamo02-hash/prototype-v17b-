@@ -35,6 +35,9 @@ body{
   font-weight:900;
   text-decoration:none;
 }
+.back-spacer{
+  min-width:40px;height:34px;
+}
 .titles .t{font-weight:900;font-size:16px;line-height:1.2;}
 .titles .s{font-size:12px;opacity:.9;margin-top:2px;}
 .screen{padding:14px;min-height:680px;}
@@ -189,3 +192,5 @@ html[data-page="index"] .btn.roomBtn{
   z-index: 10;
 }
 
+
+.crab-image{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;z-index:9999;width:120px;}
