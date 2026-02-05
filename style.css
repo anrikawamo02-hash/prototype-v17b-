@@ -206,3 +206,43 @@ html[data-page="index"] .btn.roomBtn{
 
 
 .crab-image{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;z-index:9999;width:120px;}
+
+
+/* ===== Crab in header (Page 1 & 2): Safari + Android stable ===== */
+html[data-page="index"] .topbar,
+html[data-page="category"] .topbar{
+  position: relative;
+  padding-right: clamp(96px, 24vw, 162px); /* reserve room for crab */
+}
+
+html[data-page="index"] .titles,
+html[data-page="category"] .titles{
+  min-width: 0;
+}
+
+html[data-page="index"] .header-crab,
+html[data-page="category"] .header-crab{
+  position: absolute;
+  right: 8px;
+  top: max(6px, env(safe-area-inset-top));
+  width: clamp(90px, 21vw, 140px);
+  height: auto;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  z-index: 2;
+}
+
+@media (max-width: 360px){
+  html[data-page="index"] .topbar,
+  html[data-page="category"] .topbar{
+    padding-right: 92px;
+  }
+  html[data-page="index"] .header-crab,
+  html[data-page="category"] .header-crab{
+    width: 84px;
+    right: 6px;
+    top: 8px;
+  }
+}
