@@ -67,6 +67,18 @@ body{
   display:grid;place-items:center;font-size:22px;flex:0 0 auto;
 }
 .roomMid{flex:1; min-width:0;}
+
+/* Top row in each room card: Japanese title + floor tag (pill) */
+.roomTop{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+
+.roomTop .jp{
+  white-space:nowrap;
+}
 .roomTag{
   font-size:11px;color:#0f172a;
   background:#eef2ff;border:1px solid #e0e7ff;
