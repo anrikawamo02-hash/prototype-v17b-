@@ -234,15 +234,15 @@ html[data-page="index"] .crab-under-last-wrap{
   display:flex;
   justify-content:center;
   margin-top:8px;
-  margin-bottom:2px;
+  margin-bottom:4px;
   padding-bottom: calc(10px + env(safe-area-inset-bottom));
   position:relative;
   z-index:1;
 }
 
 html[data-page="index"] .crab-under-last{
-  width: clamp(120px, 34vw, 190px);
-  max-width: 56%;
+  width: clamp(170px, 46vw, 230px);
+  max-width: 65%;
   height:auto;
   display:block;
   pointer-events:none;
