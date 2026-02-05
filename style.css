@@ -193,53 +193,10 @@ html[data-page="index"] .btn.roomBtn{
   box-shadow: 0 10px 22px rgba(0,0,0,.06);
 }
 
-
-
-/* ===== Antique number (P1 cards only) ===== */
-html[data-page="index"] .roomTop .jp{
-  display:inline-flex;
-  align-items:baseline;
-  gap:0.06em;
-  white-space:nowrap;
-  font-family:"Yu Gothic","Yu Gothic UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
-}
-html[data-page="index"] .roomTop .jp .antique-num{
-  display:inline-flex;
-  align-items:flex-end;
-  line-height:1;
-  margin:0 .01em;
-}
-html[data-page="index"] .roomTop .jp .antique-num .fallback{
-  font-weight:900;
-  font-size:1em;
-  line-height:1;
-}
-html[data-page="index"] .roomTop .jp .antique-num img{
-  height:1.12em;
-  width:auto;
-  display:none;
-  vertical-align:baseline;
-  image-rendering:auto;
-}
-html[data-page="index"] .roomTop .jp .antique-num.is-ready .fallback{display:none;}
-html[data-page="index"] .roomTop .jp .antique-num.is-ready img{display:block;}
-html[data-page="index"] .roomTop .jp .antique-sep{
-  font-weight:900;
-  letter-spacing:0;
-  margin:0 .02em;
-}
-html[data-page="index"] .roomTop .jp .jp-suffix{
-  font-family:"Yu Gothic","Yu Gothic UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
-  font-weight:900;
-  letter-spacing:.01em;
-}
-/* subtle width tuning for multi-digit labels */
-html[data-page="index"] .roomTop .jp .antique-num.n10 img{height:1.10em;}
-html[data-page="index"] .roomTop .jp .antique-num.n11 img{height:1.10em;}
-/* Floating crab mascot (category page only) */
+/* Floating crab mascot (Category page only) */
 html[data-page="category"] .floating-crab {
   position: fixed;
-  bottom: 40px;
+  bottom: calc(40px + env(safe-area-inset-bottom));
   right: 32px;
   width: 200px;
   height: auto;
@@ -247,19 +204,25 @@ html[data-page="category"] .floating-crab {
   z-index: 10;
 }
 
-/* Index: crab below the last card (non-fixed, non-overlap) */
+/* Safety: never render fixed crab on index */
+html[data-page="index"] .floating-crab{
+  display:none !important;
+}
+
+/* Index: place crab below last card (non-fixed, no overlap) */
 html[data-page="index"] .crab-under-last-wrap{
   display:flex;
-  justify-content:flex-end;
+  justify-content:center;
   margin-top:8px;
-  padding-right:8px;
-  padding-bottom:6px;
+  margin-bottom:2px;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
   position:relative;
-  z-index:3;
+  z-index:1;
 }
+
 html[data-page="index"] .crab-under-last{
-  width:200px;
-  max-width:52%;
+  width: clamp(120px, 34vw, 190px);
+  max-width: 56%;
   height:auto;
   display:block;
   pointer-events:none;
@@ -267,4 +230,5 @@ html[data-page="index"] .crab-under-last{
   -webkit-user-drag:none;
 }
 
-.crab-image{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;z-index:9999;width:120px;}
+
+html{ -webkit-text-size-adjust: 100%; }

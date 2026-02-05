@@ -69,77 +69,6 @@
     }
   }
 
-
-
-  function applyAntiqueNumbersIndex(){
-    if(page !== 'index') return;
-
-    const basePath = 'antique_numbers_brightened/bright/individual';
-    const labels = document.querySelectorAll('.roomTop .jp');
-
-    labels.forEach((el)=>{
-      const raw = (el.dataset.rawLabel || el.textContent || '').trim();
-      if(!raw) return;
-      el.dataset.rawLabel = raw;
-
-      const suffixMatch = raw.match(/号室.*/);
-      const suffix = suffixMatch ? suffixMatch[0] : '';
-      const prefix = suffix ? raw.slice(0, raw.indexOf(suffix)) : raw;
-      const tokens = prefix.split(/(・)/).filter(Boolean);
-
-      el.textContent = '';
-
-      tokens.forEach((token)=>{
-        if(token === '・'){
-          const sep = document.createElement('span');
-          sep.className = 'antique-sep';
-          sep.textContent = '・';
-          el.appendChild(sep);
-          return;
-        }
-
-        const n = token.trim();
-        if(/^\d+$/.test(n)){
-          const wrap = document.createElement('span');
-          wrap.className = `antique-num n${n}`;
-
-          const fb = document.createElement('span');
-          fb.className = 'fallback';
-          fb.textContent = n;
-
-          const img = document.createElement('img');
-          img.alt = '';
-          img.setAttribute('aria-hidden', 'true');
-          img.src = `${basePath}/${n}.png`;
-          img.decoding = 'async';
-
-          img.addEventListener('load', ()=>{
-            wrap.classList.add('is-ready');
-          }, { once:true });
-
-          img.addEventListener('error', ()=>{
-            // keep text fallback visible
-            wrap.classList.remove('is-ready');
-          }, { once:true });
-
-          wrap.appendChild(fb);
-          wrap.appendChild(img);
-          el.appendChild(wrap);
-          return;
-        }
-
-        el.appendChild(document.createTextNode(token));
-      });
-
-      if(suffix){
-        const suffixEl = document.createElement('span');
-        suffixEl.className = 'jp-suffix';
-        suffixEl.textContent = suffix;
-        el.appendChild(suffixEl);
-      }
-    });
-  }
-
   if(page === 'swipe'){
     // Back
     setHref('back_to_category', `category.html?room=${encodeURIComponent(room)}`);
@@ -182,6 +111,4 @@
       updateCounter(scroller);
     }
   }
-
-  applyAntiqueNumbersIndex();
 })();
