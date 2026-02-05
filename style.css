@@ -208,41 +208,27 @@ html[data-page="index"] .btn.roomBtn{
 .crab-image{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;z-index:9999;width:120px;}
 
 
-/* ===== Crab in header (Page 1 & 2): Safari + Android stable ===== */
-html[data-page="index"] .topbar,
-html[data-page="category"] .topbar{
+/* ===== Header crab (P1/P2): Sample M placement ===== */
+.topbar.has-header-crab{
   position: relative;
-  padding-right: clamp(96px, 24vw, 162px); /* reserve room for crab */
 }
-
-html[data-page="index"] .titles,
-html[data-page="category"] .titles{
-  min-width: 0;
+.topbar.has-header-crab .titles{
+  padding-right: 70px; /* keep title clear of mascot */
 }
-
-html[data-page="index"] .header-crab,
-html[data-page="category"] .header-crab{
+.header-crab{
   position: absolute;
-  right: 8px;
-  top: max(6px, env(safe-area-inset-top));
-  width: clamp(90px, 21vw, 140px);
-  height: auto;
-  display: block;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 47px;
+  object-fit: cover;
+  object-position: 50% 46%;
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
-  z-index: 2;
+  z-index: 3;
 }
 
-@media (max-width: 360px){
-  html[data-page="index"] .topbar,
-  html[data-page="category"] .topbar{
-    padding-right: 92px;
-  }
-  html[data-page="index"] .header-crab,
-  html[data-page="category"] .header-crab{
-    width: 84px;
-    right: 6px;
-    top: 8px;
-  }
-}
+/* old bottom-floating crab is intentionally disabled */
+.floating-crab{ display:none !important; }
