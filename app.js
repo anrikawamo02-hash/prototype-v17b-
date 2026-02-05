@@ -18,6 +18,99 @@
 
   const page = document.documentElement.getAttribute('data-page');
 
+  // ===== Digits only -> classic font =====
+  function wrapDigitsInElement(el){
+    if(!el) return;
+    const walker = document.createTreeWalker(
+      el,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode(node){
+          if(!node.nodeValue || !/[0-9]/.test(node.nodeValue)) return NodeFilter.FILTER_REJECT;
+          const parent = node.parentElement;
+          if(!parent) return NodeFilter.FILTER_REJECT;
+          if(parent.closest('.antique-num')) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      }
+    );
+
+    const textNodes = [];
+    while(walker.nextNode()) textNodes.push(walker.currentNode);
+
+    textNodes.forEach((node)=>{
+      const t = node.nodeValue;
+      const re = /[0-9]+/g;
+      if(!re.test(t)) return;
+      re.lastIndex = 0;
+
+      const frag = document.createDocumentFragment();
+      let last = 0;
+      let m;
+      while((m = re.exec(t)) !== null){
+        const i = m.index;
+        if(i > last) frag.appendChild(document.createTextNode(t.slice(last, i)));
+        const span = document.createElement('span');
+        span.className = 'antique-num';
+        span.textContent = m[0];
+        frag.appendChild(span);
+        last = i + m[0].length;
+      }
+      if(last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+      node.parentNode.replaceChild(frag, node);
+    });
+  }
+
+  function applyClassicDigits(root=document){
+    const selectors = [
+      '.roomTop .jp',
+      '.roomTag',
+      '.roomMid .en',
+      '#cat_title',
+      '#swipe_title',
+      '[data-slide]',
+      '.counter'
+    ];
+    root.querySelectorAll(selectors.join(',')).forEach(wrapDigitsInElement);
+  }
+
+  if(page === 'index'){
+    // Strong press feel + slight navigation delay so the effect is visible.
+    const roomBtns = document.querySelectorAll('a.btn.roomBtn');
+    roomBtns.forEach((btn)=>{
+      const addPress = ()=> btn.classList.add('is-pressing');
+      const clearPress = ()=> btn.classList.remove('is-pressing');
+
+      btn.addEventListener('pointerdown', addPress, {passive:true});
+      btn.addEventListener('pointerup', clearPress, {passive:true});
+      btn.addEventListener('pointercancel', clearPress, {passive:true});
+      btn.addEventListener('pointerleave', clearPress, {passive:true});
+
+      // Fallback for older iOS behaviors
+      btn.addEventListener('touchstart', addPress, {passive:true});
+      btn.addEventListener('touchend', clearPress, {passive:true});
+      btn.addEventListener('touchcancel', clearPress, {passive:true});
+
+      btn.addEventListener('click', (e)=>{
+        if(btn.dataset.navLock === '1') return;
+        e.preventDefault();
+        btn.dataset.navLock = '1';
+        addPress();
+
+        try{ if(navigator.vibrate) navigator.vibrate(12); }catch(_){ }
+
+        setTimeout(()=>{ location.href = btn.href; }, 150);
+        // Fallback unlock in case navigation is blocked
+        setTimeout(()=>{
+          btn.dataset.navLock = '0';
+          clearPress();
+        }, 900);
+      });
+    });
+
+    applyClassicDigits(document);
+  }
+
   if(page === 'category'){
     const info = ROOM_LABELS[room] || ROOM_LABELS.rg12;
     setText('cat_title', `${info.jp}｜カテゴリ`);
@@ -67,6 +160,8 @@
         <span class="badge">準備中</span>
       </div>`;
     }
+
+    applyClassicDigits(document);
   }
 
   if(page === 'swipe'){
@@ -99,6 +194,7 @@
       const idx = Math.round(scroller.scrollLeft / w) + 1;
       const total = scroller.children.length;
       counterEl.textContent = idx + '/' + total;
+      wrapDigitsInElement(counterEl);
     }
     const scroller = document.querySelector('.scroller');
     if(scroller){
@@ -110,5 +206,7 @@
       // init
       updateCounter(scroller);
     }
+
+    applyClassicDigits(document);
   }
 })();

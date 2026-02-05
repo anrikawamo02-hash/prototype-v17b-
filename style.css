@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;0,800;1,700;1,800&display=swap");
+
 :root{
   --nav:#0b3a5a; --bg:#f3f4f6; --card:#fff; --text:#0f172a; --muted:#64748b; --border:#e5e7eb;
   --shadow:0 10px 24px rgba(0,0,0,.08); --radius:18px;
@@ -176,21 +178,39 @@ html[data-page="index"] .roomIcon{background:#fff;border:1px solid var(--border)
 html[data-page="index"] .roomTag{background:#fff;border:1px solid var(--border);color:var(--text);}
 
 
-/* ===== Custom (User) : P1 card tap interaction (linger) ===== */
+/* ===== Custom (User) : P1 card tap interaction (strong press feel) ===== */
 html[data-page="index"] .btn.roomBtn{
-  transition: transform 220ms ease-out, box-shadow 220ms ease-out, filter 220ms ease-out;
+  position:relative;
+  overflow:hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
 }
-html[data-page="index"] .btn.roomBtn:active{
-  transform: translateY(1px);
-  box-shadow: 0 6px 12px rgba(0,0,0,.045);
-  filter: brightness(0.985);
+html[data-page="index"] .btn.roomBtn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:rgba(15,23,42,.24);
+  opacity:0;
+  transition: opacity 120ms ease;
+  pointer-events:none;
 }
-
+html[data-page="index"] .btn.roomBtn:active,
+html[data-page="index"] .btn.roomBtn.is-pressing{
+  transform: translateY(4px) scale(.955);
+  box-shadow: 0 4px 10px rgba(0,0,0,.16);
+  filter: brightness(.9);
+}
+html[data-page="index"] .btn.roomBtn:active::after,
+html[data-page="index"] .btn.roomBtn.is-pressing::after{
+  opacity:.28;
+}
 
 /* ===== Custom (User) : P1 shadow polish ===== */
 /* Slightly cleaner shadow on P1 only (keeps same vibe, a bit more premium) */
 html[data-page="index"] .btn.roomBtn{
-  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+  box-shadow: 0 10px 22px rgba(0,0,0,.08);
 }
 
 /* Floating crab mascot (Category page only) */
@@ -231,4 +251,19 @@ html[data-page="index"] .crab-under-last{
 }
 
 
-html{ -webkit-text-size-adjust: 100%; }
+html{ -webkit-text-size-adjust: auto; }
+
+
+/* Classic number style (digits only) */
+.antique-num{
+  font-family: "Cormorant Garamond","Times New Roman",serif;
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: .01em;
+  font-variant-numeric: lining-nums;
+  display:inline-block;
+}
+/* Keep card text weights stable on iPhone/Safari */
+html[data-page="index"] .btn .jp{font-weight:900;}
+html[data-page="index"] .btn .en{font-weight:800;}
+html[data-page="index"] .roomTag{font-weight:900;}
