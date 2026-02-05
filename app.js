@@ -21,23 +21,15 @@
     entrance: { jp:'玄関',        en:'Entrance', icon:'🚪', prefix:'Entrance' }
   };
 
-  // メインは部屋グループごとに厳密分離（混在防止）
+  // Main category policy by room-group (strict separation)
   const MAIN_CATS_BY_ROOM = {
-    rg12: [
-      { key:'main',  jp:'メインルーム（1・2共通）', en:'Main room (1–2 shared)', prefix:'Main 1–2' }
-    ],
-    rg3: [
-      { key:'main',  jp:'メインルーム（3）', en:'Main room (3)', prefix:'Main 3' }
-    ],
-    rg4: [
-      { key:'main',  jp:'メインルーム（4）', en:'Main room (4)', prefix:'Main 4' }
-    ],
-    rg56: [
-      { key:'main',  jp:'メインルーム（5・6共通）', en:'Main room (5–6 shared)', prefix:'Main 5–6' }
-    ],
+    rg12: [{ key:'main',  jp:'メインルーム（1・2共通）', en:'Main room (1–2 shared)', prefix:'Main 1–2' }],
+    rg3:  [{ key:'main',  jp:'メインルーム（3）',       en:'Main room (3)',          prefix:'Main 3' }],
+    rg4:  [{ key:'main',  jp:'メインルーム（4）',       en:'Main room (4)',          prefix:'Main 4' }],
+    rg56: [{ key:'main',  jp:'メインルーム（5・6共通）', en:'Main room (5–6 shared)', prefix:'Main 5–6' }],
     rg78: [
-      { key:'main7', jp:'メインルーム（7）', en:'Main room (7)', prefix:'Main 7' },
-      { key:'main8', jp:'メインルーム（8）', en:'Main room (8)', prefix:'Main 8' }
+      { key:'main7', jp:'メインルーム（7）', en:'Main room (7)',  prefix:'Main 7' },
+      { key:'main8', jp:'メインルーム（8）', en:'Main room (8)',  prefix:'Main 8' }
     ],
     rg9_10_11: [
       { key:'main9',  jp:'メインルーム（9）',  en:'Main room (9)',  prefix:'Main 9' },
@@ -46,8 +38,6 @@
     ]
   };
 
-  // 画像差し替え用DB（room + cat 完全一致のみ使用。フォールバック禁止）
-  // image にパスを入れれば写真表示、nullならプレースホルダー。
   function makeSlides(label, count){
     return Array.from({length: count}, (_, i) => ({
       label: `${label} ${i+1}`,
@@ -59,13 +49,12 @@
     const roomLabel = (ROOM_LABELS[roomKey] || ROOM_LABELS.rg12).jp;
     const db = {};
 
-    // main (roomごとの定義)
-    const mains = MAIN_CATS_BY_ROOM[roomKey] || [];
-    mains.forEach(m => {
+    // main categories (room specific)
+    (MAIN_CATS_BY_ROOM[roomKey] || []).forEach(m => {
       db[m.key] = makeSlides(`${m.jp}｜${roomLabel}`, 4);
     });
 
-    // そのほかカテゴリ（roomごとに個別キー保持）
+    // common categories (still strict per room key)
     Object.entries(CATEGORY_META).forEach(([key, meta]) => {
       db[key] = makeSlides(`${meta.jp}｜${roomLabel}`, 4);
     });
@@ -73,6 +62,7 @@
     return db;
   }
 
+  // strict: room + cat exact match only (no fallback)
   const SLIDE_DB = {
     rg12: createRoomDb('rg12'),
     rg3: createRoomDb('rg3'),
@@ -98,13 +88,12 @@
     if(list){
       const nodes = [];
 
-      // メインカテゴリ（roomごと）
-      const mains = MAIN_CATS_BY_ROOM[room] || [];
-      mains.forEach(m => {
+      // main first
+      (MAIN_CATS_BY_ROOM[room] || []).forEach(m => {
         nodes.push(makeLinkCard(m.jp, m.en, '🛏️', m.key));
       });
 
-      // 全カテゴリ（常に有効）
+      // all other categories (enabled)
       Object.entries(CATEGORY_META).forEach(([key, meta]) => {
         nodes.push(makeLinkCard(meta.jp, meta.en, meta.icon, key));
       });
@@ -113,49 +102,35 @@
     }
 
     function makeLinkCard(jp, en, icon, catKey){
-      return `
-      <a class="btn" href="swipe.html?room=${encodeURIComponent(room)}&cat=${encodeURIComponent(catKey)}">
-        <div class="cat">
-          <div class="icon">${icon}</div>
-          <div><div class="jp">${jp}</div><div class="en">${en}</div></div>
-        </div>
-        <div class="chev">›</div>
-      </a>`;
+      return `\n      <a class="btn" href="swipe.html?room=${encodeURIComponent(room)}&cat=${encodeURIComponent(catKey)}">\n        <div class="cat">\n          <div class="icon">${icon}</div>\n          <div><div class="jp">${jp}</div><div class="en">${en}</div></div>\n        </div>\n        <div class="chev">›</div>\n      </a>`;
     }
   }
 
   if(page === 'swipe'){
     setHref('back_to_category', `category.html?room=${encodeURIComponent(room)}`);
 
-    // タイトル定義（roomに応じてmain表記を変える）
     const dynamicTitleMap = {};
-
     (MAIN_CATS_BY_ROOM[room] || []).forEach(m => {
       dynamicTitleMap[m.key] = { jp: m.jp, en: 'Swipe', prefix: m.prefix };
     });
-
     Object.entries(CATEGORY_META).forEach(([key, meta]) => {
       dynamicTitleMap[key] = { jp: meta.jp, en:'Swipe', prefix: meta.prefix };
     });
 
-    const defaultMeta = dynamicTitleMap.bath || {jp:'バスルーム', en:'Swipe', prefix:'Bath'};
-    const meta = dynamicTitleMap[cat] || defaultMeta;
+    const fallback = dynamicTitleMap.bath || {jp:'バスルーム', en:'Swipe', prefix:'Bath'};
+    const meta = dynamicTitleMap[cat] || fallback;
 
     setText('swipe_title', meta.jp);
     setText('swipe_sub', meta.en);
 
     const scroller = document.querySelector('.scroller');
     const counterEl = document.getElementById('counter');
-    const backBtn = document.getElementById('back_to_category');
 
-    // === 混在防止の要点 ===
-    // room+cat 完全一致のみ。見つからない場合は未設定表示（他データ流用なし）
     const roomDb = SLIDE_DB[room] || null;
     const slidesData = roomDb && roomDb[cat] ? roomDb[cat] : null;
 
     if(scroller){
       scroller.innerHTML = '';
-
       const resolvedSlides = Array.isArray(slidesData) && slidesData.length > 0
         ? slidesData
         : [{ label: `${meta.jp}｜未設定`, image: null }];
@@ -164,89 +139,29 @@
         const slide = document.createElement('div');
         slide.className = 'slide';
 
-        const content = document.createElement('div');
-        content.className = 'slideContent';
+        const box = document.createElement('div');
+        box.setAttribute('data-slide', '');
+        box.textContent = item.label || `${meta.prefix} ${i+1}`;
 
-        if(item.image){
-          const img = document.createElement('img');
-          img.className = 'slideImage';
-          img.loading = i === 0 ? 'eager' : 'lazy';
-          img.decoding = 'async';
-          img.alt = item.label || `${meta.prefix} ${i+1}`;
-          img.src = item.image;
-
-          img.onerror = () => {
-            content.innerHTML = `<div class="slidePlaceholder" data-slide>${escapeHtml(item.label || `${meta.prefix} ${i+1}`)}</div>`;
-          };
-
-          const cap = document.createElement('div');
-          cap.className = 'slideCaption';
-          cap.textContent = item.label || `${meta.prefix} ${i+1}`;
-
-          content.appendChild(img);
-          content.appendChild(cap);
-        } else {
-          const ph = document.createElement('div');
-          ph.className = 'slidePlaceholder';
-          ph.setAttribute('data-slide', '');
-          ph.textContent = item.label || `${meta.prefix} ${i+1}`;
-          content.appendChild(ph);
-        }
-
-        slide.appendChild(content);
+        slide.appendChild(box);
         scroller.appendChild(slide);
       });
 
-      // スワイプ必須: 最終スライド到達まで戻るをブロック
-      let completed = false;
-
-      function updateCounterAndLock(){
+      function updateCounter(){
         if(!counterEl) return;
         const total = scroller.children.length || 1;
         const w = scroller.clientWidth || 1;
         const idx = Math.round(scroller.scrollLeft / w) + 1;
-
-        completed = idx >= total;
-
-        counterEl.textContent = completed ? `${idx}/${total}` : `${idx}/${total} 🔒`;
-        counterEl.classList.toggle('locked', !completed);
-      }
-
-      if(backBtn){
-        backBtn.addEventListener('click', (e) => {
-          if(completed) return;
-          e.preventDefault();
-
-          const old = counterEl ? counterEl.textContent : '';
-          if(counterEl){
-            counterEl.textContent = '最後までスワイプしてください';
-            counterEl.classList.add('locked');
-          }
-          setTimeout(() => {
-            if(counterEl){
-              counterEl.textContent = old || '1/1 🔒';
-              counterEl.classList.add('locked');
-            }
-          }, 900);
-        });
+        counterEl.textContent = `${idx}/${total}`;
       }
 
       let raf = 0;
       scroller.addEventListener('scroll', () => {
         cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(updateCounterAndLock);
+        raf = requestAnimationFrame(updateCounter);
       }, { passive: true });
 
-      updateCounterAndLock();
+      updateCounter();
     }
-  }
-
-  function escapeHtml(str){
-    return String(str)
-      .replaceAll('&', '&amp;')
-      .replaceAll('<', '&lt;')
-      .replaceAll('>', '&gt;')
-      .replaceAll('"', '&quot;')
-      .replaceAll("'", '&#39;');
   }
 })();
