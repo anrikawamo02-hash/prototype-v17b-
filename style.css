@@ -176,14 +176,36 @@ html[data-page="index"] .roomIcon{background:#fff;border:1px solid var(--border)
 html[data-page="index"] .roomTag{background:#fff;border:1px solid var(--border);color:var(--text);}
 
 
-/* ===== Custom (User) : P1 card tap interaction (linger) ===== */
+/* ===== Custom (User) : P1 card tap interaction (stronger tactile feedback) ===== */
 html[data-page="index"] .btn.roomBtn{
-  transition: transform 220ms ease-out, box-shadow 220ms ease-out, filter 220ms ease-out;
+  position: relative;
+  overflow: hidden;
+  touch-action: manipulation;
+  transform: translateY(0) scale(1);
+  transition:
+    transform 95ms cubic-bezier(.16,.88,.24,1),
+    box-shadow 95ms cubic-bezier(.16,.88,.24,1),
+    filter 95ms cubic-bezier(.16,.88,.24,1);
+  will-change: transform, box-shadow, filter;
 }
+html[data-page="index"] .btn.roomBtn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(15,23,42,.24);
+  opacity:0;
+  pointer-events:none;
+  transition: opacity 95ms ease;
+}
+html[data-page="index"] .btn.roomBtn.is-pressed,
 html[data-page="index"] .btn.roomBtn:active{
-  transform: translateY(1px);
-  box-shadow: 0 6px 12px rgba(0,0,0,.045);
-  filter: brightness(0.985);
+  transform: translateY(4px) scale(.955);
+  box-shadow: 0 1px 6px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,.2);
+  filter: brightness(.85) saturate(.92);
+}
+html[data-page="index"] .btn.roomBtn.is-pressed::after,
+html[data-page="index"] .btn.roomBtn:active::after{
+  opacity:1;
 }
 
 
