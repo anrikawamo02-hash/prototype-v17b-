@@ -207,12 +207,49 @@ html[data-page="index"] .btn.roomBtn{
 
 .crab-image{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;z-index:9999;width:120px;}
 
-
-/* ===== Custom (User) : index number readability boost (digits only) ===== */
-html[data-page="index"] .roomTop .jp{font-weight:900;}
-html[data-page="index"] .roomTop .jp .antique-num{
-  font-family:"Baskerville","Times New Roman","Georgia",serif;
+/* ===== Swipe rendering (room+cat strict) ===== */
+.slideContent{
+  position:relative;
+  width:100%;
+  height:100%;
+}
+.slideImage{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.slideCaption{
+  position:absolute;
+  left:10px;
+  right:10px;
+  bottom:10px;
+  padding:8px 10px;
+  border-radius:10px;
+  background:rgba(17,24,39,.62);
+  color:#fff;
   font-weight:800;
-  -webkit-text-stroke:0.22px currentColor;
-  letter-spacing:0.01em;
+  font-size:12px;
+  line-height:1.3;
+}
+.slidePlaceholder{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:24px;
+  color:#fff;
+  font-size:24px;
+  font-weight:900;
+  background:#333;
+}
+.counter.locked{
+  background:rgba(127,29,29,.72);
+}
+
+/* slightly denser list on category when all buttons enabled */
+html[data-page="category"] .list{
+  gap:10px;
 }
