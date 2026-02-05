@@ -16,53 +16,7 @@
   function setText(id, t){ const el=$(id); if(el) el.textContent=t; }
   function setHref(id, h){ const el=$(id); if(el) el.setAttribute('href', h); }
 
-
-  function enhanceIndexTapFeedback(){
-    const buttons = document.querySelectorAll('.btn.roomBtn[href]');
-    buttons.forEach((btn)=>{
-      let navigating = false;
-
-      const clearPressed = ()=>{
-        if(!navigating) btn.classList.remove('is-pressed');
-      };
-
-      btn.addEventListener('pointerdown', (e)=>{
-        if(e.pointerType === 'mouse' && e.button !== 0) return;
-        btn.classList.add('is-pressed');
-        if(e.pointerType !== 'mouse' && navigator.vibrate){
-          try { navigator.vibrate(14); } catch(_) {}
-        }
-      });
-
-      btn.addEventListener('pointercancel', clearPressed);
-      btn.addEventListener('pointerleave', clearPressed);
-      btn.addEventListener('pointerup', clearPressed);
-      btn.addEventListener('blur', clearPressed);
-
-      btn.addEventListener('click', (e)=>{
-        if(e.defaultPrevented) return;
-        if(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-        const href = btn.getAttribute('href');
-        if(!href || href.startsWith('#')) return;
-
-        // Make press feedback visible before navigation.
-        e.preventDefault();
-        navigating = true;
-        btn.classList.add('is-pressed');
-
-        window.setTimeout(()=>{
-          window.location.href = href;
-        }, 170);
-      });
-    });
-  }
-
   const page = document.documentElement.getAttribute('data-page');
-
-
-  if(page === 'index'){
-    enhanceIndexTapFeedback();
-  }
 
   if(page === 'category'){
     const info = ROOM_LABELS[room] || ROOM_LABELS.rg12;
@@ -115,6 +69,77 @@
     }
   }
 
+
+
+  function applyAntiqueNumbersIndex(){
+    if(page !== 'index') return;
+
+    const basePath = 'antique_numbers_brightened/bright/individual';
+    const labels = document.querySelectorAll('.roomTop .jp');
+
+    labels.forEach((el)=>{
+      const raw = (el.dataset.rawLabel || el.textContent || '').trim();
+      if(!raw) return;
+      el.dataset.rawLabel = raw;
+
+      const suffixMatch = raw.match(/号室.*/);
+      const suffix = suffixMatch ? suffixMatch[0] : '';
+      const prefix = suffix ? raw.slice(0, raw.indexOf(suffix)) : raw;
+      const tokens = prefix.split(/(・)/).filter(Boolean);
+
+      el.textContent = '';
+
+      tokens.forEach((token)=>{
+        if(token === '・'){
+          const sep = document.createElement('span');
+          sep.className = 'antique-sep';
+          sep.textContent = '・';
+          el.appendChild(sep);
+          return;
+        }
+
+        const n = token.trim();
+        if(/^\d+$/.test(n)){
+          const wrap = document.createElement('span');
+          wrap.className = `antique-num n${n}`;
+
+          const fb = document.createElement('span');
+          fb.className = 'fallback';
+          fb.textContent = n;
+
+          const img = document.createElement('img');
+          img.alt = '';
+          img.setAttribute('aria-hidden', 'true');
+          img.src = `${basePath}/${n}.png`;
+          img.decoding = 'async';
+
+          img.addEventListener('load', ()=>{
+            wrap.classList.add('is-ready');
+          }, { once:true });
+
+          img.addEventListener('error', ()=>{
+            // keep text fallback visible
+            wrap.classList.remove('is-ready');
+          }, { once:true });
+
+          wrap.appendChild(fb);
+          wrap.appendChild(img);
+          el.appendChild(wrap);
+          return;
+        }
+
+        el.appendChild(document.createTextNode(token));
+      });
+
+      if(suffix){
+        const suffixEl = document.createElement('span');
+        suffixEl.className = 'jp-suffix';
+        suffixEl.textContent = suffix;
+        el.appendChild(suffixEl);
+      }
+    });
+  }
+
   if(page === 'swipe'){
     // Back
     setHref('back_to_category', `category.html?room=${encodeURIComponent(room)}`);
@@ -157,4 +182,6 @@
       updateCounter(scroller);
     }
   }
+
+  applyAntiqueNumbersIndex();
 })();

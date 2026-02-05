@@ -176,36 +176,14 @@ html[data-page="index"] .roomIcon{background:#fff;border:1px solid var(--border)
 html[data-page="index"] .roomTag{background:#fff;border:1px solid var(--border);color:var(--text);}
 
 
-/* ===== Custom (User) : P1 card tap interaction (stronger tactile feedback) ===== */
+/* ===== Custom (User) : P1 card tap interaction (linger) ===== */
 html[data-page="index"] .btn.roomBtn{
-  position: relative;
-  overflow: hidden;
-  touch-action: manipulation;
-  transform: translateY(0) scale(1);
-  transition:
-    transform 95ms cubic-bezier(.16,.88,.24,1),
-    box-shadow 95ms cubic-bezier(.16,.88,.24,1),
-    filter 95ms cubic-bezier(.16,.88,.24,1);
-  will-change: transform, box-shadow, filter;
+  transition: transform 220ms ease-out, box-shadow 220ms ease-out, filter 220ms ease-out;
 }
-html[data-page="index"] .btn.roomBtn::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(15,23,42,.24);
-  opacity:0;
-  pointer-events:none;
-  transition: opacity 95ms ease;
-}
-html[data-page="index"] .btn.roomBtn.is-pressed,
 html[data-page="index"] .btn.roomBtn:active{
-  transform: translateY(4px) scale(.955);
-  box-shadow: 0 1px 6px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,.2);
-  filter: brightness(.85) saturate(.92);
-}
-html[data-page="index"] .btn.roomBtn.is-pressed::after,
-html[data-page="index"] .btn.roomBtn:active::after{
-  opacity:1;
+  transform: translateY(1px);
+  box-shadow: 0 6px 12px rgba(0,0,0,.045);
+  filter: brightness(0.985);
 }
 
 
@@ -215,16 +193,78 @@ html[data-page="index"] .btn.roomBtn{
   box-shadow: 0 10px 22px rgba(0,0,0,.06);
 }
 
-/* Floating crab mascot on pages 1 and 2 */
-.floating-crab {
+
+
+/* ===== Antique number (P1 cards only) ===== */
+html[data-page="index"] .roomTop .jp{
+  display:inline-flex;
+  align-items:baseline;
+  gap:0.06em;
+  white-space:nowrap;
+  font-family:"Yu Gothic","Yu Gothic UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+}
+html[data-page="index"] .roomTop .jp .antique-num{
+  display:inline-flex;
+  align-items:flex-end;
+  line-height:1;
+  margin:0 .01em;
+}
+html[data-page="index"] .roomTop .jp .antique-num .fallback{
+  font-weight:900;
+  font-size:1em;
+  line-height:1;
+}
+html[data-page="index"] .roomTop .jp .antique-num img{
+  height:1.12em;
+  width:auto;
+  display:none;
+  vertical-align:baseline;
+  image-rendering:auto;
+}
+html[data-page="index"] .roomTop .jp .antique-num.is-ready .fallback{display:none;}
+html[data-page="index"] .roomTop .jp .antique-num.is-ready img{display:block;}
+html[data-page="index"] .roomTop .jp .antique-sep{
+  font-weight:900;
+  letter-spacing:0;
+  margin:0 .02em;
+}
+html[data-page="index"] .roomTop .jp .jp-suffix{
+  font-family:"Yu Gothic","Yu Gothic UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  font-weight:900;
+  letter-spacing:.01em;
+}
+/* subtle width tuning for multi-digit labels */
+html[data-page="index"] .roomTop .jp .antique-num.n10 img{height:1.10em;}
+html[data-page="index"] .roomTop .jp .antique-num.n11 img{height:1.10em;}
+/* Floating crab mascot (category page only) */
+html[data-page="category"] .floating-crab {
   position: fixed;
-  bottom: 40px;           /* slightly above the bottom */
-  right: 32px;            /* a bit inside from the right edge */
-  width: 200px;           /* crab image width */
+  bottom: 40px;
+  right: 32px;
+  width: 200px;
   height: auto;
-  pointer-events: none;   /* taps go through to the UI */
+  pointer-events: none;
   z-index: 10;
 }
 
+/* Index: crab below the last card (non-fixed, non-overlap) */
+html[data-page="index"] .crab-under-last-wrap{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:8px;
+  padding-right:8px;
+  padding-bottom:6px;
+  position:relative;
+  z-index:3;
+}
+html[data-page="index"] .crab-under-last{
+  width:200px;
+  max-width:52%;
+  height:auto;
+  display:block;
+  pointer-events:none;
+  user-select:none;
+  -webkit-user-drag:none;
+}
 
 .crab-image{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;z-index:9999;width:120px;}
