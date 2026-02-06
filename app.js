@@ -6,14 +6,16 @@
   const room = params.get('room') || 'rg12';
   const cat = params.get('cat') || 'bath';
 
+  const BASE_CATS = ['kitchen', 'vanity', 'bath', 'toilet', 'closet', 'entrance'];
+
   const ROOM_LABELS = {
-    rg12: { jp: '1・2号室', en: 'Rooms 1–2 (Floors 5–2)', tag: '5–2F' },
-    rg3: { jp: '3号室', en: 'Room 3 (Floors 5–2)', tag: '5–2F' },
-    rg4: { jp: '4号室', en: 'Room 4 (Floors 5–2)', tag: '5–2F' },
-    rg56: { jp: '5・6号室', en: 'Rooms 5–6 (Floors 5–2)', tag: '5–2F' },
-    rg78: { jp: '7・8号室', en: 'Rooms 7–8 (Floors 5–2)', tag: '5–2F' },
-    rg9_10_54: { jp: '9・10号室', en: 'Rooms 9–10 (Floors 5–4)', tag: '5–4F' },
-    rg9_10_11: { jp: '9・10・11号室', en: 'Rooms 9–11 (Floors 3–2)', tag: '3–2F' }
+    rg12: { jp: '1・2号室', en: 'Rooms 1–2 (Floors 5–2)' },
+    rg3: { jp: '3号室', en: 'Room 3 (Floors 5–2)' },
+    rg4: { jp: '4号室', en: 'Room 4 (Floors 5–2)' },
+    rg56: { jp: '5・6号室', en: 'Rooms 5–6 (Floors 5–2)' },
+    rg78: { jp: '7・8号室', en: 'Rooms 7–8 (Floors 5–2)' },
+    rg9_10_54: { jp: '9・10号室', en: 'Rooms 9–10 (Floors 5–4)' },
+    rg9_10_11: { jp: '9・10・11号室', en: 'Rooms 9–11 (Floors 3–2)' }
   };
 
   const SAME_TYPE_NOTE_JP = '🌟同タイプのお部屋は1つにまとめています';
@@ -27,7 +29,7 @@
     closet: { jp: 'クローゼット', en: 'Closet', prefix: 'Closet', icon: '👕' },
     entrance: { jp: '玄関', en: 'Entrance', prefix: 'Entrance', icon: '🚪' },
 
-    // Grouped rooms: no number in label + note lines.
+    // Grouped rooms: no number in label + note lines
     main12: {
       jp: 'メインルーム',
       en: 'Main room',
@@ -60,8 +62,16 @@
       prefix: 'Main',
       icon: '🛏️'
     },
+    main9_10_54: {
+      jp: 'メインルーム',
+      en: 'Main room',
+      noteJp: SAME_TYPE_NOTE_JP,
+      noteEn: SAME_TYPE_NOTE_EN,
+      prefix: 'Main',
+      icon: '🛏️'
+    },
 
-    // Keep numbers in label.
+    // Keep numbers in label
     main7: { jp: 'メインルーム（7）', en: 'Main room (7)', prefix: 'Main', icon: '🛏️' },
     main8: { jp: 'メインルーム（8）', en: 'Main room (8)', prefix: 'Main', icon: '🛏️' },
     main9: { jp: 'メインルーム（9）', en: 'Main room (9)', prefix: 'Main', icon: '🛏️' },
@@ -77,24 +87,24 @@
     rg4: ['main4'],
     rg56: ['main56'],
     rg78: ['main7', 'main8'],
-    rg9_10_54: ['main9_54', 'main10_54'],
+    rg9_10_54: ['main9_10_54'],
     rg9_10_11: ['main9', 'main10', 'main11']
   };
 
   const byId = (id) => document.getElementById(id);
 
-  function setText(id, text) {
+  const setText = (id, text) => {
     const el = byId(id);
     if (el) el.textContent = text;
-  }
+  };
 
-  function setHref(id, href) {
+  const setHref = (id, href) => {
     const el = byId(id);
     if (el) el.setAttribute('href', href);
-  }
+  };
 
   function buildCategoryLink({ roomKey, catKey, jp, en, icon, noteJp, noteEn }) {
-    const noteHtml = noteJp || noteEn
+    const noteHtml = (noteJp || noteEn)
       ? `<div class="group-note-jp">${noteJp || ''}</div><div class="group-note-en">${noteEn || ''}</div>`
       : '';
 
@@ -121,10 +131,13 @@
     const mainWrap = byId('main_dynamic');
     if (mainWrap) {
       const mainCats = MAIN_CATS_BY_ROOM[room] || [];
-      mainWrap.innerHTML = mainCats
-        .map((catKey) => {
-          const m = CATEGORY_META[catKey];
-          return buildCategoryLink({
+      const html = [];
+
+      mainCats.forEach((catKey) => {
+        const m = CATEGORY_META[catKey];
+        if (!m) return;
+        html.push(
+          buildCategoryLink({
             roomKey: room,
             catKey,
             jp: m.jp,
@@ -132,17 +145,16 @@
             icon: m.icon,
             noteJp: m.noteJp,
             noteEn: m.noteEn
-          });
-        })
-        .join('');
+          })
+        );
+      });
+
+      mainWrap.innerHTML = html.join('');
     }
 
-    setHref('kitchen_link', `swipe.html?room=${encodeURIComponent(room)}&cat=kitchen`);
-    setHref('vanity_link', `swipe.html?room=${encodeURIComponent(room)}&cat=vanity`);
-    setHref('bath_link', `swipe.html?room=${encodeURIComponent(room)}&cat=bath`);
-    setHref('toilet_link', `swipe.html?room=${encodeURIComponent(room)}&cat=toilet`);
-    setHref('closet_link', `swipe.html?room=${encodeURIComponent(room)}&cat=closet`);
-    setHref('entrance_link', `swipe.html?room=${encodeURIComponent(room)}&cat=entrance`);
+    BASE_CATS.forEach((key) => {
+      setHref(`${key}_link`, `swipe.html?room=${encodeURIComponent(room)}&cat=${key}`);
+    });
   }
 
   function initSwipePage() {
@@ -152,10 +164,7 @@
     setText('swipe_title', meta.jp);
     setText('swipe_sub', meta.en);
 
-    const allowedCats = new Set([
-      'kitchen', 'vanity', 'bath', 'toilet', 'closet', 'entrance',
-      ...(MAIN_CATS_BY_ROOM[room] || [])
-    ]);
+    const allowedCats = new Set([...BASE_CATS, ...(MAIN_CATS_BY_ROOM[room] || [])]);
 
     const scroller = document.querySelector('.scroller');
     if (!scroller) return;
