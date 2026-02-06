@@ -192,40 +192,6 @@
     updateCounter();
   }
 
-
-
-  function bindStrongTapFeedbackCategory() {
-    document.querySelectorAll('a.btn').forEach((link) => {
-      link.addEventListener('contextmenu', (e) => e.preventDefault());
-
-      // Keep press state during long press.
-      link.addEventListener('pointerdown', () => link.classList.add('is-pressing'));
-      ['pointerup', 'pointercancel', 'pointerleave'].forEach((evt) => {
-        link.addEventListener(evt, () => link.classList.remove('is-pressing'));
-      });
-
-      link.addEventListener('click', (e) => {
-        if (link.dataset.navLock === '1') return;
-        const href = link.getAttribute('href') || '#';
-        if (!href || href === '#') return;
-
-        e.preventDefault();
-        link.dataset.navLock = '1';
-        link.classList.add('is-pressing');
-
-        try {
-          if (navigator.vibrate) navigator.vibrate(12);
-        } catch (_) {
-          // no-op
-        }
-
-        setTimeout(() => {
-          location.href = href;
-        }, 160);
-      });
-    });
-  }
-
   function applyClassicNumbersIndex() {
     document.querySelectorAll('.roomTop .jp').forEach((el) => {
       if (el.querySelector('.antique-num')) return;
@@ -233,8 +199,8 @@
     });
   }
 
-  function bindStrongTapFeedbackIndex() {
-    document.querySelectorAll('a.btn.roomBtn').forEach((link) => {
+  function bindStrongTapFeedback(selector) {
+    document.querySelectorAll(selector).forEach((link) => {
       link.addEventListener('contextmenu', (e) => e.preventDefault());
 
       // Keep press state during long press.
@@ -255,7 +221,7 @@
           // no-op
         }
 
-        const href = link.getAttribute('href') || 'category.html';
+        const href = link.getAttribute('href') || 'index.html';
         setTimeout(() => {
           location.href = href;
         }, 160);
@@ -265,11 +231,11 @@
 
   if (page === 'category') {
     initCategoryPage();
-    bindStrongTapFeedbackCategory();
+    bindStrongTapFeedback('.list a.btn');
   }
   if (page === 'swipe') initSwipePage();
   if (page === 'index') {
     applyClassicNumbersIndex();
-    bindStrongTapFeedbackIndex();
+    bindStrongTapFeedback('a.btn.roomBtn');
   }
 })();

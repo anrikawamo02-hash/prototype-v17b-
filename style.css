@@ -234,7 +234,7 @@ html[data-page="index"] .btn.roomBtn{
   box-shadow:0 10px 22px rgba(0,0,0,.06);
   position:relative;
   overflow:hidden;
-  transition:transform .16s ease, box-shadow .16s ease, filter .16s ease;
+  transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
   touch-action:manipulation;
   -webkit-tap-highlight-color:transparent;
   -webkit-touch-callout:none;
@@ -252,18 +252,18 @@ html[data-page="index"] .btn.roomBtn::after{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(15,23,42,.08);
+  background:rgba(15,23,42,.10);
   opacity:0;
-  transition:opacity .12s ease;
+  transition:opacity .14s ease;
   pointer-events:none;
   border-radius:inherit;
 }
 
 html[data-page="index"] .btn.roomBtn.is-pressing,
 html[data-page="index"] .btn.roomBtn:active{
-  transform:translateY(-2px) scale(1.003);
-  filter:brightness(.972);
-  box-shadow:0 14px 28px rgba(0,0,0,.16), inset 0 1px 2px rgba(255,255,255,.28);
+  transform:translateY(-3px) scale(1.004);
+  filter:brightness(.968);
+  box-shadow:0 16px 32px rgba(0,0,0,.18), inset 0 1px 2px rgba(255,255,255,.30);
 }
 
 html[data-page="index"] .btn.roomBtn.is-pressing::after,
@@ -272,12 +272,13 @@ html[data-page="index"] .btn.roomBtn:active::after{
 }
 
 
-
-/* ===== Page 2 press feedback (match Page 1 feel) ===== */
+/* ===== Page 2 card color + press (match page 1) ===== */
 html[data-page="category"] .list .btn{
+  background:#F5ECF4;
+  box-shadow:0 10px 22px rgba(0,0,0,.06);
   position:relative;
   overflow:hidden;
-  transition:transform .16s ease, box-shadow .16s ease, filter .16s ease;
+  transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
   touch-action:manipulation;
   -webkit-tap-highlight-color:transparent;
   -webkit-touch-callout:none;
@@ -288,18 +289,18 @@ html[data-page="category"] .list .btn::after{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(15,23,42,.08);
+  background:rgba(15,23,42,.10);
   opacity:0;
-  transition:opacity .12s ease;
+  transition:opacity .14s ease;
   pointer-events:none;
   border-radius:inherit;
 }
 
 html[data-page="category"] .list .btn.is-pressing,
 html[data-page="category"] .list .btn:active{
-  transform:translateY(-2px) scale(1.003);
-  filter:brightness(.972);
-  box-shadow:0 14px 28px rgba(0,0,0,.16), inset 0 1px 2px rgba(255,255,255,.28);
+  transform:translateY(-3px) scale(1.004);
+  filter:brightness(.968);
+  box-shadow:0 16px 32px rgba(0,0,0,.18), inset 0 1px 2px rgba(255,255,255,.30);
 }
 
 html[data-page="category"] .list .btn.is-pressing::after,
