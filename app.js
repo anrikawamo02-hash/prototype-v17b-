@@ -209,19 +209,33 @@
 
   function bindStrongTapFeedbackIndex() {
     document.querySelectorAll('a.btn.roomBtn').forEach((link) => {
-      link.addEventListener('contextmenu', (e) => e.preventDefault());
+      const addPress = () => link.classList.add('is-pressing');
+      const removePress = () => link.classList.remove('is-pressing');
 
-      // Keep press state during long press.
-      link.addEventListener('pointerdown', () => link.classList.add('is-pressing'));
+      link.addEventListener('contextmenu', (e) => e.preventDefault());
+      link.addEventListener('dragstart', (e) => e.preventDefault());
+
+      // Primary pointer events
+      link.addEventListener('pointerdown', addPress);
       ['pointerup', 'pointercancel', 'pointerleave'].forEach((evt) => {
-        link.addEventListener(evt, () => link.classList.remove('is-pressing'));
+        link.addEventListener(evt, removePress);
+      });
+
+      // Safari/older fallback events
+      link.addEventListener('touchstart', addPress, { passive: true });
+      ['touchend', 'touchcancel'].forEach((evt) => {
+        link.addEventListener(evt, removePress, { passive: true });
+      });
+      link.addEventListener('mousedown', addPress);
+      ['mouseup', 'mouseleave'].forEach((evt) => {
+        link.addEventListener(evt, removePress);
       });
 
       link.addEventListener('click', (e) => {
         if (link.dataset.navLock === '1') return;
         e.preventDefault();
         link.dataset.navLock = '1';
-        link.classList.add('is-pressing');
+        addPress();
 
         try {
           if (navigator.vibrate) navigator.vibrate(12);
@@ -232,7 +246,7 @@
         const href = link.getAttribute('href') || 'category.html';
         setTimeout(() => {
           location.href = href;
-        }, 160);
+        }, 180);
       });
     });
   }
