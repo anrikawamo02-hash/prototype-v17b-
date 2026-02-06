@@ -1,14 +1,23 @@
 :root{
-  --nav:#0b3a5a; --bg:#f3f4f6; --card:#fff; --text:#0f172a; --muted:#64748b; --border:#e5e7eb;
-  --shadow:0 10px 24px rgba(0,0,0,.08); --radius:18px;
+  --nav:#0b3a5a;
+  --bg:#f3f4f6;
+  --card:#fff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --border:#e5e7eb;
+  --shadow:0 10px 24px rgba(0,0,0,.08);
+  --radius:18px;
 }
+
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans JP",Arial,sans-serif;
   background:var(--bg);
   color:var(--text);
 }
+
 .app{
   max-width:420px;
   margin:18px auto 40px;
@@ -18,6 +27,7 @@ body{
   box-shadow:var(--shadow);
   border:1px solid rgba(0,0,0,.06);
 }
+
 .topbar{
   background:var(--nav);
   color:#fff;
@@ -26,22 +36,46 @@ body{
   align-items:center;
   gap:10px;
 }
+
+.back,
+.back-spacer{
+  min-width:40px;
+  height:34px;
+}
+
 .back{
-  min-width:40px;height:34px;
   border-radius:10px;
-  display:grid;place-items:center;
+  display:grid;
+  place-items:center;
   border:1px solid rgba(255,255,255,.25);
   color:#fff;
   font-weight:900;
   text-decoration:none;
 }
-.back-spacer{
-  min-width:40px;height:34px;
+
+.titles .t{
+  font-weight:900;
+  font-size:16px;
+  line-height:1.2;
 }
-.titles .t{font-weight:900;font-size:16px;line-height:1.2;}
-.titles .s{font-size:12px;opacity:.9;margin-top:2px;}
-.screen{padding:14px;min-height:680px;}
-.list{display:flex;flex-direction:column;gap:12px;margin-top:10px;}
+
+.titles .s{
+  font-size:12px;
+  opacity:.9;
+  margin-top:2px;
+}
+
+.screen{
+  padding:14px;
+  min-height:680px;
+}
+
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:10px;
+}
 
 .btn{
   background:var(--card);
@@ -56,19 +90,45 @@ body{
   text-decoration:none;
   color:inherit;
 }
-.btn .jp{font-weight:900;font-size:16px;}
-.btn .en{font-size:13px;color:var(--muted);font-weight:800;margin-top:4px;}
-.chev{color:#94a3b8;font-weight:900;font-size:20px;}
 
-.roomBtn{align-items:center;}
-.roomIcon{
-  width:44px;height:44px;border-radius:14px;
-  background:#eef2f7;border:1px solid #e7ebf3;
-  display:grid;place-items:center;font-size:22px;flex:0 0 auto;
+.btn .jp{
+  font-weight:900;
+  font-size:16px;
 }
-.roomMid{flex:1; min-width:0;}
 
-/* Top row in each room card: Japanese title + floor tag (pill) */
+.btn .en{
+  font-size:13px;
+  color:var(--muted);
+  font-weight:800;
+  margin-top:4px;
+}
+
+.chev{
+  color:#94a3b8;
+  font-weight:900;
+  font-size:20px;
+}
+
+.roomBtn{align-items:center}
+
+.roomIcon,
+.icon{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  background:#eef2f7;
+  border:1px solid #e7ebf3;
+  display:grid;
+  place-items:center;
+  font-size:22px;
+  flex:0 0 auto;
+}
+
+.roomMid{
+  flex:1;
+  min-width:0;
+}
+
 .roomTop{
   display:flex;
   align-items:center;
@@ -76,43 +136,35 @@ body{
   min-width:0;
 }
 
-.roomTop .jp{
-  white-space:nowrap;
-}
-.roomTag{
-  font-size:11px;color:#0f172a;
-  background:#eef2ff;border:1px solid #e0e7ff;
-  padding:6px 10px;border-radius:999px;font-weight:900;
-  white-space:nowrap;
-}
-.roomRight{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
+.roomTop .jp{white-space:nowrap}
 
-.icon{
-  width:44px;height:44px;border-radius:14px;
-  background:#eef2f7;border:1px solid #e7ebf3;
-  display:grid;place-items:center;font-size:22px;flex:0 0 auto;
-}
-.cat{display:flex;align-items:center;gap:12px; min-width:0;}
-.cat > div{min-width:0;}
-.badge{
+.roomTag{
   font-size:11px;
-  color:#7c2d12;
-  background:#fff7ed;
-  border:1px solid #ffedd5;
+  color:#0f172a;
+  background:#eef2ff;
+  border:1px solid #e0e7ff;
   padding:6px 10px;
   border-radius:999px;
   font-weight:900;
   white-space:nowrap;
 }
 
-/* pages via hash (Safari-safe) */
-.page{display:none;}
-.page:target{display:block;}
-/* default home when no hash OR hash points to nowhere: show p1 */
-body:not(:has(:target)) #p1{display:block;}
+.roomRight{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+}
 
+.cat{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
 
-/* gallery */
+.cat > div{min-width:0}
+
 .galleryWrap{
   margin-top:10px;
   background:var(--card);
@@ -122,6 +174,7 @@ body:not(:has(:target)) #p1{display:block;}
   box-shadow:0 10px 22px rgba(0,0,0,.06);
   position:relative;
 }
+
 .scroller{
   display:flex;
   overflow-x:auto;
@@ -130,6 +183,7 @@ body:not(:has(:target)) #p1{display:block;}
   -webkit-overflow-scrolling:touch;
   background:#000;
 }
+
 .slide{
   flex:0 0 100%;
   scroll-snap-align:center;
@@ -137,17 +191,19 @@ body:not(:has(:target)) #p1{display:block;}
   align-items:center;
   justify-content:center;
 }
+
 .slide div{
   width:100%;
   height:100%;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:white;
+  color:#fff;
   font-size:32px;
   font-weight:900;
   background:#333;
 }
+
 .counter{
   position:absolute;
   right:10px;
@@ -159,6 +215,7 @@ body:not(:has(:target)) #p1{display:block;}
   padding:7px 10px;
   border-radius:999px;
 }
+
 .note{
   margin-top:10px;
   font-size:12px;
@@ -166,43 +223,99 @@ body:not(:has(:target)) #p1{display:block;}
   font-weight:800;
 }
 
-a{ -webkit-tap-highlight-color: rgba(0,0,0,0); }
-
-
-
-/* ===== Custom (User) : P1 room buttons powder-pink ONLY ===== */
-html[data-page="index"] .btn.roomBtn{background:#F5ECF4;}
-html[data-page="index"] .roomIcon{background:#fff;border:1px solid var(--border);}
-html[data-page="index"] .roomTag{background:#fff;border:1px solid var(--border);color:var(--text);}
-
-
-/* ===== Custom (User) : P1 card tap interaction (linger) ===== */
-html[data-page="index"] .btn.roomBtn{
-  transition: transform 220ms ease-out, box-shadow 220ms ease-out, filter 220ms ease-out;
+/* Disable iOS tap flash */
+a{
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
+
+/* ===== Page 1 visual customizations ===== */
+html[data-page="index"] .btn.roomBtn{
+  background:#F5ECF4;
+  box-shadow:0 10px 22px rgba(0,0,0,.06);
+  position:relative;
+  overflow:hidden;
+  transition:transform .16s ease, box-shadow .16s ease, filter .16s ease;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-touch-callout:none;
+  user-select:none;
+}
+
+html[data-page="index"] .roomIcon,
+html[data-page="index"] .roomTag{
+  background:#fff;
+  border:1px solid var(--border);
+  color:var(--text);
+}
+
+html[data-page="index"] .btn.roomBtn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(15,23,42,.24);
+  opacity:0;
+  transition:opacity .12s ease;
+  pointer-events:none;
+  border-radius:inherit;
+}
+
+html[data-page="index"] .btn.roomBtn.is-pressing,
 html[data-page="index"] .btn.roomBtn:active{
-  transform: translateY(1px);
-  box-shadow: 0 6px 12px rgba(0,0,0,.045);
-  filter: brightness(0.985);
+  transform:translateY(4px) scale(.955);
+  filter:brightness(.85);
+  box-shadow:0 4px 10px rgba(0,0,0,.14);
 }
 
-
-/* ===== Custom (User) : P1 shadow polish ===== */
-/* Slightly cleaner shadow on P1 only (keeps same vibe, a bit more premium) */
-html[data-page="index"] .btn.roomBtn{
-  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+html[data-page="index"] .btn.roomBtn.is-pressing::after,
+html[data-page="index"] .btn.roomBtn:active::after{
+  opacity:1;
 }
 
-/* Floating crab mascot on pages 1 and 2 */
-.floating-crab {
-  position: fixed;
-  bottom: 40px;           /* slightly above the bottom */
-  right: 32px;            /* a bit inside from the right edge */
-  width: 200px;           /* crab image width */
-  height: auto;
-  pointer-events: none;   /* taps go through to the UI */
-  z-index: 10;
+/* Classic bold number style (index only) */
+html[data-page="index"] .roomTop .jp .antique-num{
+  font-family:"Cormorant Garamond","Times New Roman","Noto Serif JP",serif;
+  font-weight:800;
+  font-style:italic;
+  letter-spacing:.01em;
+  -webkit-text-stroke:.2px currentColor;
+  text-rendering:optimizeLegibility;
 }
 
+/* ===== Header crab (page 1 & 2) ===== */
+.topbar.has-header-crab{position:relative}
 
-.crab-image{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;z-index:9999;width:120px;}
+.topbar.has-header-crab .titles{
+  padding-right:70px;
+}
+
+.header-crab{
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  width:56px;
+  height:47px;
+  object-fit:cover;
+  object-position:50% 46%;
+  pointer-events:none;
+  user-select:none;
+  -webkit-user-drag:none;
+  z-index:3;
+}
+
+/* Category grouped note text */
+html[data-page="category"] .group-note-jp{
+  margin-top:6px;
+  font-size:12px;
+  line-height:1.25;
+  font-weight:800;
+  color:#475569;
+}
+
+html[data-page="category"] .group-note-en{
+  margin-top:3px;
+  font-size:11px;
+  line-height:1.25;
+  font-weight:700;
+  color:#64748b;
+}

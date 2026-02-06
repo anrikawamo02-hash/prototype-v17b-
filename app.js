@@ -1,120 +1,237 @@
-(function(){
-  const params = new URLSearchParams(location.search);
-  const room = params.get('room') || 'rg12';
-  const cat  = params.get('cat') || 'bath';
-
-  const ROOM_LABELS = {
-    rg12: {jp:'1・2号室', en:'Rooms 1–2 (Floors 5–2)', tag:'5–2F'},
-    rg3: {jp:'3号室', en:'Room 3 (Floors 5–2)', tag:'5–2F'},
-    rg4: {jp:'4号室', en:'Room 4 (Floors 5–2)', tag:'5–2F'},
-    rg56:{jp:'5・6号室', en:'Rooms 5–6 (Floors 5–2)', tag:'5–2F'},
-    rg78:{jp:'7・8号室', en:'Rooms 7–8 (Floors 5–2)', tag:'5–2F'},
-    rg9_10_54:{jp:'9・10号室', en:'Rooms 9–10 (Floors 5–4)', tag:'5–4F'},
-    rg9_10_11:{jp:'9・10・11号室', en:'Rooms 9–11 (Floors 3–2)', tag:'3–2F'}
-  };
-
-  function $(id){ return document.getElementById(id); }
-  function setText(id, t){ const el=$(id); if(el) el.textContent=t; }
-  function setHref(id, h){ const el=$(id); if(el) el.setAttribute('href', h); }
+(() => {
+  'use strict';
 
   const page = document.documentElement.getAttribute('data-page');
+  const params = new URLSearchParams(location.search);
+  const room = params.get('room') || 'rg12';
+  const cat = params.get('cat') || 'bath';
 
-  if(page === 'category'){
-    const info = ROOM_LABELS[room] || ROOM_LABELS.rg12;
-    setText('cat_title', `${info.jp}｜カテゴリ`);
-    setText('cat_sub', 'Categories');
+  const ROOM_LABELS = {
+    rg12: { jp: '1・2号室', en: 'Rooms 1–2 (Floors 5–2)', tag: '5–2F' },
+    rg3: { jp: '3号室', en: 'Room 3 (Floors 5–2)', tag: '5–2F' },
+    rg4: { jp: '4号室', en: 'Room 4 (Floors 5–2)', tag: '5–2F' },
+    rg56: { jp: '5・6号室', en: 'Rooms 5–6 (Floors 5–2)', tag: '5–2F' },
+    rg78: { jp: '7・8号室', en: 'Rooms 7–8 (Floors 5–2)', tag: '5–2F' },
+    rg9_10_54: { jp: '9・10号室', en: 'Rooms 9–10 (Floors 5–4)', tag: '5–4F' },
+    rg9_10_11: { jp: '9・10・11号室', en: 'Rooms 9–11 (Floors 3–2)', tag: '3–2F' }
+  };
 
-    // Back
-    setHref('back_to_index', 'index.html');
+  const SAME_TYPE_NOTE_JP = '🌟同タイプのお部屋は1つにまとめています';
+  const SAME_TYPE_NOTE_EN = '🌟Rooms of the same type are grouped into one listing.';
 
-    // Fill main-room items depending on room
-    const mainWrap = document.getElementById('main_dynamic');
-    if(mainWrap){
-      let html = '';
-      if(room === 'rg78'){
-        html += makeLink('メインルーム（7）','Main room (7)','main7');
-        html += makeLink('メインルーム（8）','Main room (8)','main8');
-      }else if(room === 'rg9_10_54'){
-        html += makeLink('メインルーム（9）','Main room (9)','main9_54');
-        html += makeLink('メインルーム（10）','Main room (10)','main10_54');
-      }else if(room === 'rg9_10_11'){
-        html += makeLink('メインルーム（9）','Main room (9)','main9');
-        html += makeLink('メインルーム（10）','Main room (10)','main10');
-        html += makeLink('メインルーム（11）','Main room (11)','main11');
-      }else{
-        html += makeDisabled('メインルーム','Main room');
-      }
-      mainWrap.innerHTML = html;
-    }
+  const CATEGORY_META = {
+    kitchen: { jp: 'キッチン', en: 'Kitchen', prefix: 'Kitchen', icon: '🍳' },
+    vanity: { jp: '洗面', en: 'Vanity', prefix: 'Vanity', icon: '🪥' },
+    bath: { jp: 'バスルーム', en: 'Bath', prefix: 'Bath', icon: '🛁' },
+    toilet: { jp: 'トイレ', en: 'Toilet', prefix: 'Toilet', icon: '🚽' },
+    closet: { jp: 'クローゼット', en: 'Closet', prefix: 'Closet', icon: '👕' },
+    entrance: { jp: '玄関', en: 'Entrance', prefix: 'Entrance', icon: '🚪' },
 
-    // Bath link always active
-    const bathA = document.getElementById('bath_link');
-    if(bathA){
-      bathA.href = `swipe.html?room=${encodeURIComponent(room)}&cat=bath`;
-    }
+    // Grouped rooms: no number in label + note lines.
+    main12: {
+      jp: 'メインルーム',
+      en: 'Main room',
+      noteJp: SAME_TYPE_NOTE_JP,
+      noteEn: SAME_TYPE_NOTE_EN,
+      prefix: 'Main',
+      icon: '🛏️'
+    },
+    main3: {
+      jp: 'メインルーム',
+      en: 'Main room',
+      noteJp: SAME_TYPE_NOTE_JP,
+      noteEn: SAME_TYPE_NOTE_EN,
+      prefix: 'Main',
+      icon: '🛏️'
+    },
+    main4: {
+      jp: 'メインルーム',
+      en: 'Main room',
+      noteJp: SAME_TYPE_NOTE_JP,
+      noteEn: SAME_TYPE_NOTE_EN,
+      prefix: 'Main',
+      icon: '🛏️'
+    },
+    main56: {
+      jp: 'メインルーム',
+      en: 'Main room',
+      noteJp: SAME_TYPE_NOTE_JP,
+      noteEn: SAME_TYPE_NOTE_EN,
+      prefix: 'Main',
+      icon: '🛏️'
+    },
 
-    function makeLink(jp,en,catName){
-      return `
-      <a class="btn" href="swipe.html?room=${encodeURIComponent(room)}&cat=${encodeURIComponent(catName)}">
-        <div class="cat"><div class="icon">🛏️</div>
-          <div><div class="jp">${jp}</div><div class="en">${en}</div></div>
+    // Keep numbers in label.
+    main7: { jp: 'メインルーム（7）', en: 'Main room (7)', prefix: 'Main', icon: '🛏️' },
+    main8: { jp: 'メインルーム（8）', en: 'Main room (8)', prefix: 'Main', icon: '🛏️' },
+    main9: { jp: 'メインルーム（9）', en: 'Main room (9)', prefix: 'Main', icon: '🛏️' },
+    main10: { jp: 'メインルーム（10）', en: 'Main room (10)', prefix: 'Main', icon: '🛏️' },
+    main9_54: { jp: 'メインルーム（9）', en: 'Main room (9)', prefix: 'Main', icon: '🛏️' },
+    main10_54: { jp: 'メインルーム（10）', en: 'Main room (10)', prefix: 'Main', icon: '🛏️' },
+    main11: { jp: 'メインルーム（11）', en: 'Main room (11)', prefix: 'Main', icon: '🛏️' }
+  };
+
+  const MAIN_CATS_BY_ROOM = {
+    rg12: ['main12'],
+    rg3: ['main3'],
+    rg4: ['main4'],
+    rg56: ['main56'],
+    rg78: ['main7', 'main8'],
+    rg9_10_54: ['main9_54', 'main10_54'],
+    rg9_10_11: ['main9', 'main10', 'main11']
+  };
+
+  const byId = (id) => document.getElementById(id);
+
+  function setText(id, text) {
+    const el = byId(id);
+    if (el) el.textContent = text;
+  }
+
+  function setHref(id, href) {
+    const el = byId(id);
+    if (el) el.setAttribute('href', href);
+  }
+
+  function buildCategoryLink({ roomKey, catKey, jp, en, icon, noteJp, noteEn }) {
+    const noteHtml = noteJp || noteEn
+      ? `<div class="group-note-jp">${noteJp || ''}</div><div class="group-note-en">${noteEn || ''}</div>`
+      : '';
+
+    return `
+      <a class="btn" href="swipe.html?room=${encodeURIComponent(roomKey)}&cat=${encodeURIComponent(catKey)}">
+        <div class="cat">
+          <div class="icon">${icon || '🛏️'}</div>
+          <div>
+            <div class="jp">${jp}</div>
+            <div class="en">${en}</div>
+            ${noteHtml}
+          </div>
         </div>
         <div class="chev">›</div>
       </a>`;
-    }
-    function makeDisabled(jp,en){
-      return `
-      <div class="btn" style="opacity:.7;">
-        <div class="cat"><div class="icon">🛏️</div>
-          <div><div class="jp">${jp}</div><div class="en">${en}</div></div>
-        </div>
-        <span class="badge">準備中</span>
-      </div>`;
-    }
   }
 
-  if(page === 'swipe'){
-    // Back
+  function initCategoryPage() {
+    const info = ROOM_LABELS[room] || ROOM_LABELS.rg12;
+    setText('cat_title', `${info.jp}｜カテゴリ`);
+    setText('cat_sub', 'Categories');
+    setHref('back_to_index', 'index.html');
+
+    const mainWrap = byId('main_dynamic');
+    if (mainWrap) {
+      const mainCats = MAIN_CATS_BY_ROOM[room] || [];
+      mainWrap.innerHTML = mainCats
+        .map((catKey) => {
+          const m = CATEGORY_META[catKey];
+          return buildCategoryLink({
+            roomKey: room,
+            catKey,
+            jp: m.jp,
+            en: m.en,
+            icon: m.icon,
+            noteJp: m.noteJp,
+            noteEn: m.noteEn
+          });
+        })
+        .join('');
+    }
+
+    setHref('kitchen_link', `swipe.html?room=${encodeURIComponent(room)}&cat=kitchen`);
+    setHref('vanity_link', `swipe.html?room=${encodeURIComponent(room)}&cat=vanity`);
+    setHref('bath_link', `swipe.html?room=${encodeURIComponent(room)}&cat=bath`);
+    setHref('toilet_link', `swipe.html?room=${encodeURIComponent(room)}&cat=toilet`);
+    setHref('closet_link', `swipe.html?room=${encodeURIComponent(room)}&cat=closet`);
+    setHref('entrance_link', `swipe.html?room=${encodeURIComponent(room)}&cat=entrance`);
+  }
+
+  function initSwipePage() {
     setHref('back_to_category', `category.html?room=${encodeURIComponent(room)}`);
 
-    // Title
-    const titleMap = {
-      bath: {jp:'バスルーム', en:'Swipe', prefix:'Bath'},
-      main7:{jp:'メインルーム（7）', en:'Swipe', prefix:'Main'},
-      main8:{jp:'メインルーム（8）', en:'Swipe', prefix:'Main'},
-      main9_54:{jp:'メインルーム（9）', en:'Swipe', prefix:'Main'},
-      main10_54:{jp:'メインルーム（10）', en:'Swipe', prefix:'Main'},
-      main9:{jp:'メインルーム（9）', en:'Swipe', prefix:'Main'},
-      main10:{jp:'メインルーム（10）', en:'Swipe', prefix:'Main'},
-      main11:{jp:'メインルーム（11）', en:'Swipe', prefix:'Main'}
-    };
-    const meta = titleMap[cat] || titleMap.bath;
+    const meta = CATEGORY_META[cat] || CATEGORY_META.bath;
     setText('swipe_title', meta.jp);
     setText('swipe_sub', meta.en);
 
-    // Update labels inside slides (optional)
-    document.querySelectorAll('[data-slide]').forEach((el, i)=>{
-      el.textContent = `${meta.prefix} ${i+1}`;
-    });
+    const allowedCats = new Set([
+      'kitchen', 'vanity', 'bath', 'toilet', 'closet', 'entrance',
+      ...(MAIN_CATS_BY_ROOM[room] || [])
+    ]);
 
-    // Counter
-    function updateCounter(scroller){
-      const counterEl = document.getElementById('counter');
-      if(!counterEl) return;
-      const w = scroller.clientWidth || 1;
-      const idx = Math.round(scroller.scrollLeft / w) + 1;
-      const total = scroller.children.length;
-      counterEl.textContent = idx + '/' + total;
-    }
     const scroller = document.querySelector('.scroller');
-    if(scroller){
-      let raf=0;
-      scroller.addEventListener('scroll', ()=>{
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(()=>updateCounter(scroller));
-      }, {passive:true});
-      // init
-      updateCounter(scroller);
+    if (!scroller) return;
+
+    if (!allowedCats.has(cat)) {
+      scroller.innerHTML = '<div class="slide"><div data-slide>未設定</div></div>';
+    } else {
+      const labels = Array.from({ length: 4 }, (_, i) => `${meta.prefix} ${i + 1}`);
+      scroller.innerHTML = labels
+        .map((label) => `<div class="slide"><div data-slide>${label}</div></div>`)
+        .join('');
     }
+
+    const counterEl = byId('counter');
+    const updateCounter = () => {
+      if (!counterEl) return;
+      const width = scroller.clientWidth || 1;
+      const index = Math.round(scroller.scrollLeft / width) + 1;
+      const total = scroller.children.length;
+      counterEl.textContent = `${index}/${total}`;
+    };
+
+    let raf = 0;
+    scroller.addEventListener(
+      'scroll',
+      () => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(updateCounter);
+      },
+      { passive: true }
+    );
+
+    updateCounter();
+  }
+
+  function applyClassicNumbersIndex() {
+    document.querySelectorAll('.roomTop .jp').forEach((el) => {
+      if (el.querySelector('.antique-num')) return;
+      el.innerHTML = el.innerHTML.replace(/(\d+)/g, '<span class="antique-num">$1</span>');
+    });
+  }
+
+  function bindStrongTapFeedbackIndex() {
+    document.querySelectorAll('a.btn.roomBtn').forEach((link) => {
+      link.addEventListener('contextmenu', (e) => e.preventDefault());
+
+      // Keep press state during long press.
+      link.addEventListener('pointerdown', () => link.classList.add('is-pressing'));
+      ['pointerup', 'pointercancel', 'pointerleave'].forEach((evt) => {
+        link.addEventListener(evt, () => link.classList.remove('is-pressing'));
+      });
+
+      link.addEventListener('click', (e) => {
+        if (link.dataset.navLock === '1') return;
+        e.preventDefault();
+        link.dataset.navLock = '1';
+        link.classList.add('is-pressing');
+
+        try {
+          if (navigator.vibrate) navigator.vibrate(12);
+        } catch (_) {
+          // no-op
+        }
+
+        const href = link.getAttribute('href') || 'category.html';
+        setTimeout(() => {
+          location.href = href;
+        }, 160);
+      });
+    });
+  }
+
+  if (page === 'category') initCategoryPage();
+  if (page === 'swipe') initSwipePage();
+  if (page === 'index') {
+    applyClassicNumbersIndex();
+    bindStrongTapFeedbackIndex();
   }
 })();
