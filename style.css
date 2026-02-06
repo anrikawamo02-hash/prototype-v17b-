@@ -248,28 +248,8 @@ html[data-page="index"] .roomTag{
   color:var(--text);
 }
 
-html[data-page="index"] .btn.roomBtn::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(15,23,42,.24);
-  opacity:0;
-  transition:opacity .12s ease;
-  pointer-events:none;
-  border-radius:inherit;
-}
 
-html[data-page="index"] .btn.roomBtn.is-pressing,
-html[data-page="index"] .btn.roomBtn:active{
-  transform:translateY(4px) scale(.955);
-  filter:brightness(.85);
-  box-shadow:0 4px 10px rgba(0,0,0,.14);
-}
 
-html[data-page="index"] .btn.roomBtn.is-pressing::after,
-html[data-page="index"] .btn.roomBtn:active::after{
-  opacity:1;
-}
 
 /* Classic bold number style (index only) */
 html[data-page="index"] .roomTop .jp .antique-num{

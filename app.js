@@ -199,76 +199,9 @@
     });
   }
 
-  function bindStrongTapFeedbackIndex() {
-    const links = document.querySelectorAll('a.btn.roomBtn');
-
-    links.forEach((link) => {
-      let releaseTimer = 0;
-
-      const clearReleaseTimer = () => {
-        if (releaseTimer) {
-          clearTimeout(releaseTimer);
-          releaseTimer = 0;
-        }
-      };
-
-      const pressOn = () => {
-        clearReleaseTimer();
-        link.classList.add('is-pressing');
-      };
-
-      const pressOffDelayed = (delay = 90) => {
-        clearReleaseTimer();
-        releaseTimer = window.setTimeout(() => {
-          link.classList.remove('is-pressing');
-          releaseTimer = 0;
-        }, delay);
-      };
-
-      // Prevent OS long-press menu where possible.
-      link.addEventListener('contextmenu', (e) => e.preventDefault());
-
-      // Pointer + fallback events (Safari/Android variability).
-      link.addEventListener('pointerdown', pressOn, { passive: true });
-      ['pointerup', 'pointercancel', 'pointerleave'].forEach((evt) => {
-        link.addEventListener(evt, () => pressOffDelayed(80), { passive: true });
-      });
-
-      link.addEventListener('touchstart', pressOn, { passive: true });
-      link.addEventListener('touchend', () => pressOffDelayed(80), { passive: true });
-      link.addEventListener('touchcancel', () => pressOffDelayed(80), { passive: true });
-
-      link.addEventListener('mousedown', pressOn);
-      link.addEventListener('mouseup', () => pressOffDelayed(80));
-      link.addEventListener('mouseleave', () => pressOffDelayed(80));
-
-      link.addEventListener('click', (e) => {
-        // Keep normal new-tab behavior.
-        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-        if (link.dataset.navLock === '1') return;
-
-        e.preventDefault();
-        link.dataset.navLock = '1';
-        pressOn();
-
-        try {
-          if (navigator.vibrate) navigator.vibrate(12);
-        } catch (_) {
-          // no-op
-        }
-
-        const href = link.getAttribute('href') || 'category.html';
-        window.setTimeout(() => {
-          location.href = href;
-        }, 180);
-      });
-    });
-  }
-
   if (page === 'category') initCategoryPage();
   if (page === 'swipe') initSwipePage();
   if (page === 'index') {
     applyClassicNumbersIndex();
-    bindStrongTapFeedbackIndex();
   }
 })();
