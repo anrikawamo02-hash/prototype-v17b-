@@ -176,15 +176,6 @@ html[data-page="index"] .roomIcon{background:#fff;border:1px solid var(--border)
 html[data-page="index"] .roomTag{background:#fff;border:1px solid var(--border);color:var(--text);}
 
 
-/* ===== Custom (User) : P1 card tap interaction (linger) ===== */
-html[data-page="index"] .btn.roomBtn{
-  transition: transform 220ms ease-out, box-shadow 220ms ease-out, filter 220ms ease-out;
-}
-html[data-page="index"] .btn.roomBtn:active{
-  transform: translateY(1px);
-  box-shadow: 0 6px 12px rgba(0,0,0,.045);
-  filter: brightness(0.985);
-}
 
 
 /* ===== Custom (User) : P1 shadow polish ===== */
@@ -207,12 +198,88 @@ html[data-page="index"] .btn.roomBtn{
 
 .crab-image{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;z-index:9999;width:120px;}
 
-/* ===== Custom (Category): grouped-room helper text ===== */
-html[data-page="category"] .group-note{
-  font-size:12px;
-  line-height:1.35;
-  color:var(--muted);
-  font-weight:800;
+
+/* ===== Header crab (P1/P2): Sample M placement ===== */
+.topbar.has-header-crab{
+  position: relative;
 }
-html[data-page="category"] .group-note.jp-note{ margin-top:6px; }
-html[data-page="category"] .group-note.en-note{ margin-top:2px; }
+.topbar.has-header-crab .titles{
+  padding-right: 70px; /* keep title clear of mascot */
+}
+.header-crab{
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 47px;
+  object-fit: cover;
+  object-position: 50% 46%;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  z-index: 3;
+}
+
+/* old bottom-floating crab is intentionally disabled */
+.floating-crab{ display:none !important; }
+
+
+/* ===== Custom (User) : P1 strong tap feedback ===== */
+html[data-page="index"] .btn.roomBtn{
+  position: relative;
+  overflow: hidden;
+  transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+html[data-page="index"] .btn.roomBtn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(15,23,42,.24);
+  opacity:0;
+  transition:opacity .12s ease;
+  pointer-events:none;
+  border-radius:inherit;
+}
+html[data-page="index"] .btn.roomBtn.is-pressing,
+html[data-page="index"] .btn.roomBtn:active{
+  transform: translateY(4px) scale(.955);
+  filter: brightness(.85);
+  box-shadow: 0 4px 10px rgba(0,0,0,.14);
+}
+html[data-page="index"] .btn.roomBtn.is-pressing::after,
+html[data-page="index"] .btn.roomBtn:active::after{
+  opacity:1;
+}
+
+/* Classic bold number styling for room number text only */
+html[data-page="index"] .roomTop .jp .antique-num{
+  font-family: "Cormorant Garamond","Times New Roman","Noto Serif JP",serif;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: .01em;
+  -webkit-text-stroke: .2px currentColor;
+  text-rendering: optimizeLegibility;
+}
+
+/* Grouped main-room note lines (Category page only) */
+html[data-page="category"] .group-note-wrap{ margin-top: 4px; }
+html[data-page="category"] .group-note-jp{
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 800;
+  color: #475569;
+}
+html[data-page="category"] .group-note-en{
+  margin-top: 3px;
+  font-size: 11px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #64748b;
+}
+
