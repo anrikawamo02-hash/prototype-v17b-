@@ -241,29 +241,6 @@ html[data-page="index"] .btn.roomBtn{
   user-select:none;
 }
 
-html[data-page="index"] .btn.roomBtn::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  background:rgba(0,0,0,.08);
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .16s ease;
-}
-
-html[data-page="index"] .btn.roomBtn.is-pressing,
-html[data-page="index"] .btn.roomBtn:active{
-  transform:translateY(2px) scale(.985);
-  box-shadow:0 6px 14px rgba(0,0,0,.10), inset 0 1px 2px rgba(0,0,0,.08);
-  filter:brightness(.972);
-}
-
-html[data-page="index"] .btn.roomBtn.is-pressing::after,
-html[data-page="index"] .btn.roomBtn:active::after{
-  opacity:1;
-}
-
 html[data-page="index"] .roomIcon,
 html[data-page="index"] .roomTag{
   background:#fff;
@@ -271,8 +248,64 @@ html[data-page="index"] .roomTag{
   color:var(--text);
 }
 
+html[data-page="index"] .btn.roomBtn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(15,23,42,.08);
+  opacity:0;
+  transition:opacity .12s ease;
+  pointer-events:none;
+  border-radius:inherit;
+}
+
+html[data-page="index"] .btn.roomBtn.is-pressing,
+html[data-page="index"] .btn.roomBtn:active{
+  transform:translateY(-2px) scale(1.003);
+  filter:brightness(.972);
+  box-shadow:0 14px 28px rgba(0,0,0,.16), inset 0 1px 2px rgba(255,255,255,.28);
+}
+
+html[data-page="index"] .btn.roomBtn.is-pressing::after,
+html[data-page="index"] .btn.roomBtn:active::after{
+  opacity:1;
+}
 
 
+
+/* ===== Page 2 press feedback (match Page 1 feel) ===== */
+html[data-page="category"] .list .btn{
+  position:relative;
+  overflow:hidden;
+  transition:transform .16s ease, box-shadow .16s ease, filter .16s ease;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-touch-callout:none;
+  user-select:none;
+}
+
+html[data-page="category"] .list .btn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(15,23,42,.08);
+  opacity:0;
+  transition:opacity .12s ease;
+  pointer-events:none;
+  border-radius:inherit;
+}
+
+html[data-page="category"] .list .btn.is-pressing,
+html[data-page="category"] .list .btn:active{
+  transform:translateY(-2px) scale(1.003);
+  filter:brightness(.972);
+  box-shadow:0 14px 28px rgba(0,0,0,.16), inset 0 1px 2px rgba(255,255,255,.28);
+}
+
+html[data-page="category"] .list .btn.is-pressing::after,
+html[data-page="category"] .list .btn:active::after{
+  opacity:1;
+}
 
 /* Classic bold number style (index only) */
 html[data-page="index"] .roomTop .jp .antique-num{

@@ -193,60 +193,35 @@
   }
 
 
-  function bindStrongTapFeedbackIndex() {
-    const cards = Array.from(document.querySelectorAll('a.btn.roomBtn[href]'));
-    if (!cards.length) return;
 
-    const pressStartAt = new WeakMap();
-    const MIN_VISIBLE_MS = 90;
+  function bindStrongTapFeedbackCategory() {
+    document.querySelectorAll('a.btn').forEach((link) => {
+      link.addEventListener('contextmenu', (e) => e.preventDefault());
 
-    cards.forEach((card) => {
-      let navigating = false;
+      // Keep press state during long press.
+      link.addEventListener('pointerdown', () => link.classList.add('is-pressing'));
+      ['pointerup', 'pointercancel', 'pointerleave'].forEach((evt) => {
+        link.addEventListener(evt, () => link.classList.remove('is-pressing'));
+      });
 
-      const addPress = () => {
-        card.classList.add('is-pressing');
-        pressStartAt.set(card, performance.now());
-      };
-
-      const removePress = () => {
-        card.classList.remove('is-pressing');
-      };
-
-      card.addEventListener('pointerdown', addPress, { passive: true });
-      card.addEventListener('pointerup', removePress, { passive: true });
-      card.addEventListener('pointercancel', removePress, { passive: true });
-      card.addEventListener('pointerleave', removePress, { passive: true });
-
-      card.addEventListener('touchstart', addPress, { passive: true });
-      card.addEventListener('touchend', removePress, { passive: true });
-      card.addEventListener('touchcancel', removePress, { passive: true });
-      card.addEventListener('mousedown', addPress, { passive: true });
-      card.addEventListener('mouseup', removePress, { passive: true });
-      card.addEventListener('mouseleave', removePress, { passive: true });
-
-      card.addEventListener('click', (e) => {
-        if (navigating) {
-          e.preventDefault();
-          return;
-        }
-
-        const href = card.getAttribute('href');
-        if (!href) return;
+      link.addEventListener('click', (e) => {
+        if (link.dataset.navLock === '1') return;
+        const href = link.getAttribute('href') || '#';
+        if (!href || href === '#') return;
 
         e.preventDefault();
-        navigating = true;
+        link.dataset.navLock = '1';
+        link.classList.add('is-pressing');
 
-        card.classList.add('is-pressing');
-        const started = pressStartAt.get(card) || performance.now();
-        const elapsed = Math.max(0, performance.now() - started);
-        const remain = Math.max(0, MIN_VISIBLE_MS - elapsed);
+        try {
+          if (navigator.vibrate) navigator.vibrate(12);
+        } catch (_) {
+          // no-op
+        }
 
-        window.setTimeout(() => {
-          card.classList.remove('is-pressing');
-          window.setTimeout(() => {
-            location.href = href;
-          }, 70);
-        }, remain);
+        setTimeout(() => {
+          location.href = href;
+        }, 160);
       });
     });
   }
@@ -258,7 +233,40 @@
     });
   }
 
-  if (page === 'category') initCategoryPage();
+  function bindStrongTapFeedbackIndex() {
+    document.querySelectorAll('a.btn.roomBtn').forEach((link) => {
+      link.addEventListener('contextmenu', (e) => e.preventDefault());
+
+      // Keep press state during long press.
+      link.addEventListener('pointerdown', () => link.classList.add('is-pressing'));
+      ['pointerup', 'pointercancel', 'pointerleave'].forEach((evt) => {
+        link.addEventListener(evt, () => link.classList.remove('is-pressing'));
+      });
+
+      link.addEventListener('click', (e) => {
+        if (link.dataset.navLock === '1') return;
+        e.preventDefault();
+        link.dataset.navLock = '1';
+        link.classList.add('is-pressing');
+
+        try {
+          if (navigator.vibrate) navigator.vibrate(12);
+        } catch (_) {
+          // no-op
+        }
+
+        const href = link.getAttribute('href') || 'category.html';
+        setTimeout(() => {
+          location.href = href;
+        }, 160);
+      });
+    });
+  }
+
+  if (page === 'category') {
+    initCategoryPage();
+    bindStrongTapFeedbackCategory();
+  }
   if (page === 'swipe') initSwipePage();
   if (page === 'index') {
     applyClassicNumbersIndex();
