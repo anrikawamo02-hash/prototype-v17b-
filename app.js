@@ -62,14 +62,6 @@
       prefix: 'Main',
       icon: '🛏️'
     },
-    main9_10_54: {
-      jp: 'メインルーム',
-      en: 'Main room',
-      noteJp: SAME_TYPE_NOTE_JP,
-      noteEn: SAME_TYPE_NOTE_EN,
-      prefix: 'Main',
-      icon: '🛏️'
-    },
 
     // Keep numbers in label
     main7: { jp: 'メインルーム（7）', en: 'Main room (7)', prefix: 'Main', icon: '🛏️' },
@@ -87,7 +79,7 @@
     rg4: ['main4'],
     rg56: ['main56'],
     rg78: ['main7', 'main8'],
-    rg9_10_54: ['main9_10_54'],
+    rg9_10_54: ['main9_54', 'main10_54'],
     rg9_10_11: ['main9', 'main10', 'main11']
   };
 
@@ -208,34 +200,56 @@
   }
 
   function bindStrongTapFeedbackIndex() {
-    document.querySelectorAll('a.btn.roomBtn').forEach((link) => {
-      const addPress = () => link.classList.add('is-pressing');
-      const removePress = () => link.classList.remove('is-pressing');
+    const links = document.querySelectorAll('a.btn.roomBtn');
 
+    links.forEach((link) => {
+      let releaseTimer = 0;
+
+      const clearReleaseTimer = () => {
+        if (releaseTimer) {
+          clearTimeout(releaseTimer);
+          releaseTimer = 0;
+        }
+      };
+
+      const pressOn = () => {
+        clearReleaseTimer();
+        link.classList.add('is-pressing');
+      };
+
+      const pressOffDelayed = (delay = 90) => {
+        clearReleaseTimer();
+        releaseTimer = window.setTimeout(() => {
+          link.classList.remove('is-pressing');
+          releaseTimer = 0;
+        }, delay);
+      };
+
+      // Prevent OS long-press menu where possible.
       link.addEventListener('contextmenu', (e) => e.preventDefault());
-      link.addEventListener('dragstart', (e) => e.preventDefault());
 
-      // Primary pointer events
-      link.addEventListener('pointerdown', addPress);
+      // Pointer + fallback events (Safari/Android variability).
+      link.addEventListener('pointerdown', pressOn, { passive: true });
       ['pointerup', 'pointercancel', 'pointerleave'].forEach((evt) => {
-        link.addEventListener(evt, removePress);
+        link.addEventListener(evt, () => pressOffDelayed(80), { passive: true });
       });
 
-      // Safari/older fallback events
-      link.addEventListener('touchstart', addPress, { passive: true });
-      ['touchend', 'touchcancel'].forEach((evt) => {
-        link.addEventListener(evt, removePress, { passive: true });
-      });
-      link.addEventListener('mousedown', addPress);
-      ['mouseup', 'mouseleave'].forEach((evt) => {
-        link.addEventListener(evt, removePress);
-      });
+      link.addEventListener('touchstart', pressOn, { passive: true });
+      link.addEventListener('touchend', () => pressOffDelayed(80), { passive: true });
+      link.addEventListener('touchcancel', () => pressOffDelayed(80), { passive: true });
+
+      link.addEventListener('mousedown', pressOn);
+      link.addEventListener('mouseup', () => pressOffDelayed(80));
+      link.addEventListener('mouseleave', () => pressOffDelayed(80));
 
       link.addEventListener('click', (e) => {
+        // Keep normal new-tab behavior.
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
         if (link.dataset.navLock === '1') return;
+
         e.preventDefault();
         link.dataset.navLock = '1';
-        addPress();
+        pressOn();
 
         try {
           if (navigator.vibrate) navigator.vibrate(12);
@@ -244,7 +258,7 @@
         }
 
         const href = link.getAttribute('href') || 'category.html';
-        setTimeout(() => {
+        window.setTimeout(() => {
           location.href = href;
         }, 180);
       });
