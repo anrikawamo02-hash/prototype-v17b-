@@ -192,6 +192,65 @@
     updateCounter();
   }
 
+
+  function bindStrongTapFeedbackIndex() {
+    const cards = Array.from(document.querySelectorAll('a.btn.roomBtn[href]'));
+    if (!cards.length) return;
+
+    const pressStartAt = new WeakMap();
+    const MIN_VISIBLE_MS = 90;
+
+    cards.forEach((card) => {
+      let navigating = false;
+
+      const addPress = () => {
+        card.classList.add('is-pressing');
+        pressStartAt.set(card, performance.now());
+      };
+
+      const removePress = () => {
+        card.classList.remove('is-pressing');
+      };
+
+      card.addEventListener('pointerdown', addPress, { passive: true });
+      card.addEventListener('pointerup', removePress, { passive: true });
+      card.addEventListener('pointercancel', removePress, { passive: true });
+      card.addEventListener('pointerleave', removePress, { passive: true });
+
+      card.addEventListener('touchstart', addPress, { passive: true });
+      card.addEventListener('touchend', removePress, { passive: true });
+      card.addEventListener('touchcancel', removePress, { passive: true });
+      card.addEventListener('mousedown', addPress, { passive: true });
+      card.addEventListener('mouseup', removePress, { passive: true });
+      card.addEventListener('mouseleave', removePress, { passive: true });
+
+      card.addEventListener('click', (e) => {
+        if (navigating) {
+          e.preventDefault();
+          return;
+        }
+
+        const href = card.getAttribute('href');
+        if (!href) return;
+
+        e.preventDefault();
+        navigating = true;
+
+        card.classList.add('is-pressing');
+        const started = pressStartAt.get(card) || performance.now();
+        const elapsed = Math.max(0, performance.now() - started);
+        const remain = Math.max(0, MIN_VISIBLE_MS - elapsed);
+
+        window.setTimeout(() => {
+          card.classList.remove('is-pressing');
+          window.setTimeout(() => {
+            location.href = href;
+          }, 70);
+        }, remain);
+      });
+    });
+  }
+
   function applyClassicNumbersIndex() {
     document.querySelectorAll('.roomTop .jp').forEach((el) => {
       if (el.querySelector('.antique-num')) return;
@@ -203,5 +262,6 @@
   if (page === 'swipe') initSwipePage();
   if (page === 'index') {
     applyClassicNumbersIndex();
+    bindStrongTapFeedbackIndex();
   }
 })();
