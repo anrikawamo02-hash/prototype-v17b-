@@ -124,39 +124,61 @@
       updateCounter();
     }
   }
-})();
-// ===== Index-only enhancements: classic bold digits + strong tap linger =====
-if(page === 'index'){
-  // Wrap only numeric tokens in room title with .antique-num
-  applyClassicNumbersIndex();
 
-  // Strong tap feedback with short delayed navigation so effect is visible
-  bindStrongTapFeedbackIndex();
-}
+  // ===== Index-only enhancements: classic bold digits + strong tap linger =====
+  if(page === 'index'){
+    applyClassicNumbersIndex();
+    bindStrongTapFeedbackIndex();
+  }
 
-function applyClassicNumbersIndex(){
-  const targets = document.querySelectorAll('.roomTop .jp');
-  targets.forEach(el=>{
-    if(!el || el.querySelector('.antique-num')) return; // prevent double wrap
-    const html = el.innerHTML;
-    el.innerHTML = html.replace(/(\d+)/g, '<span class="antique-num">$1</span>');
-  });
-}
-
-function bindStrongTapFeedbackIndex(){
-  const links = document.querySelectorAll('a.btn.roomBtn');
-  links.forEach(a=>{
-    a.addEventListener('contextmenu', (e)=> e.preventDefault());
-    a.addEventListener('click', (e)=>{
-      if(a.dataset.navLock === '1') return;
-      e.preventDefault();
-      a.dataset.navLock = '1';
-      a.classList.add('is-pressing');
-      try{ if(navigator.vibrate) navigator.vibrate(12); }catch(_){}
-      const target = a.getAttribute('href') || 'category.html';
-      setTimeout(()=>{
-        location.href = target;
-      }, 160);
+  function applyClassicNumbersIndex(){
+    const targets = document.querySelectorAll('.roomTop .jp');
+    targets.forEach(el=>{
+      if(!el || el.querySelector('.antique-num')) return; // prevent double wrap
+      const html = el.innerHTML;
+      el.innerHTML = html.replace(/(\d+)/g, '<span class="antique-num">$1</span>');
     });
-  });
-}
+  }
+
+  function bindStrongTapFeedbackIndex(){
+    const links = document.querySelectorAll('a.btn.roomBtn');
+    links.forEach(a=>{
+      const pressOn = ()=>{
+        if(a.dataset.navLock === '1') return;
+        a.classList.add('is-pressing');
+      };
+      const pressOff = ()=>{
+        if(a.dataset.navLock === '1') return;
+        a.classList.remove('is-pressing');
+      };
+
+      if(window.PointerEvent){
+        a.addEventListener('pointerdown', pressOn, {passive:true});
+        a.addEventListener('pointerup', pressOff, {passive:true});
+        a.addEventListener('pointercancel', pressOff, {passive:true});
+        a.addEventListener('pointerleave', pressOff, {passive:true});
+      }else{
+        a.addEventListener('touchstart', pressOn, {passive:true});
+        a.addEventListener('touchend', pressOff, {passive:true});
+        a.addEventListener('touchcancel', pressOff, {passive:true});
+        a.addEventListener('mousedown', pressOn);
+        a.addEventListener('mouseup', pressOff);
+        a.addEventListener('mouseleave', pressOff);
+      }
+
+      a.addEventListener('contextmenu', (e)=> e.preventDefault());
+
+      a.addEventListener('click', (e)=>{
+        if(a.dataset.navLock === '1') return;
+        e.preventDefault();
+        a.dataset.navLock = '1';
+        a.classList.add('is-pressing');
+
+        try{ if(navigator.vibrate) navigator.vibrate(12); }catch(_){ }
+
+        const target = a.getAttribute('href') || 'category.html';
+        setTimeout(()=>{ location.href = target; }, 160);
+      });
+    });
+  }
+})();
