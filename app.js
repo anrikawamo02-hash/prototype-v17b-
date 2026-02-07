@@ -68,14 +68,8 @@
     main8: { jp: 'メインルーム（8）', en: 'Main room (8)', prefix: 'Main', icon: '🛏️' },
     main9: { jp: 'メインルーム（9）', en: 'Main room (9)', prefix: 'Main', icon: '🛏️' },
     main10: { jp: 'メインルーム（10）', en: 'Main room (10)', prefix: 'Main', icon: '🛏️' },
-    main9_10_54: {
-      jp: 'メインルーム',
-      en: 'Main room',
-      noteJp: SAME_TYPE_NOTE_JP,
-      noteEn: SAME_TYPE_NOTE_EN,
-      prefix: 'Main',
-      icon: '🛏️'
-    },
+    main9_54: { jp: 'メインルーム（9）', en: 'Main room (9)', prefix: 'Main', icon: '🛏️' },
+    main10_54: { jp: 'メインルーム（10）', en: 'Main room (10)', prefix: 'Main', icon: '🛏️' },
     main11: { jp: 'メインルーム（11）', en: 'Main room (11)', prefix: 'Main', icon: '🛏️' }
   };
 
@@ -85,7 +79,7 @@
     rg4: ['main4'],
     rg56: ['main56'],
     rg78: ['main7', 'main8'],
-    rg9_10_54: ['main9_10_54'],
+    rg9_10_54: ['main9_54', 'main10_54'],
     rg9_10_11: ['main9', 'main10', 'main11']
   };
 
