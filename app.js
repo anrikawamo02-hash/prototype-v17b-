@@ -169,8 +169,23 @@
     const scroller = document.querySelector('.scroller');
     if (!scroller) return;
 
+    const targetKey = `${room}/${cat}`;
+    const photoSlidesByTarget = {
+      'rg56/main56': [
+        { src: './photos/rg5_6_main_01.png', alt: '5・6号室 メインルーム 左側' },
+        { src: './photos/rg5_6_main_02.png', alt: '5・6号室 メインルーム 右側' }
+      ]
+    };
+
     if (!allowedCats.has(cat)) {
       scroller.innerHTML = '<div class="slide"><div data-slide>未設定</div></div>';
+    } else if (photoSlidesByTarget[targetKey]) {
+      const slides = photoSlidesByTarget[targetKey];
+      scroller.innerHTML = slides
+        .map((item) =>
+          `<div class="slide"><div data-slide class="photo-slide"><img src="${item.src}" alt="${item.alt}"></div></div>`
+        )
+        .join('');
     } else {
       const labels = Array.from({ length: 4 }, (_, i) => `${meta.prefix} ${i + 1}`);
       scroller.innerHTML = labels
