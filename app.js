@@ -173,7 +173,9 @@
     const photoSlidesByTarget = {
       'rg56/main56': [
         { src: './photos/rg5_6_main_01.png', alt: '5・6号室 メインルーム 左側' },
-        { src: './photos/rg5_6_main_02.png', alt: '5・6号室 メインルーム 右側' }
+        { src: './photos/rg5_6_main_02.png', alt: '5・6号室 メインルーム 右側' },
+        { src: './photos/rg5_6_main_03.png', alt: '5・6号室 メインルーム 3枚目 左側' },
+        { src: './photos/rg5_6_main_04.png', alt: '5・6号室 メインルーム 4枚目 右側' }
       ]
     };
 
