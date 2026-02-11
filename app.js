@@ -178,10 +178,10 @@
         { src: './photos/rg5_6_main_04.png', alt: '5・6号室 メインルーム 4枚目 右側' },
         { src: './photos/rg5_6_main_05.png', alt: '5・6号室 メインルーム 5枚目 左' },
         { src: './photos/rg5_6_main_06.png', alt: '5・6号室 メインルーム 6枚目 真ん中' },
-        { src: './photos/rg5_6_main_07.png', alt: '5・6号室 メインルーム 7枚目 右' },
-        { src: './photos/rg5_6_main_08.png', alt: '5・6号室 メインルーム 8枚目 左' },
-        { src: './photos/rg5_6_main_09.png', alt: '5・6号室 メインルーム 9枚目 中央' },
-        { src: './photos/rg5_6_main_10.png', alt: '5・6号室 メインルーム 10枚目 右' }
+        { src: './photos/rg5_6_main_07.png', alt: '5・6号室 メインルーム 7枚目 右' }
+      ],
+      'rg56/kitchen': [
+        { src: './photos/rg5_6_kitchen_01.png', alt: '5・6号室 キッチン 1枚目 左' }
       ]
     };
 
