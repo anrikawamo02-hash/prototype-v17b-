@@ -184,7 +184,10 @@
         { src: './photos/rg5_6_main_10.png', alt: '5・6号室 メインルーム 10枚目 右' }
       ],
       'rg56/kitchen': [
-        { src: './photos/rg5_6_kitchen_01.png', alt: '5・6号室 キッチン 1枚目 左' }
+        { src: './photos/rg5_6_kitchen_01.png', alt: '5・6号室 キッチン 1枚目 左' },
+        { src: './photos/rg5_6_kitchen_02.png', alt: '5・6号室 キッチン 2枚目 左' },
+        { src: './photos/rg5_6_kitchen_03.png', alt: '5・6号室 キッチン 3枚目 中央' },
+        { src: './photos/rg5_6_kitchen_04.png', alt: '5・6号室 キッチン 4枚目 右' }
       ]
     };
 
