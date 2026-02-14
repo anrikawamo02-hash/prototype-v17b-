@@ -187,7 +187,8 @@
         { src: './photos/rg5_6_kitchen_01.png', alt: '5・6号室 キッチン 1枚目 左' },
         { src: './photos/rg5_6_kitchen_02.png', alt: '5・6号室 キッチン 2枚目 左' },
         { src: './photos/rg5_6_kitchen_03.png', alt: '5・6号室 キッチン 3枚目 中央' },
-        { src: './photos/rg5_6_kitchen_04.png', alt: '5・6号室 キッチン 4枚目 右' }
+        { src: './photos/rg5_6_kitchen_04.png', alt: '5・6号室 キッチン 4枚目 右' },
+        { src: './photos/IMG_6789.PNG', alt: '5・6号室 キッチン 5枚目 追加' },
       ],
       'rg56/vanity': [
         { src: './photos/rg5_6_wash_01.png', alt: '5・6号室 洗面 1枚目 左' },
