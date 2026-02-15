@@ -194,9 +194,11 @@
       'rg56/vanity': [
         { src: './photos/rg5_6_wash_01.png', alt: '5・6号室 洗面 1枚目 左' },
         { src: './photos/rg5_6_wash_02.png', alt: '5・6号室 洗面 2枚目 中央' },
-        { src: './photos/rg5_6_wash_03.png', alt: '5・6号室 洗面 3枚目 右' }
+        { src: './photos/rg5_6_wash_03.png', alt: '5・6号室 洗面 3枚目 右' },
+        { src: './photos/rg5_6_wash_04.png', alt: '5・6号室 洗面 4枚目 左' },
+        { src: './photos/rg5_6_wash_05.png', alt: '5・6号室 洗面 5枚目 右' }
       ]
-    };
+};
 
     if (!allowedCats.has(cat)) {
       scroller.innerHTML = '<div class="slide"><div data-slide>未設定</div></div>';
