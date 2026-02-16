@@ -169,57 +169,8 @@
     const scroller = document.querySelector('.scroller');
     if (!scroller) return;
 
-    const targetKey = `${room}/${cat}`;
-    const photoSlidesByTarget = {
-      'rg56/main56': [
-        { src: './photos/rg5_6_main_01.png', alt: '5・6号室 メインルーム 左側' },
-        { src: './photos/rg5_6_main_02.png', alt: '5・6号室 メインルーム 右側' },
-        { src: './photos/rg5_6_main_03.png', alt: '5・6号室 メインルーム 3枚目 左側' },
-        { src: './photos/rg5_6_main_04.png', alt: '5・6号室 メインルーム 4枚目 右側' },
-        { src: './photos/rg5_6_main_05.png', alt: '5・6号室 メインルーム 5枚目 左' },
-        { src: './photos/rg5_6_main_06.png', alt: '5・6号室 メインルーム 6枚目 真ん中' },
-        { src: './photos/rg5_6_main_07.png', alt: '5・6号室 メインルーム 7枚目 右' },
-        { src: './photos/rg5_6_main_08.png', alt: '5・6号室 メインルーム 8枚目 左' },
-        { src: './photos/rg5_6_main_09.png', alt: '5・6号室 メインルーム 9枚目 中央' },
-        { src: './photos/rg5_6_main_10.png', alt: '5・6号室 メインルーム 10枚目 右' }
-      ],
-      'rg56/kitchen': [
-        { src: './photos/rg5_6_kitchen_01.png', alt: '5・6号室 キッチン 1枚目 左' },
-        { src: './photos/rg5_6_kitchen_02.png', alt: '5・6号室 キッチン 2枚目 左' },
-        { src: './photos/rg5_6_kitchen_03.png', alt: '5・6号室 キッチン 3枚目 中央' },
-        { src: './photos/rg5_6_kitchen_04.png', alt: '5・6号室 キッチン 4枚目 右' },
-        { src: './photos/IMG_6788.PNG', alt: '5・6号室 キッチン 5枚目 追加' },
-        { src: './photos/IMG_6789.PNG', alt: '5・6号室 キッチン 6枚目 追加' },
-      ],
-      'rg56/vanity': [
-        { src: './photos/rg5_6_wash_01.png', alt: '5・6号室 洗面 1枚目 左' },
-        { src: './photos/rg5_6_wash_02.png', alt: '5・6号室 洗面 2枚目 中央' },
-        { src: './photos/rg5_6_wash_03.png', alt: '5・6号室 洗面 3枚目 右' },
-        { src: './photos/rg5_6_wash_04.png', alt: '5・6号室 洗面 4枚目 左' },
-        { src: './photos/rg5_6_wash_05.png', alt: '5・6号室 洗面 5枚目 右' }
-      ],
-
-      'rg56/bath': [
-        { src: './photos/rg5_6_bath_01.png', alt: '5・6号室 バスルーム 1枚目' },
-        { src: './photos/rg5_6_bath_02.png', alt: '5・6号室 バスルーム 2枚目' },
-        { src: './photos/rg5_6_bath_03.png', alt: '5・6号室 バスルーム 3枚目' },
-        { src: './photos/rg5_6_bath_04.png', alt: '5・6号室 バスルーム 4枚目' },
-        { src: './photos/rg5_6_bath_05.png', alt: '5・6号室 バスルーム 5枚目' },
-        { src: './photos/rg5_6_bath_06.png', alt: '5・6号室 バスルーム 6枚目' },
-        { src: './photos/rg5_6_bath_07.png', alt: '5・6号室 バスルーム 7枚目' },
-        { src: './photos/rg5_6_bath_08.png', alt: '5・6号室 バスルーム 8枚目 追加' }
-      ]
-};
-
     if (!allowedCats.has(cat)) {
       scroller.innerHTML = '<div class="slide"><div data-slide>未設定</div></div>';
-    } else if (photoSlidesByTarget[targetKey]) {
-      const slides = photoSlidesByTarget[targetKey];
-      scroller.innerHTML = slides
-        .map((item) =>
-          `<div class="slide"><div data-slide class="photo-slide"><img src="${item.src}" alt="${item.alt}"></div></div>`
-        )
-        .join('');
     } else {
       const labels = Array.from({ length: 4 }, (_, i) => `${meta.prefix} ${i + 1}`);
       scroller.innerHTML = labels
