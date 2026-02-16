@@ -227,12 +227,16 @@
         .join('');
     }
 
+    // Reset scroll position so the counter starts at 1 (prevents e.g. 38/10 when coming from a long list)
+    scroller.scrollLeft = 0;
+
     const counterEl = byId('counter');
     const updateCounter = () => {
       if (!counterEl) return;
       const width = scroller.clientWidth || 1;
-      const index = Math.round(scroller.scrollLeft / width) + 1;
-      const total = scroller.children.length;
+      const total = scroller.children.length || 1;
+      const rawIndex = Math.round(scroller.scrollLeft / width) + 1;
+      const index = Math.min(total, Math.max(1, rawIndex));
       counterEl.textContent = `${index}/${total}`;
     };
 
