@@ -2,29 +2,30 @@
 <html lang="ja" data-page="swipe">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Swipe</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="icon.png" />
+  <link rel="stylesheet" href="style.css?v=20260217">
 </head>
 <body>
-  <div class="app">
-    <div class="topbar has-header-crab">
-      <a class="back" id="back_to_category" href="#">←</a>
-      <div class="titles">
-        <div class="t" id="swipe_title">バスルーム</div>
-        <div class="s" id="swipe_sub">Swipe</div>
+  <div class="app" data-page="swipe">
+    <div class="topbar">
+      <a class="back" href="category.html" aria-label="back">←</a>
+      <div class="title">
+        <div class="jp" id="swipeTitleJp">メインルーム</div>
+        <div class="en" id="swipeTitleEn">Main room</div>
       </div>
-      <img src="icon.png" alt="Crab mascot" class="header-crab header-crab--m" />
+      <img class="crab" src="crab_sample.png" alt="" />
     </div>
 
     <div class="screen">
-      <div class="galleryWrap">
-        <div class="scroller"></div>
-        <div class="counter" id="counter">1/4</div>
+      <div class="swipeWrap">
+        <div id="scroller" class="scroller" aria-label="photo scroller"></div>
+        <div id="counter" class="counter">1/10</div>
       </div>
     </div>
   </div>
 
-  <script src="app.js?v=1"></script>
+  <script src="app.js?v=20260217"></script>
 </body>
 </html>
