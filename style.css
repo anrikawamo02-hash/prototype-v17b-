@@ -204,6 +204,11 @@ body{
   background:#333;
 }
 
+.slide div.has-photo{
+  color: transparent;
+  text-shadow: none;
+}
+
 .counter{
   position:absolute;
   right:10px;
