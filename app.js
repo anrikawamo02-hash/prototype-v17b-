@@ -197,16 +197,7 @@
         { src: './photos/rg5_6_wash_03.png', alt: '5・6号室 洗面 3枚目 右' },
         { src: './photos/rg5_6_wash_04.png', alt: '5・6号室 洗面 4枚目 左' },
         { src: './photos/rg5_6_wash_05.png', alt: '5・6号室 洗面 5枚目 右' }
-      ],
-	  'rg56/bath': [
-	    { src: './photos/rg5_6_bath_01.png', alt: '5・6号室 バスルーム 1枚目' },
-	    { src: './photos/rg5_6_bath_02.png', alt: '5・6号室 バスルーム 2枚目' },
-	    { src: './photos/rg5_6_bath_03.png', alt: '5・6号室 バスルーム 3枚目' },
-	    { src: './photos/rg5_6_bath_04.png', alt: '5・6号室 バスルーム 4枚目' },
-	    { src: './photos/rg5_6_bath_05.png', alt: '5・6号室 バスルーム 5枚目' },
-	    { src: './photos/rg5_6_bath_06.png', alt: '5・6号室 バスルーム 6枚目' },
-	    { src: './photos/rg5_6_bath_07.png', alt: '5・6号室 バスルーム 7枚目' },
-	  ]
+      ]
 };
 
     if (!allowedCats.has(cat)) {
