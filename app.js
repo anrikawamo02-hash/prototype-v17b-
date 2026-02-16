@@ -215,11 +215,16 @@
       scroller.innerHTML = '<div class="slide"><div data-slide>未設定</div></div>';
     } else if (photoSlidesByTarget[targetKey]) {
       const slides = photoSlidesByTarget[targetKey];
-      scroller.innerHTML = slides
-        .map((item) =>
-          `<div class="slide"><div data-slide class="photo-slide"><img src="${item.src}" alt="${item.alt}"></div></div>`
-        )
-        .join('');
+
+
+const bust = Date.now();
+scroller.innerHTML = slides
+  .map((item, idx) =>
+    `<div class="slide"><div data-slide class="photo-slide"><img src="${item.src}?v=${bust}&i=${idx}" alt="${item.alt}"></div></div>`
+  )
+  .join('');
+scroller.scrollLeft = 0;
+
     } else {
       const labels = Array.from({ length: 4 }, (_, i) => `${meta.prefix} ${i + 1}`);
       scroller.innerHTML = labels
@@ -227,16 +232,12 @@
         .join('');
     }
 
-    // Reset scroll position so the counter starts at 1 (prevents e.g. 38/10 when coming from a long list)
-    scroller.scrollLeft = 0;
-
     const counterEl = byId('counter');
     const updateCounter = () => {
       if (!counterEl) return;
       const width = scroller.clientWidth || 1;
-      const total = scroller.children.length || 1;
-      const rawIndex = Math.round(scroller.scrollLeft / width) + 1;
-      const index = Math.min(total, Math.max(1, rawIndex));
+      const index = Math.round(scroller.scrollLeft / width) + 1;
+      const total = scroller.children.length;
       counterEl.textContent = `${index}/${total}`;
     };
 
