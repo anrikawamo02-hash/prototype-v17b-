@@ -1,3 +1,4 @@
+
 // ===== COMPLETE COMPATIBLE STABLE VERSION =====
 // rg56 main = 10
 // rg56 kitchen = 6
@@ -6,7 +7,6 @@
 function getImages(room, category) {
   const images = [];
 
-  // --- rg56 main ---
   if (room === "rg56" && category === "main") {
     for (let i = 1; i <= 10; i++) {
       const num = String(i).padStart(2, "0");
@@ -15,7 +15,6 @@ function getImages(room, category) {
     return images;
   }
 
-  // --- rg56 kitchen ---
   if (room === "rg56" && category === "kitchen") {
     for (let i = 1; i <= 6; i++) {
       const num = String(i).padStart(2, "0");
@@ -24,7 +23,6 @@ function getImages(room, category) {
     return images;
   }
 
-  // --- DEFAULT (他カテゴリー互換) ---
   for (let i = 1; i <= 4; i++) {
     const num = String(i).padStart(2, "0");
     images.push(`photos/${room}/${category}/${num}.png`);
@@ -46,7 +44,7 @@ function initSlider(room, category) {
 
   images.forEach((src, index) => {
     const img = document.createElement("img");
-    img.src = src + "?v=stable";
+    img.src = src + "?v=stable_final";
     img.className = "slide-image";
     img.style.display = index === 0 ? "block" : "none";
     container.appendChild(img);
