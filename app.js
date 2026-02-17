@@ -173,7 +173,8 @@
       scroller.innerHTML = '<div class="slide"><div data-slide>未設定</div></div>';
     } else {
 
-  const basePath = `photos/${room}/${cat}${room.replace('rg','')}/`;
+  const roomNum = room.replace('rg', '');
+const basePath = `photos/${room}/${cat}${roomNum}/`;
   const maxImages = 20;
   const slides = [];
 
