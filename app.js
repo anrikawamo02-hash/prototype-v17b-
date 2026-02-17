@@ -1,4 +1,3 @@
-
 (() => {
   'use strict';
 
@@ -173,15 +172,9 @@
     if (!allowedCats.has(cat)) {
       scroller.innerHTML = '<div class="slide"><div data-slide>未設定</div></div>';
     } else {
-      // Photo mode: show first 10 images from photos/<room>/<cat>/01.png ... 04.png
-      const total = 10;
-      const base = `photos/${room}/${cat}/`;
-      const filenames = Array.from({ length: total }, (_, i) => `${String(i + 1).padStart(2, '0')}.png`);
-      scroller.innerHTML = filenames
-        .map((fn, idx) => {
-          const alt = `${meta.prefix} ${idx + 1}`;
-          return `<div class="slide"><div data-slide><img src="${base}${fn}" alt="${alt}" loading="lazy" style="width:100%;height:100%;object-fit:contain;display:block;" /></div></div>`;
-        })
+      const labels = Array.from({ length: 4 }, (_, i) => `${meta.prefix} ${i + 1}`);
+      scroller.innerHTML = labels
+        .map((label) => `<div class="slide"><div data-slide>${label}</div></div>`)
         .join('');
     }
 
