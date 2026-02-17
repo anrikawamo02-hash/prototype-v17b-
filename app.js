@@ -174,7 +174,12 @@
     } else {
 
   const roomNum = room.replace('rg', '');
-const basePath = `photos/${room}/${cat}${roomNum}/`;
+
+// catが "kitchen" みたいに番号なしで来る場合は "kitchen56" にする
+// catが "main56" みたいに番号入りで来る場合はそのまま使う
+const catFolder = /\d+$/.test(cat) ? cat : `${cat}${roomNum}`;
+
+const basePath = `photos/${room}/${catFolder}/`;
   const maxImages = 10;
   const slides = [];
 
