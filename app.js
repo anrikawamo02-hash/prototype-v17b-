@@ -172,11 +172,24 @@
     if (!allowedCats.has(cat)) {
       scroller.innerHTML = '<div class="slide"><div data-slide>未設定</div></div>';
     } else {
-      const labels = Array.from({ length: 4 }, (_, i) => `${meta.prefix} ${i + 1}`);
-      scroller.innerHTML = labels
-        .map((label) => `<div class="slide"><div data-slide>${label}</div></div>`)
-        .join('');
-    }
+
+  const basePath = `photos/${room}/${cat}${room.replace('rg','')}/`;
+  const maxImages = 20;
+  const slides = [];
+
+  for (let i = 1; i <= maxImages; i++) {
+    const num = String(i).padStart(2, '0');
+    const imgPath = `${basePath}${num}.png`;
+
+    slides.push(`
+      <div class="slide">
+        <img src="${imgPath}" onerror="this.parentElement.remove()">
+      </div>
+    `);
+  }
+
+  scroller.innerHTML = slides.join('');
+}
 
     const counterEl = byId('counter');
     const updateCounter = () => {
