@@ -1,3 +1,4 @@
+
 (() => {
   'use strict';
 
@@ -172,8 +173,8 @@
     if (!allowedCats.has(cat)) {
       scroller.innerHTML = '<div class="slide"><div data-slide>未設定</div></div>';
     } else {
-      // Photo mode: show first 4 images from photos/<room>/<cat>/01.png ... 04.png
-      const total = 4;
+      // Photo mode: show first 10 images from photos/<room>/<cat>/01.png ... 04.png
+      const total = 10;
       const base = `photos/${room}/${cat}/`;
       const filenames = Array.from({ length: total }, (_, i) => `${String(i + 1).padStart(2, '0')}.png`);
       scroller.innerHTML = filenames
