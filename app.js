@@ -175,7 +175,7 @@
 
   const roomNum = room.replace('rg', '');
 const basePath = `photos/${room}/${cat}${roomNum}/`;
-  const maxImages = 20;
+  const maxImages = 10;
   const slides = [];
 
   for (let i = 1; i <= maxImages; i++) {
