@@ -1,20 +1,21 @@
 // ===== STABLE FIXED VERSION =====
 // rg56 main = 10
 // rg56 kitchen = 6
-// Fully isolated & no duplication
 
 function getImages(room, category) {
   const images = [];
 
-  if (room === "rg56" && category === "main56") {
+  if (room === "rg56" && category === "main") {
     for (let i = 1; i <= 10; i++) {
-      images.push(`photos/rg56/main56/${String(i).padStart(2,'0')}.png`);
+      const num = String(i).padStart(2, "0");
+      images.push(`photos/rg56/main56/${num}.png`);
     }
   }
 
-  if (room === "rg56" && category === "kitchen56") {
+  if (room === "rg56" && category === "kitchen") {
     for (let i = 1; i <= 6; i++) {
-      images.push(`photos/rg56/kitchen56/${String(i).padStart(2,'0')}.png`);
+      const num = String(i).padStart(2, "0");
+      images.push(`photos/rg56/kitchen56/${num}.png`);
     }
   }
 
@@ -34,7 +35,7 @@ function initSlider(room, category) {
 
   images.forEach((src, index) => {
     const img = document.createElement("img");
-    img.src = src + "?v=stable1";
+    img.src = src + "?v=stable2";
     img.className = "slide-image";
     img.style.display = index === 0 ? "block" : "none";
     container.appendChild(img);
