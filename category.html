@@ -1,82 +1,99 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja" data-page="category">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>カテゴリ</title>
- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,600&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カテゴリ一覧</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="app">
-    <div class="topbar has-header-crab">
-      <a class="back" id="back_to_index" href="#">←</a>
-      <div class="titles">
-        <div class="t" id="cat_title">カテゴリ</div>
-        <div class="s" id="cat_sub">Categories</div>
+
+<header>
+  <a id="back_to_index" href="index.html" class="btn backBtn">
+    ＜ 戻る
+  </a>
+</header>
+
+<main>
+  <h1 id="cat_title" class="jp"></h1>
+  <h2 id="cat_sub" class="en"></h2>
+
+  <!-- メインルームカテゴリ（部屋に応じて動的挿入） -->
+  <div id="main_dynamic"></div>
+
+  <!-- 固定カテゴリ一覧（ボタンとして母体と同じデザイン） -->
+  <div class="list">
+
+    <a id="kitchen_link" class="btn">
+      <div class="cat">
+        <div class="icon">🍳</div>
+        <div>
+          <div class="jp">キッチン</div>
+          <div class="en">Kitchen</div>
+        </div>
       </div>
-      <img src="icon.png" alt="Crab mascot" class="header-crab header-crab--m" />
-    </div>
+      <div class="chev">›</div>
+    </a>
 
-    <div class="screen">
-      <div class="list">
-
-        <div id="main_dynamic"></div>
-
-        <a class="btn" id="kitchen_link" href="#">
-          <div class="cat">
-            <div class="icon">🍳</div>
-            <div><div class="jp">キッチン</div><div class="en">Kitchen</div></div>
-          </div>
-          <div class="chev">›</div>
-        </a>
-
-        <a class="btn" id="vanity_link" href="#">
-          <div class="cat">
-            <div class="icon">🪥</div>
-            <div><div class="jp">洗面</div><div class="en">Vanity</div></div>
-          </div>
-          <div class="chev">›</div>
-        </a>
-
-        <a class="btn" id="bath_link" href="#">
-          <div class="cat">
-            <div class="icon">🛁</div>
-            <div><div class="jp">バスルーム</div><div class="en">Bath</div></div>
-          </div>
-          <div class="chev">›</div>
-        </a>
-
-        <a class="btn" id="toilet_link" href="#">
-          <div class="cat">
-            <div class="icon">🚽</div>
-            <div><div class="jp">トイレ</div><div class="en">Toilet</div></div>
-          </div>
-          <div class="chev">›</div>
-        </a>
-
-        <a class="btn" id="closet_link" href="#">
-          <div class="cat">
-            <div class="icon">👕</div>
-            <div><div class="jp">クローゼット</div><div class="en">Closet</div></div>
-          </div>
-          <div class="chev">›</div>
-        </a>
-
-        <a class="btn" id="entrance_link" href="#">
-          <div class="cat">
-            <div class="icon">🚪</div>
-            <div><div class="jp">玄関</div><div class="en">Entrance</div></div>
-          </div>
-          <div class="chev">›</div>
-        </a>
-
+    <a id="vanity_link" class="btn">
+      <div class="cat">
+        <div class="icon">🪥</div>
+        <div>
+          <div class="jp">洗面</div>
+          <div class="en">Vanity</div>
+        </div>
       </div>
-    </div>
+      <div class="chev">›</div>
+    </a>
+
+    <a id="bath_link" class="btn">
+      <div class="cat">
+        <div class="icon">🛁</div>
+        <div>
+          <div class="jp">バスルーム</div>
+          <div class="en">Bath</div>
+        </div>
+      </div>
+      <div class="chev">›</div>
+    </a>
+
+    <a id="toilet_link" class="btn">
+      <div class="cat">
+        <div class="icon">🚽</div>
+        <div>
+          <div class="jp">トイレ</div>
+          <div class="en">Toilet</div>
+        </div>
+      </div>
+      <div class="chev">›</div>
+    </a>
+
+    <a id="closet_link" class="btn">
+      <div class="cat">
+        <div class="icon">👕</div>
+        <div>
+          <div class="jp">クローゼット</div>
+          <div class="en">Closet</div>
+        </div>
+      </div>
+      <div class="chev">›</div>
+    </a>
+
+    <a id="entrance_link" class="btn">
+      <div class="cat">
+        <div class="icon">🚪</div>
+        <div>
+          <div class="jp">玄関</div>
+          <div class="en">Entrance</div>
+        </div>
+      </div>
+      <div class="chev">›</div>
+    </a>
+
   </div>
+</main>
 
-  <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
