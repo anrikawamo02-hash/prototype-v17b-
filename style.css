@@ -1,588 +1,280 @@
-:root{
-  --nav:#0b3a5a;
-  --bg:#f3f4f6;
-  --card:#fff;
-  --border:#e5e7eb;
-  --text:#111827;
-  --muted:#6b7280;
-  --accent:#f472b6;
-  --accent-soft:#fdf2f8;
-  --radius:18px;
+:root {
+  --bg: #faf5f7;
+  --text-main: #333333;
+  --text-sub: #777777;
+  --card-bg: #ffffff;
+  --accent-pink: #f5ecf4;
+  --accent-pink-strong: #f9dfe6;
+  --shadow-card: 0 10px 22px rgba(0,0,0,0.06);
+  --radius: 18px;
 }
 
 *,
 *::before,
-*::after{
-  box-sizing:border-box;
+*::after {
+  box-sizing: border-box;
 }
 
-html,
-body{
-  margin:0;
-  padding:0;
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+body {
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Noto Serif JP", serif;
+  color: var(--text-main);
 }
 
-img{
-  max-width:100%;
-  height:auto;
-  display:block;
+img {
+  max-width: 100%;
+  display: block;
 }
 
-a{
-  color:inherit;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-/* コンテナ共通 */
-.app{
-  max-width:480px;
-  margin:0 auto;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-}
-
-/* ナビバー */
-.nav{
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:#fff;
-  box-shadow:0 1px 4px rgba(15,23,42,.06);
-}
-
-.navInner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:10px 14px;
-}
-
-.navLeft{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.logoCircle{
-  width:32px;
-  height:32px;
-  border-radius:999px;
-  background:conic-gradient(from 140deg,#f97316,#f472b6,#3b82f6,#22c55e,#f97316);
-  display:grid;
-  place-items:center;
-}
-
-.logoInner{
-  width:26px;
-  height:26px;
-  border-radius:999px;
-  background:#fff;
-  display:grid;
-  place-items:center;
-  font-size:14px;
-  font-weight:700;
-  color:#0b3a5a;
-}
-
-.brand{
-  display:flex;
-  flex-direction:column;
-}
-
-.brand .jp{
-  font-size:12px;
-  font-weight:600;
-  letter-spacing:.08em;
-}
-
-.brand .en{
-  font-size:10px;
-  color:var(--muted);
-}
-
-/* バッジ */
-.badges{
-  display:flex;
-  gap:6px;
-}
-
-.badge{
-  border-radius:999px;
-  padding:5px 10px;
-  font-size:10px;
-  background:#eff6ff;
-  color:#1d4ed8;
-  display:inline-flex;
-  align-items:center;
-  gap:4px;
-}
-
-.badge.pink{
-  background:#fdf2f8;
-  color:#db2777;
+/* 共通コンテナ */
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
 }
 
 /* メイン */
-main{
-  flex:1;
-  padding:16px 12px 20px;
+main {
+  flex: 1;
+  padding: 16px 12px 24px;
 }
 
-/* 基本カード */
-.btn{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:16px 14px;
-  box-shadow:0 8px 16px rgba(0,0,0,.05);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  text-decoration:none;
-  color:inherit;
+/* 1ページ目上部のピンクヘッダー */
+.pinkHeader {
+  background-color: var(--accent-pink-strong);
+  padding: 20px 0 18px;
+  border-radius: 0 0 20px 20px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-.btn .jp{
-  font-size:15px;
-  font-weight:600;
+.pinkHeader .header-title-jp {
+  font-family: "Noto Serif JP", serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--text-main);
 }
 
-.btn .en{
-  font-size:11px;
-  color:var(--muted);
+.pinkHeader .header-title-en {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--text-sub);
 }
 
-/* 号室一覧ページ 共通タイトル */
-.roomTop{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
+/* ボタン共通 */
+.btn {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 16px 14px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-/* JP数字を少しクラシックに */
-html[data-page="index"] .roomTop .jp .antique-num{
-  font-family:"Cormorant Garamond",serif;
-  font-style:italic;
-  font-weight:800;
+/* 号室カード（index） */
+.roomTop {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
 }
 
-/* 号室ボタンの中身配置 */
-.roomLabel{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
+.btn.roomBtn {
+  background: var(--accent-pink);
+  margin: 0 auto;
+  max-width: 90%;
 }
 
-.roomMeta{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-top:4px;
-  font-size:11px;
-  color:#6b7280;
+/* アイコン */
+.roomIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
 }
 
-.tag{
-  border-radius:999px;
-  padding:2px 8px;
-  background:#eef2ff;
-  font-size:10px;
-  color:#3730a3;
+/* ラベル */
+.roomLabel .jp {
+  font-size: 16px;
+  font-weight: 600;
 }
 
-/* 共通の小アイコン */
-.iconCircle{
-  width:30px;
-  height:30px;
-  border-radius:999px;
-  background:#fee2e2;
-  display:grid;
-  place-items:center;
-  font-size:15px;
+.roomLabel .en {
+  font-size: 11px;
+  color: var(--text-sub);
 }
 
-/* カテゴリ一覧ページ */
-.list{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
+/* クラシック数字（index用） */
+html[data-page="index"] .roomTop .jp .antique-num {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 800;
 }
 
-/* カテゴリカード */
-.cat{
-  display:flex;
-  align-items:center;
-  gap:10px;
+/* ----- 共通タイトル（カテゴリ / 写真ページ） ----- */
+.titles {
+  margin-bottom: 16px;
 }
 
-.cat .icon{
-  width:32px;
-  height:32px;
-  border-radius:999px;
-  background:#fff;
-  display:grid;
-  place-items:center;
-  font-size:18px;
+.titles .j {
+  font-size: 17px;
+  font-weight: 600;
 }
 
-.cat .jp{
-  font-size:14px;
-  font-weight:600;
+.titles .e {
+  font-size: 11px;
+  color: var(--text-sub);
 }
 
-.cat .en{
-  font-size:11px;
-  color:var(--muted);
+/* 戻るリンク */
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  margin-bottom: 10px;
 }
 
-/* グループ注釈 */
-.group-note-jp{
-  margin-top:4px;
-  font-size:11px;
-  color:#4b5563;
+.backLink .icon {
+  font-size: 16px;
 }
 
-.group-note-en{
-  font-size:10px;
-  color:#9ca3af;
+/* ----- 2ページ目：カテゴリカード ----- */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-/* 矢印 */
-.chev{
-  font-size:20px;
-  font-weight:300;
-  color:#9ca3af;
+.list .btn {
+  background: #ffffff;
 }
 
-/* タイトルブロック（カテゴリ・スワイプなど） */
-.titles{
-  margin-bottom:16px;
+.cat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.titles .j{
-  font-size:17px;
-  font-weight:600;
+.cat .icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
 }
 
-.titles .e{
-  font-size:11px;
-  color:#9ca3af;
+.cat .jp {
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.titles .s{
-  font-size:12px;
-  opacity:.9;
+.cat .en {
+  font-size: 11px;
+  color: var(--text-sub);
 }
 
-/* ▼ index（お部屋一覧）専用スタイル */
-
-/* 1ページ目のピンクヘッダー（2ページ目と統一デザイン） */
-.pinkHeader{
-  background-color:#f9dfe6;
-  padding:18px 0;
-  border-radius:0 0 20px 20px;
-  text-align:center;
-  margin-bottom:20px;
-  box-shadow:0 1px 4px rgba(0,0,0,0.08);
+.chev {
+  font-size: 20px;
+  color: var(--text-sub);
 }
 
-.pinkHeader .header-title-jp{
-  font-family:"Noto Serif JP",serif;
-  font-size:20px;
-  font-weight:600;
-  color:#444;
-  margin-bottom:4px;
+/* グループ注釈（同タイプまとめ等） */
+.group-note-jp,
+.group-note-en {
+  margin-top: 4px;
+  font-size: 10px;
+  color: #666666;
 }
 
-.pinkHeader .header-title-en{
-  font-family:"Cormorant Garamond",serif;
-  font-style:italic;
-  font-size:12px;
-  color:#888;
+/* ----- 3ページ目：スワイプ ----- */
+.scrollerWrap {
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #000000;
+  margin-bottom: 12px;
 }
 
-/* 号室カード（index 専用の見た目） */
-.roomBtn{
-  align-items:center;
+.scroller {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 }
 
-html[data-page="index"] .btn.roomBtn{
-  background:#F5ECF4;
-  box-shadow:0 10px 22px rgba(0,0,0,.06);
-  position:relative;
-  overflow:hidden;
-  transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
-  touch-action:manipulation;
-  -webkit-tap-highlight-color:transparent;
-  -webkit-touch-callout:none;
-  user-select:none;
-  max-width:90%;
-  margin:12px auto;
+.scroller::-webkit-scrollbar {
+  display: none;
 }
 
-html[data-page="index"] .roomIcon,
-html[data-page="index"] .roomTag{
-  background:#fff;
+.slide {
+  min-width: 100%;
+  min-height: 260px;
+  scroll-snap-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
 }
 
-/* 号室カード内のアイコン */
-.roomIcon{
-  width:34px;
-  height:34px;
-  border-radius:999px;
-  display:grid;
-  place-items:center;
-  font-size:18px;
-}
-
-/* カテゴリページのラベルなど */
-html[data-page="category"] .btn{
-  background:#fff;
-}
-
-html[data-page="category"] .btn::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  opacity:0;
-  transition:opacity .18s ease;
-}
-
-/* スワイプページ */
-.scrollerWrap{
-  overflow:hidden;
-  border-radius:18px;
-  background:#000;
-}
-
-.scroller{
-  display:flex;
-  overflow-x:scroll;
-  scroll-snap-type:x mandatory;
-  scrollbar-width:none;
-}
-
-.scroller::-webkit-scrollbar{
-  display:none;
-}
-
-.slide{
-  min-width:100%;
-  scroll-snap-align:center;
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.slide img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* カウンター */
-.counterWrap{
-  margin-top:10px;
-  text-align:center;
-  font-size:12px;
-  color:#4b5563;
+.counterWrap {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-sub);
 }
 
-/* 戻るボタンなど */
-.backLink{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  font-size:13px;
-  text-decoration:none;
-  color:#374151;
-  margin-bottom:12px;
+/* フッター的なメモ（必要なら） */
+.footerNote {
+  margin-top: 18px;
+  font-size: 10px;
+  text-align: center;
+  color: #aaaaaa;
 }
 
-.backLink span.icon{
-  font-size:16px;
-}
-
-/* 注意書き */
-.notes{
-  margin-top:12px;
-  font-size:11px;
-  color:#6b7280;
-  line-height:1.5;
-}
-
-/* 汎用テキスト */
-.small{
-  font-size:11px;
-  color:#9ca3af;
-}
-
-/* ---- メディアクエリ（小さい画面向け微調整） ---- */
-@media (max-width:360px){
-  .btn{
-    padding:14px 12px;
+/* 小さい画面向け微調整 */
+@media (max-width: 360px) {
+  .btn {
+    padding: 14px 12px;
   }
-
-  .btn .jp{
-    font-size:14px;
+  .roomLabel .jp {
+    font-size: 15px;
   }
-
-  .btn .en{
-    font-size:10px;
-  }
-
-  .titles .j{
-    font-size:16px;
+  .cat .jp {
+    font-size: 13px;
   }
 }
 
-/* ほんの少し広い画面向け */
-@media (min-width:480px){
-  .app{
-    margin:12px auto;
-    border-radius:24px;
-    box-shadow:0 18px 45px rgba(15,23,42,.12);
-    overflow:hidden;
+/* 広めの画面：カードを少し中央寄せ */
+@media (min-width: 480px) {
+  .app {
+    margin: 12px auto;
   }
-}
-
-/* footer 的な案内スペース（必要なら使用） */
-.footerNote{
-  margin-top:18px;
-  font-size:10px;
-  color:#9ca3af;
-  text-align:center;
-  line-height:1.4;
-}
-
-/* queue 入れといた小さいサブタイトル系 */
-.subLabel{
-  font-size:11px;
-  color:#6b7280;
-}
-
-/* カテゴリタイトルのサブ行 */
-.catSub{
-  font-size:11px;
-  color:#9ca3af;
-}
-
-/* スワイプページのタイトル調整 */
-html[data-page="swipe"] .titles{
-  margin-bottom:10px;
-}
-
-html[data-page="swipe"] .titles .j{
-  font-size:16px;
-}
-
-html[data-page="swipe"] .titles .e{
-  font-size:10px;
-}
-
-/* 「同タイプまとめ」用の小さなバッジ */
-.sameTypeBadge{
-  display:inline-flex;
-  align-items:center;
-  gap:4px;
-  padding:2px 8px;
-  border-radius:999px;
-  font-size:10px;
-  background:#eef2ff;
-  color:#3730a3;
-  margin-top:4px;
-}
-
-/* ----- ここから下はまだ余白。今後の調整用に残してある ----- */
-
-.infoChip{
-  display:inline-flex;
-  align-items:center;
-  gap:4px;
-  padding:3px 8px;
-  border-radius:999px;
-  background:#eff6ff;
-  color:#1d4ed8;
-  font-size:10px;
-}
-
-.infoChip .icon{
-  font-size:12px;
-}
-
-.kv{
-  margin-top:8px;
-  padding:10px 12px;
-  border-radius:12px;
-  background:#fff;
-  border:1px dashed #e5e7eb;
-  font-size:11px;
-  color:#6b7280;
-  line-height:1.5;
-}
-
-.kv strong{
-  color:#374151;
-}
-
-/* tiny heading */
-.sectionTitle{
-  margin:18px 0 8px;
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  color:#9ca3af;
-}
-
-/* debug 用の小テキスト（必要なければ未使用） */
-.debugNote{
-  margin-top:6px;
-  font-size:10px;
-  color:#ef4444;
-}
-
-/* 「未設定」表示 */
-.unsetBox{
-  border-radius:10px;
-  padding:20px 14px;
-  background:#f9fafb;
-  border:1px dashed #e5e7eb;
-  font-size:12px;
-  color:#6b7280;
-  text-align:center;
-  line-height:1.6;
-}
-
-/* 末尾：typography 細かい補正（今は最低限） */
-small{
-  font-size:11px;
-  color:#9ca3af;
-}
-
-strong{
-  font-weight:600;
-}
-
-mark{
-  background:#fef9c3;
-  padding:0 2px;
-  border-radius:3px;
-}
-
-code{
-  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-  font-size:11px;
-  background:#f3f4f6;
-  padding:1px 4px;
-  border-radius:4px;
 }
