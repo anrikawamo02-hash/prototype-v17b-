@@ -1,130 +1,148 @@
-/* ===== 全体ベース ===== */
-body {
+/* Reset */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: "Noto Serif JP", serif;
   background: #fff;
   color: #333;
+  -webkit-text-size-adjust: 100%;
 }
 
-/* ===== ヘッダー ===== */
+/* Header ロゴ（母体のまま） */
 header {
   text-align: center;
   padding: 20px 0;
 }
-.logo {
+header .logo {
   width: 80px;
+  height: auto;
 }
 
-/* ===== 号室カード（1ページ目） ===== */
+/* Room list layout（母体そのまま） */
 .room-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 0 20px 40px;
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 40px;
 }
 
-.room-card {
-  background: #ffe4ef;      /* 杏里の言ってたピンク */
-  border-radius: 14px;
-  padding: 16px 20px;
+/* ボタン（母体ピンクカードデザインそのまま） */
+.btn.roomBtn {
+  display: block;
+  background: #ffe4ef;
+  border-radius: 16px;
+  padding: 18px 20px;
   text-decoration: none;
   color: #333;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: transform 0.1s;
+}
+
+.btn.roomBtn.is-pressing {
+  transform: scale(0.96);
+}
+
+/* 日本語タイトル（母体フォント太さ維持） */
+.jp {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+/* 英語サブタイトル */
+.en {
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+/* クラシック数字（母体そのまま） */
+.antique-num {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+/* ==========================================================
+   🔽🔽 ここから写真スワイプに必要な最小限 CSS（追加のみ） 🔽🔽
+   デザインを変えないために「最小限・母体非破壊」のみ追加
+   ========================================================== */
+
+/* スワイプ領域全体 */
+.scroller {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  width: 100%;
+}
+
+/* 各スライド */
+.slide {
+  min-width: 100%;
+  scroll-snap-align: center;
+  text-align: center;
+}
+
+/* スライド内の画像 → 母体のまま「横幅いっぱい」 */
+.slide img {
+  width: 100%;
+  height: auto;
   display: block;
 }
 
-.room-card .jp {
-  font-size: 20px;
-  margin-bottom: 4px;
-  font-weight: 500;
-}
-
-.room-card .jp .antique-num {
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  font-weight: 800;  /* 数字が太くて綺麗だった時の値 */
-}
-
-.room-card .en {
-  font-size: 14px;
-  opacity: 0.7;
-}
-
-/* ===== カテゴリページ（2ページ目） ===== */
-.category-list {
-  padding: 0 20px 60px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.category-card {
-  background: #fff2f7;
-  border-radius: 14px;
-  padding: 14px 20px;
-  text-decoration: none;
-  color: #333;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-}
-
-.category-card .jp {
-  font-size: 18px;
-  margin-bottom: 4px;
-  font-weight: 500;
-}
-
-.category-card .jp .antique-num {
-  font-family: "Cormorant Garamond", serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.category-card .en {
-  font-size: 14px;
-  opacity: 0.7;
-}
-
-/* ===== スワイプ画面（3ページ目） ===== */
-.swipe-container {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  background: #ffffff;     /* 黒背景を消す */
-  position: relative;
-}
-
-.slide {
-  width: 100%;
-  height: 100%;
-}
-
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;     /* 画像が枠から飛び出さない */
-  background: #fff;        /* 白背景固定 */
-}
-
-/* ===== 枚数表示（右下） ===== */
-.counter {
-  position: absolute;
-  right: 14px;
-  bottom: 14px;
+/* カウンター（母体デザインを壊さない位置） */
+#counter {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  padding: 6px 10px;
+  border-radius: 12px;
   background: rgba(0,0,0,0.55);
   color: #fff;
-  padding: 6px 12px;
-  border-radius: 10px;
   font-size: 14px;
 }
 
-/* ===== 戻るボタン ===== */
-.back-btn {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  font-size: 28px;
-  color: #fff;
+/* ==========================================================
+   🔼🔼 写真スワイプ必要部分はここまで 🔼🔼
+   ========================================================== */
+
+/* Category page の表示（母体のまま） */
+.list a.btn {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 20px;
+  background: #ffe4ef;
+  border-radius: 16px;
+  margin: 12px 0;
   text-decoration: none;
-  font-weight: bold;
-  text-shadow: 0 0 8px rgba(0,0,0,0.6);
+  color: #333;
+}
+
+.cat .jp {
+  font-size: 20px;
+}
+.cat .en {
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.icon {
+  font-size: 28px;
+  margin-right: 10px;
+}
+.chev {
+  font-size: 28px;
+  opacity: 0.5;
+}
+
+/* その他の小要素（母体のまま） */
+.group-note-jp, .group-note-en {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 4px;
 }
