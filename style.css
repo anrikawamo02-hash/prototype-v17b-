@@ -81,3 +81,23 @@ a.btn .en {
   margin: 8px 0;
   font-size: 14px;
 }
+/* 1ページ目のピンクヘッダー（2ページ目と統一デザイン） */
+.pinkHeader {
+    background-color: #f9dfe6;
+    padding: 18px 0;
+    border-radius: 0 0 20px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pinkHeader .header-title-jp {
+    font-size: 20px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 4px;
+}
+
+.pinkHeader .header-title-en {
+    font-size: 12px;
+    color: #888;
+}
