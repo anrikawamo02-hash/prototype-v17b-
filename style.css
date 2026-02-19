@@ -1,0 +1,83 @@
+/* ===============================
+   基本設定（母体そのまま）
+=============================== */
+body {
+  margin: 0;
+  font-family: "Noto Serif JP", serif;
+  background: #fdfdfd;
+  color: #333;
+}
+
+h1.title-jp {
+  font-size: 22px;
+  text-align: center;
+  margin: 16px 0 4px;
+  font-weight: 500;
+}
+
+h2.title-en {
+  font-size: 13px;
+  text-align: center;
+  margin: 0 0 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* カード */
+a.btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffe4ef;
+  margin: 12px auto;
+  padding: 16px 18px;
+  width: calc(100% - 32px);
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+}
+
+a.btn .jp {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+a.btn .en {
+  font-size: 12px;
+  margin-top: 2px;
+  color: #666;
+}
+
+/* クラシック数字 */
+.antique-num {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1.12em;
+}
+
+/* スワイプ用 */
+.scroller {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.slide {
+  min-width: 100%;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+}
+
+.counter {
+  text-align: center;
+  margin: 8px 0;
+  font-size: 14px;
+}
