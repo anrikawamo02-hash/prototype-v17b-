@@ -3,56 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お部屋選択</title>
+  <title>お部屋一覧</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-  <img src="icon.png" alt="logo" class="logo">
+  <h1 class="title-jp">お部屋一覧</h1>
+  <h2 class="title-en">Room List</h2>
 </header>
 
-<main class="room-list">
+<main class="roomTop">
 
-  <!-- 1・2号室 -->
+  <!-- ここから母体デザインそのままのカード構造 -->
+
   <a href="category.html?room=rg12" class="btn roomBtn">
-    <div class="jp"><span class="antique-num">1</span>・<span class="antique-num">2</span>号室</div>
-    <div class="en">Room 1・2</div>
+    <div class="jp"><span class="antique-num">1・2</span>号室</div>
+    <div class="en">Rooms 1–2</div>
+    <div class="chev">›</div>
   </a>
 
-  <!-- 3号室 -->
   <a href="category.html?room=rg3" class="btn roomBtn">
     <div class="jp"><span class="antique-num">3</span>号室</div>
     <div class="en">Room 3</div>
+    <div class="chev">›</div>
   </a>
 
-  <!-- 4号室 -->
   <a href="category.html?room=rg4" class="btn roomBtn">
     <div class="jp"><span class="antique-num">4</span>号室</div>
     <div class="en">Room 4</div>
+    <div class="chev">›</div>
   </a>
 
-  <!-- 5・6号室 -->
   <a href="category.html?room=rg56" class="btn roomBtn">
-    <div class="jp"><span class="antique-num">5</span>・<span class="antique-num">6</span>号室</div>
-    <div class="en">Room 5・6</div>
+    <div class="jp"><span class="antique-num">5・6</span>号室</div>
+    <div class="en">Rooms 5–6</div>
+    <div class="chev">›</div>
   </a>
 
-  <!-- 7・8号室 -->
   <a href="category.html?room=rg78" class="btn roomBtn">
-    <div class="jp"><span class="antique-num">7</span>・<span class="antique-num">8</span>号室</div>
-    <div class="en">Room 7・8</div>
+    <div class="jp"><span class="antique-num">7・8</span>号室</div>
+    <div class="en">Rooms 7–8</div>
+    <div class="chev">›</div>
   </a>
 
-  <!-- 9・10号室 -->
   <a href="category.html?room=rg9_10_54" class="btn roomBtn">
-    <div class="jp"><span class="antique-num">9</span>・<span class="antique-num">10</span>号室</div>
-    <div class="en">Room 9・10</div>
+    <div class="jp"><span class="antique-num">9・10</span>号室（5〜4F）</div>
+    <div class="en">Rooms 9–10</div>
+    <div class="chev">›</div>
+  </a>
+
+  <a href="category.html?room=rg9_10_11" class="btn roomBtn">
+    <div class="jp"><span class="antique-num">9・10・11</span>号室（3〜2F）</div>
+    <div class="en">Rooms 9–11</div>
+    <div class="chev">›</div>
   </a>
 
 </main>
 
+<!-- ★★★★★ 必須：app.js による番号フォント適用＆タップ反応機能 ★★★★★ -->
 <script src="app.js"></script>
+
 </body>
 </html>
