@@ -3,20 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>写真スワイプ</title>
+  <title>写真ビュー</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <a href="#" class="back-btn" id="backBtn">←</a>
+<header>
+  <a id="back_to_category" href="category.html" class="btn backBtn">
+    ＜ 戻る
+  </a>
+</header>
 
-  <div class="swipe-container" id="swiper">
-    <!-- JSで画像を自動生成 -->
-  </div>
+<main>
 
-  <div class="counter" id="counter">1 / 1</div>
+  <!-- タイトル（母体デザインそのまま） -->
+  <h1 id="swipe_title" class="jp"></h1>
+  <h2 id="swipe_sub" class="en"></h2>
 
-  <script src="app.js"></script>
+  <!-- 写真カウンター（母体にもあった要素） -->
+  <div id="counter" class="counter"></div>
+
+  <!-- ★★★★★ 写真スワイプ本体 ★★★★★ -->
+  <!-- ここに app.js が <div class="slide"><img …></div> を自動生成 -->
+  <div class="scroller"></div>
+
+</main>
+
+<script src="app.js"></script>
 </body>
 </html>
