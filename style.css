@@ -13,8 +13,7 @@
 
 body{
   margin:0;
-  font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
-  font-weight:600;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans JP",Arial,sans-serif;
   background:var(--bg);
   color:var(--text);
 }
@@ -50,12 +49,12 @@ body{
   place-items:center;
   border:1px solid rgba(255,255,255,.25);
   color:#fff;
-  font-weight:600;
+  font-weight:900;
   text-decoration:none;
 }
 
 .titles .t{
-  font-weight:600;
+  font-weight:900;
   font-size:16px;
   line-height:1.2;
 }
@@ -93,20 +92,20 @@ body{
 }
 
 .btn .jp{
-  font-weight:500;
+  font-weight:900;
   font-size:16px;
 }
 
 .btn .en{
   font-size:13px;
   color:var(--muted);
-  font-weight:400;
+  font-weight:800;
   margin-top:4px;
 }
 
 .chev{
   color:#94a3b8;
-  font-weight:600;
+  font-weight:900;
   font-size:20px;
 }
 
@@ -146,7 +145,7 @@ body{
   border:1px solid #e0e7ff;
   padding:6px 10px;
   border-radius:999px;
-  font-weight:600;
+  font-weight:900;
   white-space:nowrap;
 }
 
@@ -193,18 +192,25 @@ body{
   justify-content:center;
 }
 
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.slide div{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:32px;
+  font-weight:900;
+  background:#333;
 }
+
 .counter{
   position:absolute;
   right:10px;
   bottom:10px;
   background:rgba(17,24,39,.65);
   color:#fff;
-  font-weight:600;
+  font-weight:900;
   font-size:12px;
   padding:7px 10px;
   border-radius:999px;
@@ -214,7 +220,7 @@ body{
   margin-top:10px;
   font-size:12px;
   color:var(--muted);
-  font-weight:600;
+  font-weight:800;
 }
 
 /* Disable iOS tap flash */
@@ -339,7 +345,7 @@ html[data-page="category"] .group-note-jp{
   margin-top:6px;
   font-size:12px;
   line-height:1.25;
-  font-weight:600;
+  font-weight:800;
   color:#475569;
 }
 
