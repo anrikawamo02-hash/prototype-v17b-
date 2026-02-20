@@ -278,3 +278,55 @@ html[data-page="index"] .roomTop .jp .antique-num {
     margin: 12px auto;
   }
 }
+/* =========
+   共通ヘッダー（2ページ目・3ページ目用）
+   ========= */
+.topbar {
+  width: 100%;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.topbar .back {
+  font-size: 28px;
+  text-decoration: none;
+  color: #333;
+  margin-right: 12px;
+}
+
+.topbar .titles {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.topbar .t {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+}
+
+.topbar .s {
+  font-size: 13px;
+  color: #666;
+  margin-top: 2px;
+}
+
+/* カニの位置（右上に固定） */
+.header-crab {
+  width: 48px;
+  height: auto;
+}
+
+.header-crab--m {
+  width: 48px;
+}
+
+.has-header-crab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
