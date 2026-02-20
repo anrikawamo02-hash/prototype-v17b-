@@ -347,3 +347,19 @@ html[data-page="category"] .has-header-crab {
   align-items: center;
   justify-content: space-between; /* ← 左・中央・右の配置 */
 }
+/* ====== category ヘッダー完全補正（最優先で適用） ====== */
+html[data-page="category"] .topbar {
+  padding: 12px 16px !important;   /* ← 最優先にする */
+}
+
+html[data-page="category"] .header-crab {
+  width: 48px !important;          /* ← 小さくしすぎ防止 */
+}
+
+html[data-page="category"] .titles .t {
+  font-size: 20px !important;      /* ← 1ページ目と同じ */
+}
+
+html[data-page="category"] .titles .s {
+  font-size: 13px !important;
+}
