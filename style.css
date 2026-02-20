@@ -330,3 +330,20 @@ html[data-page="index"] .roomTop .jp .antique-num {
   align-items: center;
   justify-content: space-between;
 }
+/* ====== category 固有のヘッダー調整（安全パッチ） ====== */
+
+html[data-page="category"] .topbar {
+  padding: 12px 16px;   /* ← 高さを1ページ目と同じに */
+  margin-top: 6px;      /* ← 上が詰まりすぎるのを防ぐ */
+}
+
+html[data-page="category"] .header-crab {
+  width: 42px;          /* ← カニを小さくして右上に固定 */
+  height: auto;
+}
+
+html[data-page="category"] .has-header-crab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* ← 左・中央・右の配置 */
+}
