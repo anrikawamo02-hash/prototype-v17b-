@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Arima:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<style>
+  .room-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+    justify-content: center;
+  }
+
+  .room-card {
+    background: #F8DCDC;
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    padding: 16px 12px;
+    text-align: center;
+    width: calc(50% - 12px); /* 2列表示 */
+  }
+
+  .room-card-icon {
+    font-size: 40px;
+    margin-bottom: 8px;
+  }
+
+  .room-card-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+  }
+</style>
+<body style="margin:0; padding:0; font-family:'Arima', serif;">
+
+  <!-- ヘッダー -->
+<div style="
+  width: 100%;
+  background: #DDEEFF;
+  padding: 18px 20px 22px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
+  position: relative;
+">
+  <!-- タイトル -->
+  <h1 style="margin:0; font-size:40px; font-weight:600; color:#333;">
+    お部屋一覧
+  </h1>
+
+  <p style="margin:6px 0 0; color:#555; font-size:25px;">
+    Room list
+  </p>
+
+  <!-- 右上アイコン ※任意 -->
+  <img 
+    src="icon.PNG"
+    style="width:130px; position:absolute; right:0px; top:10px;"
+  />
+</div>
+
+  <!-- 下のコンテンツ例 -->
+  <div style="padding:20px;">
+    <h2>これはテストアプリだよ！</h2>
+    <p>杏里が自由にデザインを作れる場所✨</p>
+  </div>
+<!-- ここからお部屋カード -->
+<div class="room-grid">
+
+      <!-- 1・2号室カード -->
+<div class="room-card">
+  <div class="room-card-top">
+    <div class="room-card-icon">🚪</div>
+    <div class="room-card-title-ja">1・2号室</div>
+    <div class="room-card-tag">5–2F</div>
+  </div>
+
+  <div class="room-card-title-en">
+    Rooms 1–2 (Floors 5–2)
+  </div>
+</div>
+<!-- ここまで -->
+</body>

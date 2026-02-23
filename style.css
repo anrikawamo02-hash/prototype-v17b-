@@ -1,0 +1,51 @@
+/* 🌸 カード全体（room-card） */
+.room-card {
+    width: 100%;
+    background: #F8DCDC; /* 淡いピンク */
+    border-radius: 24px; /* 大きめ角丸 */
+    padding: 20px;
+    margin: 12px 0;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* ふわっと強めの影 */
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* 🌸 上段（アイコン＋日本語タイトル＋白タグ） */
+.room-card-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* アイコン（左側） */
+.room-card-icon {
+    font-size: 34px; /* 大きさ調整OK */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 日本語タイトル */
+.room-card-title-ja {
+    font-size: 20px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* 白タグ（5–2Fとか） */
+.room-card-tag {
+    background: white;
+    padding: 4px 14px;
+    border-radius: 18px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* 🌸 英語タイトル（Rooms 1–2 など） */
+.room-card-title-en {
+    font-size: 16px;
+    font-weight: 600;
+    color: #7B7B7B;
+}
