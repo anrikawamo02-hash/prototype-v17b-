@@ -28,7 +28,7 @@
 
 /* 日本語タイトル */
 .room-card-title-ja {
-    font-size: 24px;
+    font-size: 25px;
     font-weight: 600;
     color: #555;
 }
@@ -45,7 +45,7 @@
 
 /* 🌸 英語タイトル（Rooms 1–2 など） */
 .room-card-title-en {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     color: #7B7B7B;
 }
