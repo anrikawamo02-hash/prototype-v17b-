@@ -36,9 +36,9 @@
 /* 白タグ（5–2Fとか） */
 .room-card-tag {
     background: white;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 18px;
+    padding: 6px 18px;
+    border-radius: 22px;
+    font-size: 22px;
     font-weight: 600;
     color: #444;
 }
