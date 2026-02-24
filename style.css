@@ -50,6 +50,7 @@
     font-size: 25px;
     font-weight: 600;
     color: #7B7B7B;
+    text-align: center;
 }
 .room-card-top {
     display: flex;
