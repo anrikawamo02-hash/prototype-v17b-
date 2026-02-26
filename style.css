@@ -1,7 +1,7 @@
 /* 🌸 カード全体（room-card） */
 .room-card {
     width: 80%;
-    background: #F3B6C6; /* 淡いピンク */
+    background: #F8DCDC; /* 淡いピンク */
     border-radius: 24px; /* 大きめ角丸 */
     padding: 20px;
     margin: 3px auto;
@@ -21,7 +21,7 @@
 .room-card::before {
     content: "";
     position: absolute;
-    inset: -2px;           /* 上下左右に 8px はみ出させる */
+    inset: -4px;           /* 上下左右に 8px はみ出させる */
     border-radius: 28px;   /* ピンクより少し大きめの角丸 */
     background: #ffffff;   /* 白い土台 */
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10); /* ふわっとした影 */
