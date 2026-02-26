@@ -21,7 +21,7 @@
 .room-card::before {
     content: "";
     position: absolute;
-    inset: -4px;           /* 上下左右に 8px はみ出させる */
+    inset: -2px;           /* 上下左右に 8px はみ出させる */
     border-radius: 28px;   /* ピンクより少し大きめの角丸 */
     background: #ffffff;   /* 白い土台 */
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10); /* ふわっとした影 */
