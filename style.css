@@ -9,23 +9,6 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
-     /* 2層構造用の追加 👇 */
-    position: relative;
-    z-index: 0;
-
-    /* 影は白い土台側に任せるので、ここでは一旦消してOK */
-    box-shadow: none;
-}
-
-/* 🎀 白い土台（2層目） */
-.room-card::before {
-    content: "";
-    position: absolute;
-    inset: -4px;           /* 上下左右に 8px はみ出させる */
-    border-radius: 28px;   /* ピンクより少し大きめの角丸 */
-    background: #ffffff;   /* 白い土台 */
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10); /* ふわっとした影 */
-    z-index: -1;           /* ピンクカードの後ろに回す */
 }
 
 /* 🌸 上段（アイコン＋日本語タイトル＋白タグ） */
