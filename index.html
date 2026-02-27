@@ -177,4 +177,16 @@
     </div>
 </div>
 <!-- ここまで -->
+<script>
+document.querySelectorAll('.room-card').forEach(card => {
+    card.addEventListener('mousedown', () => {
+        card.classList.add('pressing');
+    });
+    card.addEventListener('mouseup', () => {
+        setTimeout(() => {
+            card.classList.remove('pressing');
+        }, 120); // ← 戻りの自然さを作る遅延
+    });
+});
+</script>
 </body>
