@@ -6,7 +6,7 @@
     padding: 20px;
     margin: 0px auto;
 .room-card:first-of-type {
-    margin-top: 16px;
+    margin-top: 20px;
 }
     /* ▼ 浮き感（ふわっと浮かせる影） */
     box-shadow:
