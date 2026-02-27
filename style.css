@@ -4,8 +4,10 @@
     background: #F8DCDC;      /* 淡いピンク */
     border-radius: 24px;      /* 大きめ角丸 */
     padding: 20px;
-    margin: 10px auto;
-
+    margin: 0px auto;
+.room-card:first-of-type {
+    margin-top: 12px;
+}
     /* ▼ 浮き感（ふわっと浮かせる影） */
     box-shadow:
   0px 22px 45px rgba(0,0,0,0.25),
