@@ -16,6 +16,13 @@ transition: transform 0.25s ease, box-shadow 0.25s ease;
     flex-direction: column;
     gap: 6px;
 }
+/* ▼ 押した時のアニメ（pressing クラス） */
+.room-card.pressing {
+    transform: translateY(18px); 
+    box-shadow:
+        0px 4px 12px rgba(0, 0, 0, 0.15),
+        0px 2px 6px rgba(0, 0, 0, 0.10);
+}
 /* ▼ 押し感（押した時に沈むアニメ） */
 .room-card:active {
   transform: translateY(4px);
