@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>カテゴリー</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ▼ 2ページ目ヘッダー（1ページ目と同じ構造） -->
+    <div class="topbar has-header-crab">
+        <a id="back_to_index" class="back" href="index.html" aria-label="戻る">‹</a>
+
+        <div class="header-title">
+            <div class="header-title-ja">カテゴリー</div>
+            <div class="header-title-en">Categories</div>
+        </div>
+
+        <div class="header-right">
+            <img src="crab_sample.png" class="header-crab" alt="crab icon">
+        </div>
+    </div>
+
+    <!-- ▼ カテゴリーカード一覧 -->
+    <main class="screen">
+
+        <!-- ◆ メインルーム -->
+        <div class="room-card" id="mainroom_link">
+            <img src="icon_main.png" alt="メインルーム icon" class="room-card-icon">
+            <div class="room-card-title-ja">メインルーム</div>
+            <div class="room-card-title-en">Main Room</div>
+        </div>
+
+        <!-- ◆ キッチン -->
+        <div class="room-card" id="kitchen_link">
+            <img src="icon_kitchen.png" alt="キッチン icon" class="room-card-icon">
+            <div class="room-card-title-ja">キッチン</div>
+            <div class="room-card-title-en">Kitchen</div>
+        </div>
+
+        <!-- ◆ 洗面 -->
+        <div class="room-card" id="vanity_link">
+            <img src="icon_vanity.png" alt="洗面 icon" class="room-card-icon">
+            <div class="room-card-title-ja">洗面</div>
+            <div class="room-card-title-en">Vanity</div>
+        </div>
+
+        <!-- ◆ バスルーム -->
+        <div class="room-card" id="bath_link">
+            <img src="icon_bath.png" alt="バス icon" class="room-card-icon">
+            <div class="room-card-title-ja">バスルーム</div>
+            <div class="room-card-title-en">Bathroom</div>
+        </div>
+
+        <!-- ◆ トイレ -->
+        <div class="room-card" id="toilet_link">
+            <img src="icon_toilet.png" alt="トイレ icon" class="room-card-icon">
+            <div class="room-card-title-ja">トイレ</div>
+            <div class="room-card-title-en">Toilet</div>
+        </div>
+
+        <!-- ◆ クローゼット -->
+        <div class="room-card" id="closet_link">
+            <img src="icon_closet.png" alt="クローゼット icon" class="room-card-icon">
+            <div class="room-card-title-ja">クローゼット</div>
+            <div class="room-card-title-en">Closet</div>
+        </div>
+
+        <!-- ◆ 玄関 -->
+        <div class="room-card" id="entrance_link">
+            <img src="icon_entrance.png" alt="玄関 icon" class="room-card-icon">
+            <div class="room-card-title-ja">玄関</div>
+            <div class="room-card-title-en">Entrance</div>
+        </div>
+
+    </main>
+
+</div>
+
+<script defer src="app.js"></script>
+</body>
+</html>
