@@ -17,20 +17,21 @@
 <body>
   <div class="app">
 
-    /* ▼ 2ページ目ヘッダー（カテゴリー用） ---------------------- */
+    <!-- ▼ 2ページ目ヘッダー（戻る ＋ カテゴリー名） -->
+<div class="topbar has-header-crab">
 
-.topbar {
-  width: 100%;
-  background: #DDEEFF;              /* 1ページ目と同じ水色 */
-  padding: 18px 20px 22px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    <!-- 左：戻るボタン -->
+    <a id="back_to_index" class="back" href="index.html" aria-label="戻る">‹</a>
 
-}
+    <!-- 中央タイトル -->
+    <div class="header-title">
+        <div class="header-title-ja">カテゴリー</div>
+        <div class="header-title-en">Categories</div>
+    </div>
+
+    <!-- 右側スペース（空） -->
+<div class="header-right">
+    <img src="crab_sample.png" class="header-crab" alt="crab">
 </div>
 
     <main class="screen">
