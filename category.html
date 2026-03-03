@@ -42,87 +42,97 @@
 <div class="list">
 
     <!-- メインルーム　-->
-　　　<a id="main_link" class="btn" href="#">
-        <div class="cat">
-            <div class="icon">🛏️</div>
-            <div>
-                <div class="jp">メインルーム</div>
-                <div class="en">Main Room</div>
-            </div>
-        </div>
-        <div class="chev">›</div>
-    </a>
+　　　<!doctype html>
+<html lang="ja" data-page="category">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>カテゴリ</title>
 
-    <!-- キッチン -->
-    <a id="kitchen_link" class="btn" href="#">
-        <div class="cat">
-            <div class="icon">🍳</div>
-            <div>
-                <div class="jp">キッチン</div>
-                <div class="en">Kitchen</div>
-            </div>
-        </div>
-        <div class="chev">›</div>
-    </a>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,800;1,600;1,800&display=swap" rel="stylesheet">
 
-    <!-- 洗面 -->
-    <a id="vanity_link" class="btn" href="#">
-        <div class="cat">
-            <div class="icon">🪥</div>
-            <div>
-                <div class="jp">洗面</div>
-                <div class="en">Vanity</div>
-            </div>
-        </div>
-        <div class="chev">›</div>
-    </a>
+    <!-- style.css（最重要） -->
+    <link rel="stylesheet" href="style.css">
 
-    <!-- バスルーム -->
-    <a id="bath_link" class="btn" href="#">
-        <div class="cat">
-            <div class="icon">🛁</div>
-            <div>
-                <div class="jp">バスルーム</div>
-                <div class="en">Bath</div>
-            </div>
-        </div>
-        <div class="chev">›</div>
-    </a>
+    <!-- app.js -->
+    <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="app">
 
-    <!-- トイレ -->
-    <a id="toilet_link" class="btn" href="#">
-        <div class="cat">
-            <div class="icon">🚽</div>
-            <div>
-                <div class="jp">トイレ</div>
-                <div class="en">Toilet</div>
-            </div>
-        </div>
-        <div class="chev">›</div>
-    </a>
+    <!-- 2ページ目ヘッダー（1ページ目と同じ構造） -->
+<div class="topbar has-header-crab">
 
-    <!-- クローゼット -->
-    <a id="closet_link" class="btn" href="#">
-        <div class="cat">
-            <div class="icon">👕</div>
-            <div>
-                <div class="jp">クローゼット</div>
-                <div class="en">Closet</div>
-            </div>
-        </div>
-        <div class="chev">›</div>
-    </a>
+  <!-- 戻るボタン -->
+  <a id="back_to_index" class="back" href="index.html" aria-label="戻る">‹</a>
 
-    <!-- 玄関 -->
-    <a id="entrance_link" class="btn" href="#">
-        <div class="cat">
-            <div class="icon">🚪</div>
-            <div>
-                <div class="jp">玄関</div>
-                <div class="en">Entrance</div>
-            </div>
-        </div>
-        <div class="chev">›</div>
+  <!-- タイトル -->
+  <h1>カテゴリー</h1>
+  <p>Categories</p>
+
+  <!-- カニ -->
+  <img src="crab_sample.png" class="header-crab" />
+
+</div>
+    <main class="screen">
+
+      <!-- app.js が部屋ごとのメインルームカードを差し込む -->
+      <div id="main_dynamic" class="list"></div>
+
+      <div class="list">
+
+        <!-- ▼ カード一覧 -->
+<div class="list">
+
+    <!-- ◆ メインルーム -->
+<div class="room-card" id="mainroom_link">
+    <img src="icon_main.png" alt="メインルーム icon" class="room-card-icon">
+    <div class="room-card-title-ja">メインルーム</div>
+    <div class="room-card-title-en">Main Room</div>
+</div>
+
+<!-- ◆ キッチン -->
+<div class="room-card" id="kitchen_link">
+    <img src="icon_kitchen.png" alt="キッチン icon" class="room-card-icon">
+    <div class="room-card-title-ja">キッチン</div>
+    <div class="room-card-title-en">Kitchen</div>
+</div>
+
+<!-- ◆ 洗面 -->
+<div class="room-card" id="vanity_link">
+    <img src="icon_vanity.png" alt="洗面 icon" class="room-card-icon">
+    <div class="room-card-title-ja">洗面</div>
+    <div class="room-card-title-en">Vanity</div>
+</div>
+
+<!-- ◆ バスルーム -->
+<div class="room-card" id="bath_link">
+    <img src="icon_bath.png" alt="バス icon" class="room-card-icon">
+    <div class="room-card-title-ja">バスルーム</div>
+    <div class="room-card-title-en">Bathroom</div>
+</div>
+
+<!-- ◆ トイレ -->
+<div class="room-card" id="toilet_link">
+    <img src="icon_toilet.png" alt="トイレ icon" class="room-card-icon">
+    <div class="room-card-title-ja">トイレ</div>
+    <div class="room-card-title-en">Toilet</div>
+</div>
+
+<!-- ◆ クローゼット -->
+<div class="room-card" id="closet_link">
+    <img src="icon_closet.png" alt="クローゼット icon" class="room-card-icon">
+    <div class="room-card-title-ja">クローゼット</div>
+    <div class="room-card-title-en">Closet</div>
+</div>
+
+<!-- ◆ 玄関 -->
+<div class="room-card" id="entrance_link">
+    <img src="icon_entrance.png" alt="玄関 icon" class="room-card-icon">
+    <div class="room-card-title-ja">玄関</div>
+    <div class="room-card-title-en">Entrance</div>
+</div>
     </a>
 
 </div>
