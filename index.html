@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Arima:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="margin:0; padding:0; font-family:'Arima', serif;">
+
+  <!-- ヘッダー -->
+<div style="
+  width: 100%;
+  background: #DDEEFF;
+  padding: 18px 20px 22px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
+  position: relative;
+  margin-bottom: 25px;   /* ← ここを好きな数値に調整 */
+">
+  <!-- タイトル -->
+  <h1 style="margin:0; font-size:40px; font-weight:600; color:#333;">
+    お部屋一覧
+  </h1>
+
+  <p style="margin:6px 0 0; color:#555; font-size:25px;">
+    Room list
+  </p>
+
+  <!-- 右上アイコン ※任意 -->
+  <img 
+    src="icon.PNG"
+    style="width:130px; position:absolute; right:20px; top:10px;"
+  />
+</div>
+
+<!-- ここからお部屋カード -->
+　　　<!-- １・２号室カード -->
+<div class="room-grid">
+
+      <a href="category.html" class="card-link">
+<div class="room-card">
+    <div class="room-card-top">
+
+        <div class="room-card-icon">
+            <img src="room-door-icon.PNG" class="door-icon">
+        </div>
+
+        <div class="room-card-title-ja center-title">
+            1・2号室
+        </div>
+
+        <div class="room-card-tag">5–2F</div>
+
+    </div>
+
+    <div class="room-card-title-en">
+        Rooms 1–2 (Floors 5–2)
+    </div>
+</div>
+</a>
+　　　<!-- 3号室カード -->
+<div class="room-card">
+    <div class="room-card-top">
+
+        <!-- 左：アイコン -->
+<div class="room-card-icon">
+     <img src="room-door-icon.PNG" alt="room icon" class="door-icon">
+</div>
+
+<!-- 真ん中：日本語タイトル -->
+<div class="room-card-title-ja center-title">3号室</div>
+
+<!-- 右：白タグ -->
+<div class="room-card-tag">5–2F</div>
+
+    </div>
+
+    <!-- 下段：英語タイトル -->
+    <div class="room-card-title-en">
+        Rooms 3 (Floors 5–2)
+    </div>
+</div>
+　　　<!-- 4号室カード -->
+<div class="room-card">
+    <div class="room-card-top">
+
+        <!-- 左：アイコン -->
+        <div class="room-card-icon">
+            <img src="room-door-icon.PNG" alt="room icon" class="door-icon">
+        </div>
+
+        <!-- 真ん中：日本語タイトル -->
+        <div class="room-card-title-ja center-title">4号室</div>
+
+        <!-- 右：白タグ -->
+        <div class="room-card-tag">5–2F</div>
+
+    </div>
+
+    <!-- 下段：英語タイトル -->
+    <div class="room-card-title-en">
+        Room 4 (Floors 5–2)
+    </div>
+</div>
+　　　　<!-- 5・6号室カード -->
+<div class="room-card">
+    <div class="room-card-top">
+
+        <div class="room-card-icon">
+            <img src="room-door-icon.PNG" alt="room icon" class="door-icon">
+        </div>
+
+        <div class="room-card-title-ja center-title">5・6号室</div>
+
+        <div class="room-card-tag">5–2F</div>
+
+    </div>
+
+    <div class="room-card-title-en">
+        Rooms 5–6 (Floors 5–2)
+    </div>
+</div>
+　　　　<!-- 7・8号室カード -->
+<div class="room-card">
+    <div class="room-card-top">
+
+        <div class="room-card-icon">
+            <img src="room-door-icon.PNG" alt="room icon" class="door-icon">
+        </div>
+
+        <div class="room-card-title-ja center-title">7・8号室</div>
+
+        <div class="room-card-tag">5–2F</div>
+
+    </div>
+
+    <div class="room-card-title-en">
+        Rooms 7–8 (Floors 5–2)
+    </div>
+</div>
+　　　　<!-- 9・10号室カード -->
+<div class="room-card">
+    <div class="room-card-top">
+
+        <div class="room-card-icon">
+            <img src="room-door-icon.PNG" alt="room icon" class="door-icon">
+        </div>
+
+        <div class="room-card-title-ja center-title">9・10号室</div>
+
+        <div class="room-card-tag">5–4F</div>
+
+    </div>
+
+    <div class="room-card-title-en">
+        Rooms 9–10 (Floors 5–4)
+    </div>
+</div>
+　　　　<!-- 9・10・11号室カード -->
+<div class="room-card">
+    <div class="room-card-top">
+
+        <div class="room-card-icon">
+            <img src="room-door-icon.PNG" alt="room icon" class="door-icon">
+        </div>
+
+        <div class="room-card-title-ja center-title">9・10・11号室</div>
+
+        <div class="room-card-tag">3–2F</div>
+
+    </div>
+
+    <div class="room-card-title-en">
+        Rooms 9–11 (Floors 3–2)
+    </div>
+</div>
+<!-- ここまで -->
+<script>
+document.querySelectorAll('.room-card').forEach(card => {
+    card.addEventListener('mousedown', () => {
+        card.classList.add('pressing');
+    });
+    card.addEventListener('mouseup', () => {
+        setTimeout(() => {
+            card.classList.remove('pressing');
+        }, 120); // ← 戻りの自然さを作る遅延
+    });
+});
+</script>
+</body>
