@@ -1,122 +1,90 @@
-<!doctype html>
-<html lang="ja" data-page="category">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>カテゴリ</title>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,800;1,600;1,800&display=swap" rel="stylesheet">
-
-    <!-- style.css（最重要） -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カテゴリー</title>
     <link rel="stylesheet" href="style.css">
-
-    <!-- app.js -->
-    <script defer src="app.js"></script>
 </head>
+
 <body>
-  <div class="app">
 
-    <!-- 2ページ目ヘッダー（1ページ目と同じ構造） -->
-<div class="topbar has-header-crab">
+<div class="app">
 
-  <!-- 戻るボタン -->
-  <a id="back_to_index" class="back" href="index.html" aria-label="戻る">‹</a>
+    <!-- ▼ 2ページ目ヘッダー（1ページ目と同じ構造） -->
+    <div class="topbar has-header-crab">
 
-  <!-- タイトル -->
-  <h1>カテゴリー</h1>
-  <p>Categories</p>
+        <!-- 戻るボタン -->
+        <a id="back_to_index" class="back" href="index.html" aria-label="戻る">‹</a>
 
-  <!-- カニ -->
-  <img src="crab_sample.png" class="header-crab" />
+        <!-- タイトル -->
+        <div class="header-title">
+            <div class="header-title-ja">カテゴリー</div>
+            <div class="header-title-en">Categories</div>
+        </div>
 
-</div>
+        <!-- 右側のカニ -->
+        <div class="header-right">
+            <img src="crab_sample.png" class="header-crab" alt="crab icon">
+        </div>
+    </div>
+
+    <!-- ▼ カード一覧 -->
     <main class="screen">
 
-      <!-- app.js が部屋ごとのメインルームカードを差し込む -->
-      <div id="main_dynamic" class="list"></div>
+        <!-- ◆ メインルーム -->
+        <div class="room-card" id="mainroom_link">
+            <img src="icon_main.png" class="room-card-icon" alt="main icon">
+            <div class="room-card-title-ja">メインルーム</div>
+            <div class="room-card-title-en">Main Room</div>
+        </div>
 
-      <div class="list">
+        <!-- ◆ キッチン -->
+        <div class="room-card" id="kitchen_link">
+            <img src="icon_kitchen.png" class="room-card-icon" alt="kitchen icon">
+            <div class="room-card-title-ja">キッチン</div>
+            <div class="room-card-title-en">Kitchen</div>
+        </div>
 
-        <!-- ▼ カード一覧 -->
-<div class="list">
+        <!-- ◆ 洗面 -->
+        <div class="room-card" id="vanity_link">
+            <img src="icon_vanity.png" class="room-card-icon" alt="vanity icon">
+            <div class="room-card-title-ja">洗面</div>
+            <div class="room-card-title-en">Vanity</div>
+        </div>
 
-    <!-- 2ページ目ヘッダー（1ページ目と同じ構造） -->
-<div class="topbar has-header-crab">
+        <!-- ◆ バスルーム -->
+        <div class="room-card" id="bath_link">
+            <img src="icon_bath.png" class="room-card-icon" alt="bath icon">
+            <div class="room-card-title-ja">バスルーム</div>
+            <div class="room-card-title-en">Bathroom</div>
+        </div>
 
-  <!-- 戻るボタン -->
-  <a id="back_to_index" class="back" href="index.html" aria-label="戻る">‹</a>
+        <!-- ◆ トイレ -->
+        <div class="room-card" id="toilet_link">
+            <img src="icon_toilet.png" class="room-card-icon" alt="toilet icon">
+            <div class="room-card-title-ja">トイレ</div>
+            <div class="room-card-title-en">Toilet</div>
+        </div>
 
-  <!-- タイトル -->
-  <h1>カテゴリー</h1>
-  <p>Categories</p>
+        <!-- ◆ クローゼット -->
+        <div class="room-card" id="closet_link">
+            <img src="icon_closet.png" class="room-card-icon" alt="closet icon">
+            <div class="room-card-title-ja">クローゼット</div>
+            <div class="room-card-title-en">Closet</div>
+        </div>
 
-  <!-- カニ -->
-  <img src="crab_sample.png" class="header-crab" />
+        <!-- ◆ 玄関 -->
+        <div class="room-card" id="entrance_link">
+            <img src="icon_entrance.png" class="room-card-icon" alt="entrance icon">
+            <div class="room-card-title-ja">玄関</div>
+            <div class="room-card-title-en">Entrance</div>
+        </div>
 
-</div>
-    <main class="screen">
-
-      <!-- app.js が部屋ごとのメインルームカードを差し込む -->
-      <div id="main_dynamic" class="list"></div>
-
-      <div class="list">
-
-        <!-- ▼ カード一覧 -->
-<div class="list">
-
-    <!-- ◆ メインルーム -->
-<div class="room-card" id="mainroom_link">
-    <img src="icon_main.png" alt="メインルーム icon" class="room-card-icon">
-    <div class="room-card-title-ja">メインルーム</div>
-    <div class="room-card-title-en">Main Room</div>
-</div>
-
-<!-- ◆ キッチン -->
-<div class="room-card" id="kitchen_link">
-    <img src="icon_kitchen.png" alt="キッチン icon" class="room-card-icon">
-    <div class="room-card-title-ja">キッチン</div>
-    <div class="room-card-title-en">Kitchen</div>
-</div>
-
-<!-- ◆ 洗面 -->
-<div class="room-card" id="vanity_link">
-    <img src="icon_vanity.png" alt="洗面 icon" class="room-card-icon">
-    <div class="room-card-title-ja">洗面</div>
-    <div class="room-card-title-en">Vanity</div>
-</div>
-
-<!-- ◆ バスルーム -->
-<div class="room-card" id="bath_link">
-    <img src="icon_bath.png" alt="バス icon" class="room-card-icon">
-    <div class="room-card-title-ja">バスルーム</div>
-    <div class="room-card-title-en">Bathroom</div>
-</div>
-
-<!-- ◆ トイレ -->
-<div class="room-card" id="toilet_link">
-    <img src="icon_toilet.png" alt="トイレ icon" class="room-card-icon">
-    <div class="room-card-title-ja">トイレ</div>
-    <div class="room-card-title-en">Toilet</div>
-</div>
-
-<!-- ◆ クローゼット -->
-<div class="room-card" id="closet_link">
-    <img src="icon_closet.png" alt="クローゼット icon" class="room-card-icon">
-    <div class="room-card-title-ja">クローゼット</div>
-    <div class="room-card-title-en">Closet</div>
-</div>
-
-<!-- ◆ 玄関 -->
-<div class="room-card" id="entrance_link">
-    <img src="icon_entrance.png" alt="玄関 icon" class="room-card-icon">
-    <div class="room-card-title-ja">玄関</div>
-    <div class="room-card-title-en">Entrance</div>
-</div>
-    </a>
-
-</div>
     </main>
-  </div>
+
+</div>
+
+<script defer src="app.js"></script>
 </body>
 </html>
