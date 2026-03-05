@@ -21,8 +21,8 @@ body {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+align-items: center;
+justify-content: space-between;
 }
 
 /* 1枚目だけ上の余白 */
