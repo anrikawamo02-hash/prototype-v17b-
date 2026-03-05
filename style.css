@@ -10,7 +10,7 @@ body {
   background: #F8DCDC;      /* 淡いピンク */
   border-radius: 24px;      /* 大きめ角丸 */
   padding: 20px;
-  margin: 0 auto;
+  margin: 0 auto 25px;
 
   /* ▼ 浮き感（ふわっと浮かせる影） */
   box-shadow:
