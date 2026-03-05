@@ -161,7 +161,7 @@ a {
 /* ===== 2ページ目 icon配置 ===== */
 
 .page-category .room-card{
-  display:flex;
+  display:flex !important;
   align-items:center;
 }
 
