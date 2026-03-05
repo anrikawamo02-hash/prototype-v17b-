@@ -19,10 +19,9 @@ body {
 
   transform: translateY(-22px);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-
   display: flex;
-align-items: center;
-justify-content: space-between;
+    flex-direction: column;
+    gap: 6px;
 }
 
 /* 1枚目だけ上の余白 */
