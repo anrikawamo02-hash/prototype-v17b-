@@ -147,3 +147,13 @@ a {
     width: 80px;
     height: 80px;
 }
+/* =========================
+   2ページ目（category）だけに効かせる
+   ※1ページ目は絶対に変えない
+========================= */
+
+.page-category .room-card{
+  width: 92%;
+  margin: 0 auto 25px;
+  border-radius: 24px;
+}
