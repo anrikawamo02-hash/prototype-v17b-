@@ -177,3 +177,7 @@ a {
   align-items:center;
   justify-content:center;
 }
+.page-category .room-card-text{
+  display:flex;
+  flex-direction:column;
+}
