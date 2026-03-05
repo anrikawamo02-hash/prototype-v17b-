@@ -163,6 +163,7 @@ a {
 
 .page-category .room-card{
   display:flex !important;
+  flex-direction: row;
   align-items:center;
 }
 .page-category .room-card-title-ja,
