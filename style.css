@@ -164,7 +164,10 @@ a {
   display:flex !important;
   align-items:center;
 }
-
+.page-category .room-card-title-ja,
+.page-category .room-card-title-en{
+  text-align:left;
+}
 .page-category .room-card-icon{
   font-size:28px;
   width:48px;
