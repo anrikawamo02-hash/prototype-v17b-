@@ -158,3 +158,17 @@ a {
   border-radius: 24px;
   padding: 30px 20px;
 }
+/* ===== 2ページ目 icon配置 ===== */
+
+.page-category .room-card{
+  display:flex;
+  align-items:center;
+}
+
+.page-category .room-card-icon{
+  font-size:28px;
+  width:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
