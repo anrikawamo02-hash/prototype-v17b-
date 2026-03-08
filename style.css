@@ -128,13 +128,13 @@ a {
 }
 
 .header-title-ja {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   color: #333;
 }
 
 .header-title-en {
-  font-size: 16px;
+  font-size: 14px;
   color: #777;
   margin-top: 2px;
 }
