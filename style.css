@@ -149,7 +149,7 @@ flex-shrink: 0;
 /* 右スペース（カニ画像の空白確保） */
 .header-right {
     width: 50px;
-    height: 60px;
+    height: auto;
 }
 /* =========================
    2ページ目（category）だけに効かせる
