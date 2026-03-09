@@ -94,7 +94,7 @@ a {
 /* ▼ 2ページ目ヘッダー（カテゴリー用） ---------------------- */
 
 .topbar {
-  width: 100%;
+  width: 80%;
   background: #DDEEFF;              /* 1ページ目と同じ水色 */
   padding: 4px 20px 2px;
   border-bottom-left-radius: 20px;
