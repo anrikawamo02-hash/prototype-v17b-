@@ -100,13 +100,12 @@ a {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   box-sizing: border-box;
   margin-bottom: 5px;
+  position: relative;
 }
 
 /* 左：戻るボタン（高さが増えないように） */
@@ -145,6 +144,9 @@ width: 50px;
 height: auto;
 align-self: center;
 flex-shrink: 0;
+position: absolute;
+right: 20px;
+top: 10px;
 }
 /* 右スペース（カニ画像の空白確保） */
 .header-right {
