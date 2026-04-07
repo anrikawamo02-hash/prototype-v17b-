@@ -217,3 +217,11 @@ font-size:20px;
 .page-category .room-card-title-en{
 font-size:16px;
 }
+.slide img{
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - 220px);
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
