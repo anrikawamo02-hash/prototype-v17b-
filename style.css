@@ -225,3 +225,10 @@ font-size:16px;
   display: block;
   margin: 0 auto;
 }
+.scrollerWrap{
+  background: #000;
+  border-radius: 28px;
+  overflow: hidden;
+  width: calc(100% - 48px);
+  margin: 24px auto 16px;
+}
