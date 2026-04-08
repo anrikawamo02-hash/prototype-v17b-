@@ -238,3 +238,8 @@ font-size:16px;
 .scroller{
   background: #000;
 }
+.counterWrap{
+  width: 100%;
+  text-align: center;
+  margin: 16px auto 0;
+}
