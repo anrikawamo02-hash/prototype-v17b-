@@ -220,7 +220,7 @@ font-size:16px;
 .slide img{
   width: 100%;
   height: auto;
-  max-height: calc(100vh - 220px);
+  max-height: calc(100vh - 170px);
   object-fit: contain;
   display: block;
   margin: 0 auto;
