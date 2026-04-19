@@ -183,7 +183,7 @@ const SAME_TYPE_NOTE_EN = '';
 const catFolder = /\d+$/.test(cat) ? cat : `${cat}${roomNum}`;
 
 const basePath = `photos/${room}/${catFolder}/`;
-  const maxImages = 15;
+  const maxImages = 20;
   const slides = [];
 
   for (let i = 1; i <= maxImages; i++) {
