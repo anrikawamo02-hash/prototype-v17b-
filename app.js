@@ -62,7 +62,14 @@ const SAME_TYPE_NOTE_EN = '';
       prefix: 'Main',
       icon: '🛏️'
     },
-
+　　　main9_10: {
+  jp: 'メインルーム（9・10）',
+  en: 'Main room (9・10)',
+  noteJp: SAME_TYPE_NOTE_JP,
+  noteEn: SAME_TYPE_NOTE_EN,
+  prefix: 'Main',
+  icon: '🛏'
+},
     // Keep numbers in label
     main7: { jp: 'メインルーム（7）', en: 'Main room (7)', prefix: 'Main', icon: '🛏️' },
     main8: { jp: 'メインルーム（8）', en: 'Main room (8)', prefix: 'Main', icon: '🛏️' },
@@ -89,7 +96,7 @@ const SAME_TYPE_NOTE_EN = '';
     rg78: ['main7', 'main8'],
     rg910: ['main9_10_54'],
     rg9_10_54: ['main9_10_54'],
-    rg9_10_11: ['main9', 'main10', 'main11']
+    rg9_10_11: ['main9_10', 'main11']
   };
 
   const byId = (id) => document.getElementById(id);
