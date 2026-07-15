@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anri App</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="app-header">
+
+    <a href="category.html" class="header-back" aria-label="カテゴリーへ戻る">‹</a>
+
+    <div class="header-text">
+
+      <h1 class="header-ja">メインルーム</h1>
+
+      <p class="header-en">Main room</p>
+
+    </div>
+
+    <img src="images/crab.png" class="header-crab">
+
+  </header>
+
+  <main class="main-content">
+
+  <div class="swipe-view">
+
+  <div class="scrollerWrap">
+    <div class="scroller">
+      <div class="slide">
+        <div class="slide-empty">写真準備中</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="counterWrap">
+    <span id="counter" class="photo-counter">0/0</span>
+  </div>
+<div class="inspect-card">
+  <div class="inspect-card-ja">メインルームインスペ表</div>
+  <div class="inspect-card-en">Main Room Inspection</div>
+  <div class="inspect-card-arrow">▼</div>
+</div>
+<div class="inspect-content">
+  <p>
+<label>
+<input type="checkbox" class="inspect-check">
+冷暖房は付けっぱなしになっていないか
+</label><br>
+<span class="inspect-en">
+Is the air conditioner/heater turned off?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+窓は開きっぱなしになっていないか
+</label><br>
+    <span class="inspect-en">
+  Are all windows closed?
+  </span><br>
+  </p>
+  
+  <p>
+<label>
+<input type="checkbox" class="inspect-check">
+カーテンは開いて、レースカーテンは閉まっているか
+</label><br>
+    <span class="inspect-en">
+  Are the curtains open and the lace curtains closed?
+  </span><br>
+  </p>
+  
+  <p>
+  <label>
+<input type="checkbox" class="inspect-check">
+ゴミ箱は汚れていないか、袋は交換されてるか
+</label><br>
+    <span class="inspect-en">
+Is the trash bin clean and the liner replaced?
+  </span><br>
+  </p>
+  
+  <p>
+<label>
+<input type="checkbox" class="inspect-check">
+ティッシュペーパーは十分に入っているか
+</label><br>
+  <span class="inspect-en">
+Are there enough tissues provided?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+テレビ・テレビリモコンは使えるか(動作がうまくいかない時は電池を交換)
+</label><br>
+  <span class="inspect-en">
+Do the TV and remote control work properly? (Replace batteries if necessary)
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+テレビに埃がかぶっていないか
+</label><br>
+  <span class="inspect-en">
+Is the TV free of dust?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+机・テーブルは汚れていないか
+</label><br>
+  <span class="inspect-en">
+Are the desk and table clean?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+椅子の脚に髪の毛は絡まっていないか
+</label><br>
+  <span class="inspect-en">
+Are there any hairs tangled around the chair legs?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+ベッドはきれいに整えられているか。シミ、髪の毛、ゴミなどが付着していないか
+</label><br>
+  <span class="inspect-en">
+Is the bed neatly made and free of stains, hair, and debris?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+ベッドの両側隙間とベッドフレームの下に忘れ物はないか、清掃は行き届いてるか
+</label><br>
+  <span class="inspect-en">
+Are there any forgotten items beside or under the bed, and has the area been properly cleaned?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+ゴミ袋交換しているか
+</label><br>
+  <span class="inspect-en">
+Has the trash bag been replaced?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+ベランダにゴミは落ちていないか
+</label><br>
+  <span class="inspect-en">
+Is the balcony free of trash?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+全身鏡は拭かれているか
+</label><br>
+  <span class="inspect-en">
+Has the full-length mirror been cleaned?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+床やソファーに髪の毛やゴミは付着していないか
+</label><br>
+  <span class="inspect-en">
+Are the floor and sofa free of hair and debris?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+バスタオル、フェイスタオルは人数分セットされているか
+</label><br>
+  <span class="inspect-en">
+Are bath towels and face towels prepared for all guests?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+卓上ランプにホコリはついていないか
+</label><br>
+  <span class="inspect-en">
+Is the desk lamp free of dust?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+机の引き出しにゴミは入っていないか
+</label><br>
+  <span class="inspect-en">
+Is there any trash inside the desk drawers?
+</span><br>
+</p>
+
+</div>
+</div>
+
+</main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get("cat");
+    const room = params.get("room");
+const backButton = document.querySelector(".header-back");
+
+if (room && backButton) {
+  backButton.href = `category.html?room=${room}`;
+}
+
+    const categoryTitles = {
+      main: {
+        ja: "メインルーム",
+        en: "Main room"
+      },
+      kitchen: {
+        ja: "キッチン",
+        en: "Kitchen"
+      },
+      vanity: {
+        ja: "洗面",
+        en: "Vanity"
+      },
+      bath: {
+        ja: "バスルーム",
+        en: "Bath"
+      },
+      toilet: {
+        ja: "トイレ",
+        en: "Toilet"
+      },
+      closet: {
+        ja: "クローゼット",
+        en: "Closet"
+      },
+      entrance: {
+        ja: "玄関",
+        en: "Entrance"
+      }
+    };
+
+    const title = categoryTitles[cat] || categoryTitles.main;
+
+    document.querySelector(".header-ja").textContent = title.ja;
+    document.querySelector(".header-en").textContent = title.en;
+    const inspectCard = document.querySelector(".inspect-card");
+const inspectContent = document.querySelector(".inspect-content");
+const inspectArrow = document.querySelector(".inspect-card-arrow");
+if (cat === "kitchen") {
+  document.querySelector(".inspect-card-ja").textContent = "キッチンインスペ表";
+  document.querySelector(".inspect-card-en").textContent = "Kitchen Inspection";
+
+  inspectContent.innerHTML = `
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+カトラリーは揃っているか
+</label><br>
+<span class="inspect-en">
+Are all cutlery items present?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+グラス・カップに使用感は残っていないか、一つずつ内側・ふちまで確認
+</label><br>
+<span class="inspect-en">
+Are the glasses and cups free of any signs of use, including the inside and rims?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+お皿・お箸・カトラリーに使用感は残っていないか、一つずつ内側・ふちまで確認
+</label><br>
+<span class="inspect-en">
+Are the dishes, chopsticks, and cutlery free of any signs of use?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+調理器具に使用感は残っていないか
+</label><br>
+<span class="inspect-en">
+Are the cooking utensils free of any signs of use?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+冷蔵庫・レンジの中に汚れや跡は付いていないか
+</label><br>
+<span class="inspect-en">
+Are the refrigerator and microwave clean inside and free of stains or marks?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+ケトルに使用感は残っていないか、中に水滴はないか
+</label><br>
+<span class="inspect-en">
+Is the kettle clean and free of water droplets inside?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+シンクと排水溝はきれいに清掃されているか、ネットは交換されているか
+</label><br>
+<span class="inspect-en">
+Are the sink and drain clean, and has the drain net been replaced?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+スポンジは新しい物に交換されているか
+</label><br>
+<span class="inspect-en">
+Has the kitchen sponge been replaced with a new one?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+食器用洗剤は十分に入っているか
+</label><br>
+<span class="inspect-en">
+Is there enough dishwashing detergent?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+収納棚に水垢や手垢が付いていないか
+</label><br>
+<span class="inspect-en">
+Are the cabinets free of water stains and fingerprints?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+水栓・シンクは拭き上げられているか
+</label><br>
+<span class="inspect-en">
+Have the faucet and sink been properly wiped dry?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+レンジと冷蔵庫の上に埃は溜まっていないか
+</label><br>
+<span class="inspect-en">
+Is there no dust on top of the microwave and refrigerator?
+</span><br>
+</p>
+  `;
+}
+if (cat === "vanity") {
+  document.querySelector(".inspect-card-ja").textContent = "洗面インスペ表";
+  document.querySelector(".inspect-card-en").textContent = "Vanity Inspection";
+
+  inspectContent.innerHTML = `
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+ハンドソープは十分に入っているか、正面を向いているか、ボトルはきれいに拭かれているか
+</label><br>
+<span class="inspect-en">
+Is there enough hand soap, is the bottle facing forward, and has it been wiped clean?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+鏡に指紋や汚れは残っていないか
+</label><br>
+<span class="inspect-en">
+Is the mirror free of fingerprints and stains?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+鏡裏の収納スペースにゴミや汚れは残っていないか
+</label><br>
+<span class="inspect-en">
+Is the storage space behind the mirror clean and free of trash?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+ドライヤーのコードはきれいにまとめられているか
+</label><br>
+<span class="inspect-en">
+Is the hair dryer cord neatly wrapped?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+蛇口の金属部分に水垢や汚れは残っていないか、裏側も確認
+</label><br>
+<span class="inspect-en">
+Are the metal parts of the faucet free of water stains and dirt? Check the back side as well.
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+洗面台と排水溝はきれいに清掃されているか、水滴や髪の毛は残っていないか
+</label><br>
+<span class="inspect-en">
+Are the sink and drain clean and free of water droplets and hair?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+下の収納棚の中に汚れは残っていないか
+</label><br>
+<span class="inspect-en">
+Is the lower storage cabinet clean inside?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+扉のドアノブはきれいに拭かれているか
+</label><br>
+<span class="inspect-en">
+Has the door knob been wiped clean?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+洗濯洗剤は補充されているか
+</label><br>
+<span class="inspect-en">
+Has the laundry detergent been refilled?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+洗濯機のゴミは取られているか・洗濯バンに髪の毛や埃が落ちていないか・網にゴミが詰まっていないか
+</label><br>
+<span class="inspect-en">
+Has the washing machine lint been removed, is the washing machine tray free of hair and dust, and is the filter free of debris?
+</span><br>
+</p>
+  `;
+}
+
+if (cat === "bath") {
+  document.querySelector(".inspect-card-ja").textContent = "バスルームインスペ表";
+  document.querySelector(".inspect-card-en").textContent = "Bath Inspection";
+
+  inspectContent.innerHTML = `
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+温度は42度にセットしてあるか
+</label><br>
+<span class="inspect-en">
+Is the water temperature set to 42°C?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+シャンプー、コンディショナー、ボディーソープは十分に入っているか
+</label><br>
+<span class="inspect-en">
+Are the shampoo, conditioner, and body soap sufficiently filled?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+シャンプー、コンディショナー、ボディーソープのノズルは正面を向いているか
+</label><br>
+<span class="inspect-en">
+Are the shampoo, conditioner, and body soap nozzles facing forward?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+シャワー・蛇口の金属部分に水垢は残っていないか
+</label><br>
+<span class="inspect-en">
+Are the metal parts of the shower and faucet free of water stains?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+シャワーヘッドは裏側を向いているか
+</label><br>
+<span class="inspect-en">
+Is the shower head facing backward?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+鏡に汚れや指紋は残っていないか
+</label><br>
+<span class="inspect-en">
+Is the mirror free of stains and fingerprints?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+排水溝・浴槽の栓のゴミは回収されているか、髪の毛は残っていないか
+</label><br>
+<span class="inspect-en">
+Has debris been removed from the drain and bathtub stopper, and is there no hair remaining?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+浴槽にざらつきはないか
+</label><br>
+<span class="inspect-en">
+Is the bathtub free of roughness or residue?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+壁・床・浴槽・ドアに水滴、水垢、髪の毛は残っていないか
+</label><br>
+<span class="inspect-en">
+Are the walls, floor, bathtub, and door free of water droplets, water stains, and hair?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+お風呂のドアを閉めて、外側に指紋は付いていないか確認
+</label><br>
+<span class="inspect-en">
+After closing the bathroom door, is the outside free of fingerprints?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+バスマットは設置されているか
+</label><br>
+<span class="inspect-en">
+Is the bath mat properly placed?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+洗面器と椅子は所定の位置・向きになっているか
+</label><br>
+<span class="inspect-en">
+Are the wash basin and stool in their designated positions and directions?
+</span><br>
+</p>
+  `;
+}
+
+if (cat === "toilet") {
+  document.querySelector(".inspect-card-ja").textContent = "トイレインスペ表";
+  document.querySelector(".inspect-card-en").textContent = "Toilet Inspection";
+
+  inspectContent.innerHTML = `
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+便器は蓋と便座を上げて確認し、汚れは残っていないか
+</label><br>
+<span class="inspect-en">
+Has the toilet been checked with both the lid and seat raised, and is it free of stains?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+水を流すハンドル部分・ペーパーホルダーの棚に汚れや手垢は残っていないか
+</label><br>
+<span class="inspect-en">
+Are the flush handle and toilet paper holder shelf free of stains and fingerprints?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+扉のドアノブはきれいに拭かれているか
+</label><br>
+<span class="inspect-en">
+Has the door knob been wiped clean?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+サニタリーボックスにゴミは残っていないか
+</label><br>
+<span class="inspect-en">
+Is the sanitary box empty and free of trash?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+トイレの床に汚れは残っていないか
+</label><br>
+<span class="inspect-en">
+Is the toilet floor clean and free of stains?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+予備のトイレットペーパーは2ロール設置されているか
+</label><br>
+<span class="inspect-en">
+Are two spare toilet paper rolls provided?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+タオルは設置されているか
+</label><br>
+<span class="inspect-en">
+Is a towel properly provided?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+トイレットペーパーは三角折りされているか
+</label><br>
+<span class="inspect-en">
+Has the toilet paper been folded into a triangle?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+便器の周辺や裏側にゴミや汚れは残っていないか
+</label><br>
+<span class="inspect-en">
+Are there any stains or debris around or behind the toilet?
+</span><br>
+</p>
+  `;
+}
+
+if (cat === "closet") {
+  document.querySelector(".inspect-card-ja").textContent = "クローゼットインスペ表";
+  document.querySelector(".inspect-card-en").textContent = "Closet Inspection";
+
+  inspectContent.innerHTML = `
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+予備の布団はきちんと整えて収納しているか
+</label><br>
+<span class="inspect-en">
+Are the spare futons neatly stored?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+枕には枕カバーが付いているか
+</label><br>
+<span class="inspect-en">
+Are pillowcases properly attached to the spare pillows?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+予備の枚数は合っているか
+</label><br>
+<span class="inspect-en">
+Are the quantities of spare bedding correct?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+ハンガーはピンチとハンガーが混ざってないか（向きは同じか、左右にきちんと分かれて配置されているか）
+</label><br>
+<span class="inspect-en">
+Are hangers and clip hangers separated and arranged neatly in the correct direction?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+アイロン台はきちんと掛かっているか
+</label><br>
+<span class="inspect-en">
+Is the ironing board properly stored?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+予備のシーツ・デュベは整えてきちんと置いてあるか
+</label><br>
+<span class="inspect-en">
+Are the spare sheets and duvet covers neatly folded and stored?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+アイロンの中に水は残っていないか
+</label><br>
+<span class="inspect-en">
+Is there no water remaining inside the iron?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+アイロンのコードはきちんとまとめられているか
+</label><br>
+<span class="inspect-en">
+Is the iron cord neatly wrapped?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+床や上の棚にゴミや髪の毛は落ちていないか
+</label><br>
+<span class="inspect-en">
+Are the floor and upper shelves free of trash and hair?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+クローゼット内の壁や棚に汚れ・埃は残っていないか
+</label><br>
+<span class="inspect-en">
+Are the closet walls and shelves free of dirt and dust?
+</span><br>
+</p>
+  `;
+}
+
+if (cat === "entrance") {
+  document.querySelector(".inspect-card-ja").textContent = "玄関インスペ表";
+  document.querySelector(".inspect-card-en").textContent = "Entrance Inspection";
+
+  inspectContent.innerHTML = `
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+スリッパの向きはそろっているか
+</label><br>
+<span class="inspect-en">
+Are the slippers facing the same direction?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+靴箱の中は汚れていないか
+</label><br>
+<span class="inspect-en">
+Is the inside of the shoe cabinet clean?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+ドアノブに指紋は付いていないか
+</label><br>
+<span class="inspect-en">
+Is the door knob free of fingerprints?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+リフレッシャーは十分に入っているか
+</label><br>
+<span class="inspect-en">
+Is there enough refresher spray?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+玄関上棚に汚れはないか
+</label><br>
+<span class="inspect-en">
+Is the upper entrance shelf clean?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+玄関棚の開閉部分に汚れはないか
+</label><br>
+<span class="inspect-en">
+Is the opening area of the entrance cabinet clean?
+</span><br>
+</p>
+
+<p>
+<label>
+<input type="checkbox" class="inspect-check">
+玄関の床にゴミや髪の毛はないか
+</label><br>
+<span class="inspect-en">
+Is the entrance floor free of trash and hair?
+</span><br>
+</p>
+  `;
+}
+inspectCard.addEventListener("click", () => {
+  inspectContent.classList.toggle("is-open");
+
+  if (inspectContent.classList.contains("is-open")) {
+  inspectArrow.textContent = "▲";
+} else {
+  inspectArrow.textContent = "▼";
+
+  document.querySelectorAll(".inspect-check").forEach(check => {
+    check.checked = false;
+  });
+}
+});
+  </script>
+　<script src="app.js"></script>
+</body>
+
+</html>
